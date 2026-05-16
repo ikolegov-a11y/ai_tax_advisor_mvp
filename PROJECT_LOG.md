@@ -45,8 +45,8 @@
 |---|---|---|---|
 | 1.1 | Claude Code читает всю документацию | ✅ Готово | CLAUDE.md, PRD, Technical_Spec, Tax_Checks_Catalog, Finanzamt_Reference, PROJECT_LOG, client_001.json |
 | 1.2 | `DEV_PLAN.md` — план разработки с фазами | ✅ Готово | 5 фаз, структура файлов, команды тестирования, зависимости |
-| 1.3 | `ARCHITECTURE.md` — диаграммы потоков, tool loop, thread_id | ⬜ Не начат | |
-| 1.4 | Обзор и утверждение плана | ⬜ Не начат | Сравнить с Technical_Spec, скорректировать |
+| 1.3 | `ARCHITECTURE.md` — диаграммы потоков, tool loop, thread_id | ✅ Готово | Request flow, tool_use loop, threadId, .env, POST /api/analyze schema |
+| 1.4 | Обзор и утверждение плана | 🔵 В работе | Ожидаем APPROVED TO CODE |
 
 ---
 

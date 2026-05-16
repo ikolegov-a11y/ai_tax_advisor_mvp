@@ -63,11 +63,44 @@ get_transactions  get_invoices  get_company   get_assets
 
 ## 3. Существующие инструменты (tools)
 
+### 3.0 Модель данных: три сущности
+
+Агент работает с тремя **независимыми сущностями**, которые должны быть согласованы между собой. Ошибка — это расхождение между любыми двумя из них.
+
+```
+┌─────────────────────┐     ┌──────────────────────────┐     ┌─────────────────────────┐
+│   ТРАНЗАКЦИЯ        │     │   ИНВОЙС                 │     │   БУХГАЛТЕРСКАЯ         │
+│   (банковое         │ ←→  │   (данные документа)     │ ←→  │   ПРОВОДКА              │
+│    движение)        │     │                          │     │   (учётная запись)      │
+├─────────────────────┤     ├──────────────────────────┤     ├─────────────────────────┤
+│ • Дата              │     │ • Сумма gross/net        │     │ • Категория расхода     │
+│ • Сумма             │     │ • Ставка НДС             │     │ • Ставка НДС (applied)  │
+│ • Контрагент        │     │ • Сумма НДС              │     │ • Сумма НДС (applied)   │
+│ • Назначение платежа│     │ • Поставщик / покупатель │     │ • Счёт SKR-04           │
+│ • Тип (доход/расход)│     │ • VAT ID сторон          │     │ • Tax Residency         │
+└─────────────────────┘     │ • Номер инвойса          │     │ • Ссылки на txn + inv   │
+                            │ • Файл PDF (file_path)   │     └─────────────────────────┘
+                            └──────────────────────────┘
+                                        ↕
+                            ┌──────────────────────────┐
+                            │   ФАЙЛ ИНВОЙСА           │
+                            │   (PDF / изображение)    │
+                            │   recognize_invoice_doc()│
+                            └──────────────────────────┘
+```
+
+**Принцип:** поле `notes` в любой сущности содержит только нейтральный бизнес-контекст.
+Агент **самостоятельно** находит расхождения — подсказок в данных нет.
+
+---
+
 ### 3.1 `get_transactions(period, company_id)`
 
 **Уже реализован в продакшене.**
 
-Возвращает список транзакций за период:
+Транзакция — это **банковское движение**. Содержит только то, что видно в выписке:
+сумму, дату, контрагента и назначение платежа. Категория, НДС и налоговая трактовка
+определяются **не** на уровне транзакции — они живут в инвойсе и бухгалтерской проводке.
 
 ```json
 {
@@ -78,23 +111,33 @@ get_transactions  get_invoices  get_company   get_assets
       "amount": 5950.00,
       "currency": "EUR",
       "counterparty": "Müller GmbH",
-      "category": "Office Supplies",
-      "vat_rate": 0.19,
-      "vat_amount": 950.00,
-      "net_amount": 5000.00,
-      "linked_invoice_id": "inv_012",
+      "payment_reference": "Rechnung 2026-012",
       "type": "expense",
-      "notes": ""
+      "linked_invoice_id": "inv_012"
     }
   ]
 }
 ```
 
+| Поле | Описание |
+|---|---|
+| `id` | Уникальный ID транзакции |
+| `date` | Дата проведения платежа |
+| `amount` | Сумма (всегда положительная) |
+| `currency` | Валюта |
+| `counterparty` | Название контрагента из банка |
+| `payment_reference` | Назначение платежа (строка из банка) |
+| `type` | `income` или `expense` |
+| `linked_invoice_id` | Ссылка на привязанный инвойс (или `null`) |
+
+---
+
 ### 3.2 `get_invoices(period, company_id)`
 
 **Уже реализован в продакшене.**
 
-Возвращает инвойсы (исходящие и входящие):
+Инвойс — это **данные документа**. Содержит все поля счёта: суммы, НДС, стороны, номер.
+Именно здесь хранится ставка НДС, указанная в реальном документе, и ссылка на PDF-файл.
 
 ```json
 {
@@ -102,20 +145,40 @@ get_transactions  get_invoices  get_company   get_assets
     {
       "id": "inv_012",
       "type": "incoming",
+      "invoice_number": "2026-012",
       "date": "2026-03-14",
       "amount_gross": 5950.00,
       "amount_net": 5000.00,
       "vat_rate": 0.19,
       "vat_amount": 950.00,
       "currency": "EUR",
-      "supplier": "Müller GmbH",
+      "supplier_name": "Müller GmbH",
       "supplier_vat_id": "DE123456789",
+      "supplier_country": "DE",
+      "customer_name": "Max Mustermann IT",
+      "customer_vat_id": null,
       "linked_transaction_id": "txn_001",
-      "category": "Office Supplies"
+      "vat_exempt_note": null,
+      "file_path": "invoice_files/client_001/inv_012.pdf",
+      "file_available": true
     }
   ]
 }
 ```
+
+| Поле | Описание |
+|---|---|
+| `type` | `incoming` (входящий) или `outgoing` (исходящий) |
+| `invoice_number` | Номер счёта из документа |
+| `amount_gross/net` | Суммы с/без НДС из документа |
+| `vat_rate / vat_amount` | НДС **как указано в документе** |
+| `supplier_name` | Поставщик (для входящих) |
+| `supplier_vat_id` | VAT ID поставщика (для Vorsteuer-проверок) |
+| `supplier_country` | Страна поставщика (DE / IE / AT / FR…) |
+| `customer_name / customer_vat_id` | Покупатель (для исходящих) |
+| `vat_exempt_note` | Текст освобождения от НДС (§19, Reverse Charge…) |
+| `file_path` | Путь к PDF-файлу в хранилище |
+| `file_available` | `true` — файл есть, агент может вызвать `recognize_invoice_document` |
 
 ### 3.3 `get_company_settings(company_id)`
 
@@ -637,7 +700,20 @@ Return JSON only, no explanation.
 
 ### 13.2 `get_bookkeeping_entries(period, company_id)` ⭐ NEW
 
-**Описание:** Возвращает бухгалтерские проводки (Buchungssätze) за период. Отличие от транзакций: проводки — это учётный слой. Один платёж может порождать несколько проводок (split), амортизация создаёт проводки без платежа.
+**Описание:** Возвращает бухгалтерские проводки (Buchungssätze) за период.
+
+Проводка — это **учётная запись**, которая создаётся на основе транзакции и инвойса.
+Именно здесь пользователь фиксирует категорию, ставку НДС и налоговую трактовку.
+Это ключевой слой для поиска ошибок: агент сравнивает проводку с инвойсом и транзакцией.
+
+**Роль каждой сущности при сверке:**
+
+| Что проверяем | Берём из инвойса | Сравниваем с проводкой |
+|---|---|---|
+| Правильность НДС | `invoice.vat_rate` | `entry.vat_rate` |
+| Tax Residency | `invoice.supplier_country` | `entry.tax_residency_applied` |
+| Сумма | `invoice.amount_gross` | `entry.amount_gross` |
+| Основание освобождения от НДС | `invoice.vat_exempt_note` | `entry.vat_rate == 0` |
 
 **Ожидаемый формат:**
 
@@ -650,16 +726,16 @@ Return JSON only, no explanation.
       "period": "2026-01",
       "type": "income",
       "description": "Honorar IT-Beratung Januar",
-      "amount": 4200.00,
+      "amount_gross": 4200.00,
+      "amount_net": 4200.00,
       "category": "Revenue",
       "account_code": "8400",
       "vat_rate": 0.00,
       "vat_amount": 0.00,
-      "net_amount": 4200.00,
+      "tax_residency_applied": "domestic",
       "linked_transaction_id": "txn_001_001",
       "linked_invoice_id": "inv_001_001",
-      "is_private_use": false,
-      "notes": ""
+      "is_private_use": false
     },
     {
       "id": "entry_001_015",
@@ -667,17 +743,17 @@ Return JSON only, no explanation.
       "period": "2026-01",
       "type": "depreciation",
       "description": "AfA Dell XPS Laptop",
-      "amount": 33.33,
+      "amount_gross": 33.33,
+      "amount_net": 33.33,
       "category": "Depreciation",
       "account_code": "4831",
       "vat_rate": 0.00,
       "vat_amount": 0.00,
-      "net_amount": 33.33,
+      "tax_residency_applied": null,
       "linked_transaction_id": null,
       "linked_invoice_id": null,
       "linked_asset_id": "asset_001",
-      "is_private_use": false,
-      "notes": "Monatliche AfA: 1200 € / 36 Monate"
+      "is_private_use": false
     }
   ]
 }
@@ -686,11 +762,16 @@ Return JSON only, no explanation.
 **Типы проводок (`type`):**
 - `income` — поступление / Einnahme
 - `expense` — расход / Ausgabe
-- `depreciation` — амортизация / AfA
+- `depreciation` — амортизация / AfA (без транзакции)
 - `private_use` — частное использование (Privatentnahme/Privateinlage)
 - `adjustment` — корректировка
 
-**Примечание:** Для Phase 0 `bookkeeping_entries` добавляются в каждый `client_XXX.json` рядом с `transactions`. Полная схема — в DEV_PLAN.md.
+**Поле `tax_residency_applied`** — как пользователь классифицировал контрагента в Finom:
+`"domestic"` / `"eu"` / `"non_eu"` / `null` (для проводок без контрагента — AmFA).
+Агент сравнивает это поле с `invoice.supplier_country`: если поставщик из IE (EU),
+а в проводке `tax_residency_applied = "domestic"` — это ошибка.
+
+**Примечание:** Поле `notes` содержит только нейтральный контекст (например, `"Monatliche AfA: 1200 € / 36 Monate"`). Ошибки в данных агент должен обнаружить самостоятельно, сравнивая сущности.
 
 ---
 

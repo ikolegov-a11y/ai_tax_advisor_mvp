@@ -31,7 +31,7 @@
     "professional_license_type": null,
     "reverse_charge_applicable": true,
     "oss_vat_registered": false,
-    "notes": "IT-консультант, работает с немецкими и несколькими австрийскими компаниями. Для EU B2B применяется Reverse Charge."
+    "notes": "IT-Freiberuflerin, arbeitet mit deutschen und österreichischen Unternehmen. Reverse Charge gilt für EU B2B."
   },
 
   "transactions": [
@@ -41,29 +41,19 @@
       "amount": 4200.00,
       "currency": "EUR",
       "counterparty": "TechCorp München GmbH",
-      "counterparty_country": "DE",
-      "category": "Revenue",
-      "vat_rate": 0.00,
-      "vat_amount": 0.00,
-      "net_amount": 4200.00,
-      "linked_invoice_id": "inv_001_001",
+      "payment_reference": "Honorar IT-Beratung Januar 2026 / Rg. 2026-001",
       "type": "income",
-      "notes": "Kleinunternehmer — ohne Umsatzsteuer"
+      "linked_invoice_id": "inv_001_001"
     },
     {
       "id": "txn_001_002",
       "date": "2026-01-22",
       "amount": 89.00,
       "currency": "EUR",
-      "counterparty": "Telekom Deutschland",
-      "counterparty_country": "DE",
-      "category": "Phone & Internet",
-      "vat_rate": 0.19,
-      "vat_amount": 14.20,
-      "net_amount": 74.80,
-      "linked_invoice_id": null,
+      "counterparty": "Telekom Deutschland GmbH",
+      "payment_reference": "Rechnung 7734521 Januar 2026",
       "type": "expense",
-      "notes": ""
+      "linked_invoice_id": null
     },
     {
       "id": "txn_001_003",
@@ -71,29 +61,19 @@
       "amount": 3800.00,
       "currency": "EUR",
       "counterparty": "Wien Digital AT GmbH",
-      "counterparty_country": "AT",
-      "category": "Revenue",
-      "vat_rate": 0.00,
-      "vat_amount": 0.00,
-      "net_amount": 3800.00,
-      "linked_invoice_id": "inv_001_002",
+      "payment_reference": "IT Consulting Feb 2026 / INV-2026-002",
       "type": "income",
-      "notes": "Reverse Charge — EU B2B Österreich"
+      "linked_invoice_id": "inv_001_002"
     },
     {
       "id": "txn_001_004",
       "date": "2026-02-15",
       "amount": 1299.00,
       "currency": "EUR",
-      "counterparty": "Apple Store",
-      "counterparty_country": "DE",
-      "category": "Operating equipment",
-      "vat_rate": 0.19,
-      "vat_amount": 207.39,
-      "net_amount": 1091.61,
-      "linked_invoice_id": "inv_001_003",
+      "counterparty": "Apple Store München",
+      "payment_reference": "MacBook Pro 14 M4",
       "type": "expense",
-      "notes": "MacBook Pro — рабочее оборудование"
+      "linked_invoice_id": "inv_001_003"
     },
     {
       "id": "txn_001_005",
@@ -101,14 +81,9 @@
       "amount": 4200.00,
       "currency": "EUR",
       "counterparty": "TechCorp München GmbH",
-      "counterparty_country": "DE",
-      "category": "Revenue",
-      "vat_rate": 0.00,
-      "vat_amount": 0.00,
-      "net_amount": 4200.00,
-      "linked_invoice_id": "inv_001_004",
+      "payment_reference": "Honorar IT-Beratung Februar 2026 / Rg. 2026-004",
       "type": "income",
-      "notes": ""
+      "linked_invoice_id": "inv_001_004"
     },
     {
       "id": "txn_001_006",
@@ -116,14 +91,9 @@
       "amount": 65.00,
       "currency": "EUR",
       "counterparty": "Stadtbibliothek München",
-      "counterparty_country": "DE",
-      "category": "Professional Development",
-      "vat_rate": 0.07,
-      "vat_amount": 4.25,
-      "net_amount": 60.75,
-      "linked_invoice_id": null,
+      "payment_reference": "Jahresgebühr 2026",
       "type": "expense",
-      "notes": "Fachbücher"
+      "linked_invoice_id": null
     },
     {
       "id": "txn_001_007",
@@ -131,14 +101,9 @@
       "amount": 1500.00,
       "currency": "EUR",
       "counterparty": "Finanzamt München",
-      "counterparty_country": "DE",
-      "category": "Tax Payments",
-      "vat_rate": 0.00,
-      "vat_amount": 0.00,
-      "net_amount": 1500.00,
-      "linked_invoice_id": null,
+      "payment_reference": "Einkommensteuer Vorauszahlung Q1 2026 St-Nr 14/234/56789",
       "type": "expense",
-      "notes": "Einkommensteuer-Vorauszahlung Q1"
+      "linked_invoice_id": null
     },
     {
       "id": "txn_001_008",
@@ -146,14 +111,9 @@
       "amount": 4500.00,
       "currency": "EUR",
       "counterparty": "DataStream Berlin GmbH",
-      "counterparty_country": "DE",
-      "category": "Revenue",
-      "vat_rate": 0.19,
-      "vat_amount": 718.49,
-      "net_amount": 3781.51,
-      "linked_invoice_id": "inv_001_005",
+      "payment_reference": "Projekt Alpha Abschluss März 2026 / Rg. 2026-005",
       "type": "income",
-      "notes": "⚠️ ОШИБКА: Kleinunternehmer выставила инвойс с НДС 19%"
+      "linked_invoice_id": "inv_001_005"
     },
     {
       "id": "txn_001_009",
@@ -161,15 +121,9 @@
       "amount": 19.33,
       "currency": "EUR",
       "counterparty": "OPENAI *CHATGPT SUBSCR",
-      "counterparty_country": "DE",
-      "category": "Software Subscriptions & Usage-Based Software",
-      "vat_rate": 0.19,
-      "vat_amount": 3.09,
-      "net_amount": 16.24,
-      "linked_invoice_id": "inv_001_006",
+      "payment_reference": "ChatGPT Plus Apr 28 - May 28 2026",
       "type": "expense",
-      "tax_residency_recorded": "domestic",
-      "notes": "⚠️ ОШИБКИ: (1) Tax Residency = Domestic, должно быть EU — поставщик OpenAI Ireland Limited, IE VAT IE4143435AH. (2) VAT rate = 19%, должно быть 0% — инвойс содержит Reverse Charge (§13b UStG). (3) Vorsteuer €3.09 не может быть вычтен Kleinunternehmer."
+      "linked_invoice_id": "inv_001_006"
     }
   ],
 
@@ -177,69 +131,102 @@
     {
       "id": "inv_001_001",
       "type": "outgoing",
+      "invoice_number": "2026-001",
       "date": "2026-01-08",
       "amount_gross": 4200.00,
       "amount_net": 4200.00,
       "vat_rate": 0.00,
       "vat_amount": 0.00,
       "currency": "EUR",
-      "customer": "TechCorp München GmbH",
+      "supplier_name": "Anna Müller IT-Beratung",
+      "supplier_tax_number": "14/234/56789",
+      "supplier_vat_id": null,
+      "customer_name": "TechCorp München GmbH",
       "customer_vat_id": "DE987654321",
+      "customer_country": "DE",
       "linked_transaction_id": "txn_001_001",
-      "vat_exempt_note": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet."
+      "vat_exempt_note": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
+      "file_path": null,
+      "file_available": false
     },
     {
       "id": "inv_001_002",
       "type": "outgoing",
+      "invoice_number": "2026-002",
       "date": "2026-02-03",
       "amount_gross": 3800.00,
       "amount_net": 3800.00,
       "vat_rate": 0.00,
       "vat_amount": 0.00,
       "currency": "EUR",
-      "customer": "Wien Digital AT GmbH",
+      "supplier_name": "Anna Müller IT-Beratung",
+      "supplier_tax_number": "14/234/56789",
+      "supplier_vat_id": null,
+      "customer_name": "Wien Digital AT GmbH",
       "customer_vat_id": "ATU12345678",
+      "customer_country": "AT",
       "linked_transaction_id": "txn_001_003",
-      "vat_exempt_note": "Reverse Charge — §13b UStG. Steuerschuldnerschaft des Leistungsempfängers."
+      "vat_exempt_note": "Steuerschuldnerschaft des Leistungsempfängers gem. §13b UStG.",
+      "file_path": null,
+      "file_available": false
     },
     {
       "id": "inv_001_003",
       "type": "incoming",
+      "invoice_number": "AMS-2026-88741",
       "date": "2026-02-15",
       "amount_gross": 1299.00,
       "amount_net": 1091.61,
       "vat_rate": 0.19,
       "vat_amount": 207.39,
       "currency": "EUR",
-      "supplier": "Apple Store München",
+      "supplier_name": "Apple Store München",
       "supplier_vat_id": "DE814584193",
-      "linked_transaction_id": "txn_001_004"
+      "supplier_country": "DE",
+      "customer_name": "Anna Müller IT-Beratung",
+      "customer_vat_id": null,
+      "linked_transaction_id": "txn_001_004",
+      "vat_exempt_note": null,
+      "file_path": null,
+      "file_available": false
     },
     {
       "id": "inv_001_004",
       "type": "outgoing",
+      "invoice_number": "2026-004",
       "date": "2026-02-27",
       "amount_gross": 4200.00,
       "amount_net": 4200.00,
       "vat_rate": 0.00,
       "vat_amount": 0.00,
       "currency": "EUR",
-      "customer": "TechCorp München GmbH",
+      "supplier_name": "Anna Müller IT-Beratung",
+      "supplier_tax_number": "14/234/56789",
+      "supplier_vat_id": null,
+      "customer_name": "TechCorp München GmbH",
       "customer_vat_id": "DE987654321",
+      "customer_country": "DE",
       "linked_transaction_id": "txn_001_005",
-      "vat_exempt_note": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet."
+      "vat_exempt_note": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
+      "file_path": null,
+      "file_available": false
     },
     {
       "id": "inv_001_005",
       "type": "outgoing",
+      "invoice_number": "2026-005",
       "date": "2026-03-28",
       "amount_gross": 4500.00,
       "amount_net": 3781.51,
       "vat_rate": 0.19,
       "vat_amount": 718.49,
       "currency": "EUR",
-      "customer": "DataStream Berlin GmbH",
+      "supplier_name": "Anna Müller IT-Beratung",
+      "supplier_tax_number": "14/234/56789",
+      "supplier_vat_id": null,
+      "customer_name": "DataStream Berlin GmbH",
       "customer_vat_id": "DE112233445",
+      "customer_country": "DE",
       "linked_transaction_id": "txn_001_008",
       "vat_exempt_note": null,
       "file_path": null,
@@ -248,31 +235,29 @@
     {
       "id": "inv_001_006",
       "type": "incoming",
-      "date": "2026-04-28",
       "invoice_number": "ZWPYYJDA-0001",
-      "receipt_number": "2714-4341",
+      "date": "2026-04-28",
       "amount_gross": 19.33,
       "amount_net": 19.33,
       "vat_rate": 0.00,
       "vat_amount": 0.00,
       "currency": "EUR",
-      "supplier": "OpenAI Ireland Limited",
-      "supplier_address": "1st Floor, The Liffey Trust Center, 117-126 Sheriff Street Upper, Dublin, D01 YC43, Ireland",
+      "supplier_name": "OpenAI Ireland Limited",
       "supplier_vat_id": "IE4143435AH",
       "supplier_country": "IE",
+      "customer_name": "Anna Müller IT-Beratung",
+      "customer_vat_id": null,
       "linked_transaction_id": "txn_001_009",
-      "category": "Software Subscriptions & Usage-Based Software",
+      "vat_exempt_note": "Tax to be paid on reverse charge basis.",
       "file_path": "invoice_files/client_001/inv_001_006.pdf",
-      "file_available": true,
-      "reverse_charge_note_on_document": true,
-      "notes": "Инвойс содержит: '[1] Tax to be paid on reverse charge basis'. Поставщик — ирландская компания (EU). Корректная ставка НДС: 0%."
+      "file_available": true
     }
   ],
 
   "assets": [
     {
       "id": "asset_001_001",
-      "name": "MacBook Pro 14' (2026)",
+      "name": "MacBook Pro 14' M4 (2026)",
       "category": "Technology",
       "start_date": "2026-02-15",
       "purchase_price": 1091.61,
@@ -283,8 +268,7 @@
       "status": "depreciating",
       "linked_transaction_id": "txn_001_004",
       "is_vehicle": false,
-      "vehicle_details": null,
-      "notes": "⚠️ ОШИБКА: срок амортизации 1 год, AfA рекомендует 3 года"
+      "vehicle_details": null
     }
   ],
 
@@ -295,69 +279,138 @@
       "period": "2026-01",
       "type": "income",
       "description": "IT-Beratung Januar — TechCorp München",
-      "amount": 4200.00,
+      "amount_gross": 4200.00,
+      "amount_net": 4200.00,
       "category": "Revenue",
       "account_code": "8400",
       "vat_rate": 0.00,
       "vat_amount": 0.00,
-      "net_amount": 4200.00,
+      "tax_residency_applied": "domestic",
       "linked_transaction_id": "txn_001_001",
       "linked_invoice_id": "inv_001_001",
-      "is_private_use": false,
-      "notes": "Kleinunternehmer — §19 UStG, keine USt"
+      "is_private_use": false
     },
     {
       "id": "entry_001_002",
       "date": "2026-01-22",
       "period": "2026-01",
       "type": "expense",
-      "description": "Telekom — Telefon & Internet Januar",
-      "amount": 89.00,
+      "description": "Telekom — Telefon & Internet",
+      "amount_gross": 89.00,
+      "amount_net": 74.80,
       "category": "Phone & Internet",
       "account_code": "4920",
       "vat_rate": 0.19,
       "vat_amount": 14.20,
-      "net_amount": 74.80,
+      "tax_residency_applied": "domestic",
       "linked_transaction_id": "txn_001_002",
       "linked_invoice_id": null,
-      "is_private_use": false,
-      "notes": "⚠️ Нет разделения на бизнес/личное (B-06)"
+      "is_private_use": false
+    },
+    {
+      "id": "entry_001_003",
+      "date": "2026-02-05",
+      "period": "2026-02",
+      "type": "income",
+      "description": "IT Consulting Februar — Wien Digital",
+      "amount_gross": 3800.00,
+      "amount_net": 3800.00,
+      "category": "Revenue",
+      "account_code": "8400",
+      "vat_rate": 0.00,
+      "vat_amount": 0.00,
+      "tax_residency_applied": "eu",
+      "linked_transaction_id": "txn_001_003",
+      "linked_invoice_id": "inv_001_002",
+      "is_private_use": false
     },
     {
       "id": "entry_001_004",
       "date": "2026-02-15",
       "period": "2026-02",
       "type": "expense",
-      "description": "MacBook Pro — Anlagevermögen",
-      "amount": 1091.61,
-      "category": "Operating equipment",
+      "description": "MacBook Pro 14 M4 — Anlagevermögen",
+      "amount_gross": 1299.00,
+      "amount_net": 1091.61,
+      "category": "Operating Equipment",
       "account_code": "0680",
       "vat_rate": 0.19,
       "vat_amount": 207.39,
-      "net_amount": 1091.61,
+      "tax_residency_applied": "domestic",
       "linked_transaction_id": "txn_001_004",
       "linked_invoice_id": "inv_001_003",
       "linked_asset_id": "asset_001_001",
-      "is_private_use": false,
-      "notes": "Активирован как актив. AfA 1 год (⚠️ должно быть 3 года — B-02)"
+      "is_private_use": false
     },
     {
       "id": "entry_001_afa_feb",
       "date": "2026-02-28",
       "period": "2026-02",
       "type": "depreciation",
-      "description": "AfA MacBook Pro 14' — Februar",
-      "amount": 90.97,
+      "description": "AfA MacBook Pro 14 M4 — Februar",
+      "amount_gross": 90.97,
+      "amount_net": 90.97,
       "category": "Depreciation",
       "account_code": "4831",
       "vat_rate": 0.00,
       "vat_amount": 0.00,
-      "net_amount": 90.97,
+      "tax_residency_applied": null,
       "linked_transaction_id": null,
       "linked_invoice_id": null,
       "linked_asset_id": "asset_001_001",
-      "is_private_use": false,
-      "notes": "Monatliche AfA: 1091.61 / 12 Monate"
+      "is_private_use": false
+    },
+    {
+      "id": "entry_001_005",
+      "date": "2026-02-28",
+      "period": "2026-02",
+      "type": "income",
+      "description": "IT-Beratung Februar — TechCorp München",
+      "amount_gross": 4200.00,
+      "amount_net": 4200.00,
+      "category": "Revenue",
+      "account_code": "8400",
+      "vat_rate": 0.00,
+      "vat_amount": 0.00,
+      "tax_residency_applied": "domestic",
+      "linked_transaction_id": "txn_001_005",
+      "linked_invoice_id": "inv_001_004",
+      "is_private_use": false
+    },
+    {
+      "id": "entry_001_afa_mar",
+      "date": "2026-03-31",
+      "period": "2026-03",
+      "type": "depreciation",
+      "description": "AfA MacBook Pro 14 M4 — März",
+      "amount_gross": 90.97,
+      "amount_net": 90.97,
+      "category": "Depreciation",
+      "account_code": "4831",
+      "vat_rate": 0.00,
+      "vat_amount": 0.00,
+      "tax_residency_applied": null,
+      "linked_transaction_id": null,
+      "linked_invoice_id": null,
+      "linked_asset_id": "asset_001_001",
+      "is_private_use": false
+    },
+    {
+      "id": "entry_001_008",
+      "date": "2026-03-31",
+      "period": "2026-03",
+      "type": "income",
+      "description": "Projekt Alpha Abschluss — DataStream Berlin",
+      "amount_gross": 4500.00,
+      "amount_net": 3781.51,
+      "category": "Revenue",
+      "account_code": "8400",
+      "vat_rate": 0.19,
+      "vat_amount": 718.49,
+      "tax_residency_applied": "domestic",
+      "linked_transaction_id": "txn_001_008",
+      "linked_invoice_id": "inv_001_005",
+      "is_private_use": false
     },
     {
       "id": "entry_001_009",
@@ -365,17 +418,16 @@
       "period": "2026-04",
       "type": "expense",
       "description": "OpenAI ChatGPT Plus — April 2026",
-      "amount": 19.33,
+      "amount_gross": 19.33,
+      "amount_net": 16.24,
       "category": "Software Subscriptions & Usage-Based Software",
       "account_code": "4980",
       "vat_rate": 0.19,
       "vat_amount": 3.09,
-      "net_amount": 16.24,
+      "tax_residency_applied": "domestic",
       "linked_transaction_id": "txn_001_009",
       "linked_invoice_id": "inv_001_006",
-      "is_private_use": false,
-      "tax_residency_recorded": "domestic",
-      "notes": "⚠️ ОШИБКИ в проводке: (1) tax_residency='domestic', должно быть 'eu'. (2) vat_rate=19%, инвойс содержит 0% + Reverse Charge (§13b UStG). (3) Vorsteuer €3.09 недопустим для Kleinunternehmer (C-01). Ожидаемые срабатывания: A-02, A-09, B-05, C-01."
+      "is_private_use": false
     }
   ],
 
@@ -406,24 +458,12 @@
         "total_income": 38400.00,
         "total_expenses": 11200.00,
         "profit": 27200.00,
-        "notes": "Черновик — не подан"
+        "notes": ""
       }
     ]
   },
 
   "tasks": [
-    {
-      "id": "task_001_fix_openai",
-      "type": "fix_bookkeeping",
-      "title": "Исправить проводку OpenAI — неверный Tax Residency и НДС",
-      "status": "pending",
-      "due_date": null,
-      "linked_report_id": null,
-      "linked_finding_id": "A-02",
-      "created_at": "2026-05-01T09:00:00Z",
-      "completed_at": null,
-      "notes": "Транзакция txn_001_009: Tax Residency = Domestic → EU, VAT Rate = 19% → 0% (Reverse Charge)"
-    },
     {
       "id": "task_001_eur_2025",
       "type": "submit_report",
@@ -434,7 +474,7 @@
       "linked_finding_id": null,
       "created_at": "2026-01-15T09:00:00Z",
       "completed_at": null,
-      "notes": "Черновик готов, ожидает проверки перед подачей"
+      "notes": ""
     }
   ]
 }
