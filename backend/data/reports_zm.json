@@ -1,0 +1,40 @@
+[
+  {
+    "client_id": "client_001",
+    "id": "zm_001_2026_q1",
+    "period": "2026-Q1",
+    "period_type": "quarterly",
+    "status": "not_required",
+    "submitted_at": null,
+    "due_date": null,
+    "total_eu_b2b_supplies": 3800.00,
+    "eu_customers": [
+      {
+        "vat_id": "ATU12345678",
+        "country": "AT",
+        "amount": 3800.00,
+        "transaction_type": "services"
+      }
+    ],
+    "notes": "Kleinunternehmer ohne USt-ID — ZM-Pflicht prüfen (Schwelle > 0 € bei Dienstleistungen)"
+  },
+  {
+    "client_id": "client_006",
+    "id": "zm_006_2026_q1",
+    "period": "2026-Q1",
+    "period_type": "quarterly",
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-04-25",
+    "total_eu_b2b_supplies": 6000.00,
+    "eu_customers": [
+      {
+        "vat_id": "ATU87654321",
+        "country": "AT",
+        "amount": 6000.00,
+        "transaction_type": "services"
+      }
+    ],
+    "notes": ""
+  }
+]

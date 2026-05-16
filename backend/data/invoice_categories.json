@@ -1,0 +1,86 @@
+[
+  {
+    "invoice_id": "inv_001_006",
+    "recognized_line_items": ["ChatGPT Plus subscription — monthly"],
+    "suggested_account_code": "4980",
+    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
+    "suggested_category": "Software Subscriptions",
+    "confidence": 0.97,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+  },
+  {
+    "invoice_id": "inv_002_002",
+    "recognized_line_items": ["Adobe Creative Cloud — All Apps plan"],
+    "suggested_account_code": "4980",
+    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
+    "suggested_category": "Software Subscriptions",
+    "confidence": 0.98,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+  },
+  {
+    "invoice_id": "inv_002_004",
+    "recognized_line_items": ["Figma Professional — monthly subscription"],
+    "suggested_account_code": "4980",
+    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
+    "suggested_category": "Software Subscriptions",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "Digital service from EU supplier (IE VAT ID) — reverse charge §13b UStG applies"
+  },
+  {
+    "invoice_id": "inv_003_002",
+    "recognized_line_items": ["Haushaltswaren Set — 500 units", "Verpackungsmaterial"],
+    "suggested_account_code": "3400",
+    "suggested_account_name": "Wareneingang",
+    "suggested_category": "Cost of Goods",
+    "confidence": 0.92,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Import from CN — Einfuhrumsatzsteuer at customs, not reverse charge"
+  },
+  {
+    "invoice_id": "inv_004_002",
+    "recognized_line_items": ["Geschäftsessen 4 Personen", "Speisen und Getränke"],
+    "suggested_account_code": "4650",
+    "suggested_account_name": "Bewirtungskosten",
+    "suggested_category": "Business Entertainment",
+    "confidence": 0.94,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Bewirtungskosten: nur 70% einkommensteuerlich abziehbar (§4 Abs.5 Nr.2 EStG)"
+  },
+  {
+    "invoice_id": "inv_006_002",
+    "recognized_line_items": ["GitHub Teams — 5 seats"],
+    "suggested_account_code": "4980",
+    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
+    "suggested_category": "Software Subscriptions",
+    "confidence": 0.97,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+  },
+  {
+    "invoice_id": "inv_007_001",
+    "recognized_line_items": ["Zoom Pro monthly subscription"],
+    "suggested_account_code": "4980",
+    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
+    "suggested_category": "Software Subscriptions",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+  }
+]

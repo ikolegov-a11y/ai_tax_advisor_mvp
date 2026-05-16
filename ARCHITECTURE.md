@@ -43,23 +43,28 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │  TOOLS  backend/tools.js                                        │
 │                                                                 │
-│  get_transactions        get_invoices      get_company_settings │
-│  get_assets              get_client_kb     get_bookkeeping_entries│
-│  get_reports             get_tasks         recognize_invoice_doc │
-└──────┬──────────┬──────────────────────────────────┬────────────┘
+│  get_transactions        get_invoices        get_company_settings │
+│  get_assets              get_client_kb       get_bookkeeping_entries│
+│  get_reports_eur         get_reports_ustva   get_reports_zm       │
+│  get_reports_gewst       get_tasks           recognize_invoice_doc│
+│  categorize_invoice                                               │
+└──────┬──────────┬──────────────────────────────────┬─────────────┘
        │          │                                  │
        ▼          ▼                                  ▼
-┌────────────┐ ┌─────────────────────────────┐ ┌──────────────────┐
-│ client_    │ │ invoice_files/              │ │ Anthropic API    │
-│ XXX.json   │ │ client_XXX/inv_XXX.pdf      │ │ (Vision, for     │
-│            │ │ client_XXX/inv_XXX_         │ │ recognize_       │
-│ transactions│ │ recognized.json (fallback)  │ │ invoice_doc only)│
-│ invoices   │ └─────────────────────────────┘ └──────────────────┘
-│ assets     │
-│ entries    │
-│ reports    │
-│ tasks      │
-└────────────┘
+┌──────────────────────┐ ┌──────────────────────┐ ┌───────────────┐
+│ Separate JSON tables │ │ invoice_files/       │ │ Anthropic API │
+│ per entity type:     │ │ client_XXX/inv_X.pdf │ │ Vision (for   │
+│  transactions.json   │ └──────────────────────┘ │ recognize_    │
+│  invoices.json       │                           │ invoice_doc)  │
+│  bookkeeping_        │ ┌──────────────────────┐ └───────────────┘
+│    entries.json      │ │ invoice_categories   │
+│  assets.json         │ │ .json (mock for      │
+│  reports_eur.json    │ │ categorize_invoice)  │
+│  reports_ustva.json  │ └──────────────────────┘
+│  reports_zm.json     │
+│  reports_gewst.json  │
+│  tasks.json          │
+└──────────────────────┘
 ```
 
 **Ответ проходит тот же путь обратно:**
@@ -364,3 +369,90 @@ app.use(cors({
 ```
 
 При деплое на Vercel origin добавляется через env-переменную `FRONTEND_URL`.
+
+---
+
+## 10. Флоу "Проверка конкретной проводки"
+
+Многошаговый диалог поддерживается через `threadId` + `conversationHistory`. Шаги:
+
+```
+[Ход 1]  Пользователь: "Проверь мою проводку по Müller GmbH на 5000€"
+         ↓
+         Agent: "Уточните дату или период — чтобы найти проводку"
+         (Возвращает threadId, история сохраняется)
+
+[Ход 2]  Пользователь отправляет: { threadId, userQuery: "Это был март 2026" }
+         ↓
+         Agent вызывает инструменты параллельно:
+           get_bookkeeping_entries(period="2026-03", company_id)
+           → фильтрует по counterparty "Müller" + amount ~5000
+           → находит entry_XXX с linked_invoice_id + linked_transaction_id
+
+[Ход 3]  Agent вызывает параллельно:
+           get_invoices(period="2026-03", company_id)  → фильтрует по invoice_id
+           get_transactions(period="2026-03", company_id) → фильтрует по txn_id
+
+[Ход 4]  Если invoice.file_available == true:
+           recognize_invoice_document(invoice_id)
+           → Claude Vision читает PDF, возвращает распознанные поля
+
+[Ход 5]  categorize_invoice(invoice_id, recognized_line_items)
+           → возвращает suggested_account_code + reverse_charge_applicable + vat_rate_if_domestic
+
+[Ход 6]  Agent проводит анализ (все данные собраны):
+         Сравнение распознанный документ ↔ хранимый инвойс:
+           • Сумма, НДС, контрагент, дата, номер счёта
+         Сравнение хранимый инвойс ↔ бухгалтерская проводка:
+           • counterparty совпадает?
+           • date совпадает?
+           • amount_gross / amount_net совпадают?
+           • tax_residency_applied соответствует supplier_country?
+           • reverse_charge_flag корректен?
+           • vat_rate соответствует vat_rate_if_domestic?
+           • service_type (goods/services) корректен?
+           • account_code соответствует категории из categorize_invoice?
+```
+
+**Важно:** `period` у инструментов — необязательный параметр (если не указан, возвращаются все записи за текущий год). Это позволяет агенту найти проводку даже если пользователь не указал период.
+
+---
+
+## 11. Новые поля в `bookkeeping_entries` (v0.2)
+
+Добавлены три поля, необходимые для проверки правильности проводки:
+
+| Поле | Тип | Описание |
+|---|---|---|
+| `reverse_charge_flag` | boolean | Применялся ли механизм Reverse Charge (§13b UStG) |
+| `service_type` | `"goods"` \| `"services"` \| null | Тип операции — товар или услуга |
+| `vat_rate_if_domestic` | 0.19 \| 0.07 \| 0.00 \| null | Ставка НДС, которая применялась бы при внутреннем приобретении |
+
+`vat_rate_if_domestic` нужен для проверки логики RC: если поставщик из IE, `vat_rate=0`, но `vat_rate_if_domestic=0.19` — это правильная ситуация Reverse Charge. Если оба поля равны 0 — нужно проверить, почему нет RC.
+
+---
+
+## 12. Инструмент `categorize_invoice`
+
+```javascript
+// Вызов
+categorize_invoice({
+  invoice_id: "inv_001_006",
+  line_items: ["ChatGPT Plus subscription — monthly"]
+})
+
+// Ответ из invoice_categories.json (mock)
+{
+  "suggested_account_code": "4980",
+  "suggested_account_name": "Aufwendungen für Software-Lizenzen",
+  "suggested_category": "Software Subscriptions",
+  "confidence": 0.97,
+  "vat_rate_if_domestic": 0.19,
+  "reverse_charge_applicable": true,
+  "service_type": "services",
+  "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+}
+```
+
+В продакшене — вызов реального сервиса категоризации. В MVP — поиск по `invoice_categories.json`.
+Если `invoice_id` не найден в mock — возвращается `{ confidence: 0, suggested_account_code: null }`.

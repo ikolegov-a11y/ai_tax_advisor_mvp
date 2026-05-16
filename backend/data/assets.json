@@ -14,5 +14,28 @@
     "linked_transaction_id": "txn_001_004",
     "is_vehicle": false,
     "vehicle_details": null
+  },
+  {
+    "client_id": "client_004",
+    "id": "asset_004_001",
+    "name": "BMW 520d xDrive 2023",
+    "category": "Company Vehicle",
+    "start_date": "2023-09-01",
+    "purchase_price": 57143.00,
+    "amortization_period_years": 6,
+    "annual_depreciation": 9523.83,
+    "depreciated_to_date": 23809.58,
+    "remaining_value": 33333.42,
+    "status": "depreciating",
+    "linked_transaction_id": null,
+    "is_vehicle": true,
+    "vehicle_details": {
+      "engine_type": "diesel",
+      "msrp_gross": 68000.00,
+      "msrp_net": 57143.00,
+      "private_use_method": "1_percent_rule",
+      "monthly_private_use_amount": 680.00,
+      "license_plate": "F-WP 2023"
+    }
   }
 ]

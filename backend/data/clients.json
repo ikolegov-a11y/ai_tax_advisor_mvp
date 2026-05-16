@@ -1,6 +1,9 @@
 [
-  {
-    "id": "client_001",
-    "display_name": "Anna Müller — IT-Freelancer"
-  }
+  { "id": "client_001", "display_name": "Anna Müller — IT-Freelancer" },
+  { "id": "client_002", "display_name": "Thomas Schneider — Grafikdesigner" },
+  { "id": "client_003", "display_name": "Maria Schmidt — Online-Shop / Amazon FBA" },
+  { "id": "client_004", "display_name": "Peter Wagner — Unternehmensberater" },
+  { "id": "client_005", "display_name": "Lisa Braun — Fotografin" },
+  { "id": "client_006", "display_name": "Michael Fischer — Software-Entwickler" },
+  { "id": "client_007", "display_name": "Sarah Klein — Online-Yoga-Trainerin" }
 ]

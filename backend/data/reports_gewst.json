@@ -1,0 +1,17 @@
+[
+  {
+    "client_id": "client_003",
+    "id": "gewst_003_2025",
+    "year": 2025,
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-07-31",
+    "gewerbeertrag": 23800.00,
+    "freibetrag": 24500.00,
+    "steuerpflichtiger_ertrag": 0.00,
+    "steuermessbetrag": 0.00,
+    "hebesatz_percent": 410,
+    "gewst_payable": 0.00,
+    "notes": "Gewerbeertrag unterhalb Freibetrag — keine Gewerbesteuer für 2025"
+  }
+]

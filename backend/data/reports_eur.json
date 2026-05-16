@@ -1,0 +1,128 @@
+[
+  {
+    "client_id": "client_001",
+    "id": "eur_001_2025",
+    "year": 2025,
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-07-31",
+    "total_income": 38400.00,
+    "total_expenses": 11200.00,
+    "profit": 27200.00,
+    "home_office": {
+      "method": null,
+      "days": null,
+      "deduction_amount": null,
+      "room_area_sqm": null,
+      "apartment_area_sqm": null
+    }
+  },
+  {
+    "client_id": "client_002",
+    "id": "eur_002_2025",
+    "year": 2025,
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-07-31",
+    "total_income": 58000.00,
+    "total_expenses": 22480.00,
+    "profit": 35520.00,
+    "home_office": {
+      "method": "tagespauschale",
+      "days": 180,
+      "deduction_amount": 1080.00,
+      "room_area_sqm": null,
+      "apartment_area_sqm": null
+    }
+  },
+  {
+    "client_id": "client_003",
+    "id": "eur_003_2025",
+    "year": 2025,
+    "status": "submitted",
+    "submitted_at": "2026-04-15T14:30:00Z",
+    "due_date": "2026-07-31",
+    "total_income": 72400.00,
+    "total_expenses": 48600.00,
+    "profit": 23800.00,
+    "home_office": {
+      "method": null,
+      "days": null,
+      "deduction_amount": null,
+      "room_area_sqm": null,
+      "apartment_area_sqm": null
+    }
+  },
+  {
+    "client_id": "client_004",
+    "id": "eur_004_2025",
+    "year": 2025,
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-07-31",
+    "total_income": 168000.00,
+    "total_expenses": 54200.00,
+    "profit": 113800.00,
+    "home_office": {
+      "method": null,
+      "days": null,
+      "deduction_amount": null,
+      "room_area_sqm": null,
+      "apartment_area_sqm": null
+    }
+  },
+  {
+    "client_id": "client_005",
+    "id": "eur_005_2025",
+    "year": 2025,
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-07-31",
+    "total_income": 21800.00,
+    "total_expenses": 4200.00,
+    "profit": 17600.00,
+    "home_office": {
+      "method": null,
+      "days": null,
+      "deduction_amount": null,
+      "room_area_sqm": null,
+      "apartment_area_sqm": null
+    }
+  },
+  {
+    "client_id": "client_006",
+    "id": "eur_006_2025",
+    "year": 2025,
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-07-31",
+    "total_income": 112000.00,
+    "total_expenses": 18400.00,
+    "profit": 93600.00,
+    "home_office": {
+      "method": "tagespauschale",
+      "days": 220,
+      "deduction_amount": 1260.00,
+      "room_area_sqm": null,
+      "apartment_area_sqm": null
+    }
+  },
+  {
+    "client_id": "client_007",
+    "id": "eur_007_2025",
+    "year": 2025,
+    "status": "draft",
+    "submitted_at": null,
+    "due_date": "2026-07-31",
+    "total_income": 19200.00,
+    "total_expenses": 2800.00,
+    "profit": 16400.00,
+    "home_office": {
+      "method": null,
+      "days": null,
+      "deduction_amount": null,
+      "room_area_sqm": null,
+      "apartment_area_sqm": null
+    }
+  }
+]
