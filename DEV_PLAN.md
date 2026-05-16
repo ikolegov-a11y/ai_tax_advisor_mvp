@@ -159,6 +159,19 @@ recognize_invoice_document(invoice_id)               // ⭐ NEW
   // Fallback: reads {invoice_id}_recognized.json if file not available
 ```
 
+**⚠️ Research note — OCR tool architecture (to be decided in Phase 1):**
+
+`recognize_invoice_document` is currently designed as a single general-purpose tool
+that extracts all fields from the invoice PDF. In production, OCR tools may be split
+into specialized variants — for example, a tool that only extracts the supplier's
+tax region (to decide whether Reverse Charge applies) without parsing the full document.
+
+Specialized tools are faster, cheaper (fewer Vision tokens), and easier to prompt.
+The tradeoff is API surface complexity — more tools for Claude to choose from.
+
+**Decision deferred to Phase 1:** evaluate both designs with a real invoice PDF
+before committing to the final tool architecture.
+
 **Period parsing logic:**
 - Input formats supported: `"Q1 2026"`, `"Q2 2026"`, `"Q1-Q2 2026"`, `"Full Year 2026"`,
   or explicit `{ start, end }` ISO dates
