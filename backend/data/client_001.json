@@ -154,6 +154,22 @@
       "linked_invoice_id": "inv_001_005",
       "type": "income",
       "notes": "⚠️ ОШИБКА: Kleinunternehmer выставила инвойс с НДС 19%"
+    },
+    {
+      "id": "txn_001_009",
+      "date": "2026-04-29",
+      "amount": 19.33,
+      "currency": "EUR",
+      "counterparty": "OPENAI *CHATGPT SUBSCR",
+      "counterparty_country": "DE",
+      "category": "Software Subscriptions & Usage-Based Software",
+      "vat_rate": 0.19,
+      "vat_amount": 3.09,
+      "net_amount": 16.24,
+      "linked_invoice_id": "inv_001_006",
+      "type": "expense",
+      "tax_residency_recorded": "domestic",
+      "notes": "⚠️ ОШИБКИ: (1) Tax Residency = Domestic, должно быть EU — поставщик OpenAI Ireland Limited, IE VAT IE4143435AH. (2) VAT rate = 19%, должно быть 0% — инвойс содержит Reverse Charge (§13b UStG). (3) Vorsteuer €3.09 не может быть вычтен Kleinunternehmer."
     }
   ],
 
@@ -225,7 +241,31 @@
       "customer": "DataStream Berlin GmbH",
       "customer_vat_id": "DE112233445",
       "linked_transaction_id": "txn_001_008",
-      "vat_exempt_note": null
+      "vat_exempt_note": null,
+      "file_path": null,
+      "file_available": false
+    },
+    {
+      "id": "inv_001_006",
+      "type": "incoming",
+      "date": "2026-04-28",
+      "invoice_number": "ZWPYYJDA-0001",
+      "receipt_number": "2714-4341",
+      "amount_gross": 19.33,
+      "amount_net": 19.33,
+      "vat_rate": 0.00,
+      "vat_amount": 0.00,
+      "currency": "EUR",
+      "supplier": "OpenAI Ireland Limited",
+      "supplier_address": "1st Floor, The Liffey Trust Center, 117-126 Sheriff Street Upper, Dublin, D01 YC43, Ireland",
+      "supplier_vat_id": "IE4143435AH",
+      "supplier_country": "IE",
+      "linked_transaction_id": "txn_001_009",
+      "category": "Software Subscriptions & Usage-Based Software",
+      "file_path": "invoice_files/client_001/inv_001_006.pdf",
+      "file_available": true,
+      "reverse_charge_note_on_document": true,
+      "notes": "Инвойс содержит: '[1] Tax to be paid on reverse charge basis'. Поставщик — ирландская компания (EU). Корректная ставка НДС: 0%."
     }
   ],
 
@@ -245,6 +285,156 @@
       "is_vehicle": false,
       "vehicle_details": null,
       "notes": "⚠️ ОШИБКА: срок амортизации 1 год, AfA рекомендует 3 года"
+    }
+  ],
+
+  "bookkeeping_entries": [
+    {
+      "id": "entry_001_001",
+      "date": "2026-01-10",
+      "period": "2026-01",
+      "type": "income",
+      "description": "IT-Beratung Januar — TechCorp München",
+      "amount": 4200.00,
+      "category": "Revenue",
+      "account_code": "8400",
+      "vat_rate": 0.00,
+      "vat_amount": 0.00,
+      "net_amount": 4200.00,
+      "linked_transaction_id": "txn_001_001",
+      "linked_invoice_id": "inv_001_001",
+      "is_private_use": false,
+      "notes": "Kleinunternehmer — §19 UStG, keine USt"
+    },
+    {
+      "id": "entry_001_002",
+      "date": "2026-01-22",
+      "period": "2026-01",
+      "type": "expense",
+      "description": "Telekom — Telefon & Internet Januar",
+      "amount": 89.00,
+      "category": "Phone & Internet",
+      "account_code": "4920",
+      "vat_rate": 0.19,
+      "vat_amount": 14.20,
+      "net_amount": 74.80,
+      "linked_transaction_id": "txn_001_002",
+      "linked_invoice_id": null,
+      "is_private_use": false,
+      "notes": "⚠️ Нет разделения на бизнес/личное (B-06)"
+    },
+    {
+      "id": "entry_001_004",
+      "date": "2026-02-15",
+      "period": "2026-02",
+      "type": "expense",
+      "description": "MacBook Pro — Anlagevermögen",
+      "amount": 1091.61,
+      "category": "Operating equipment",
+      "account_code": "0680",
+      "vat_rate": 0.19,
+      "vat_amount": 207.39,
+      "net_amount": 1091.61,
+      "linked_transaction_id": "txn_001_004",
+      "linked_invoice_id": "inv_001_003",
+      "linked_asset_id": "asset_001_001",
+      "is_private_use": false,
+      "notes": "Активирован как актив. AfA 1 год (⚠️ должно быть 3 года — B-02)"
+    },
+    {
+      "id": "entry_001_afa_feb",
+      "date": "2026-02-28",
+      "period": "2026-02",
+      "type": "depreciation",
+      "description": "AfA MacBook Pro 14' — Februar",
+      "amount": 90.97,
+      "category": "Depreciation",
+      "account_code": "4831",
+      "vat_rate": 0.00,
+      "vat_amount": 0.00,
+      "net_amount": 90.97,
+      "linked_transaction_id": null,
+      "linked_invoice_id": null,
+      "linked_asset_id": "asset_001_001",
+      "is_private_use": false,
+      "notes": "Monatliche AfA: 1091.61 / 12 Monate"
+    },
+    {
+      "id": "entry_001_009",
+      "date": "2026-04-29",
+      "period": "2026-04",
+      "type": "expense",
+      "description": "OpenAI ChatGPT Plus — April 2026",
+      "amount": 19.33,
+      "category": "Software Subscriptions & Usage-Based Software",
+      "account_code": "4980",
+      "vat_rate": 0.19,
+      "vat_amount": 3.09,
+      "net_amount": 16.24,
+      "linked_transaction_id": "txn_001_009",
+      "linked_invoice_id": "inv_001_006",
+      "is_private_use": false,
+      "tax_residency_recorded": "domestic",
+      "notes": "⚠️ ОШИБКИ в проводке: (1) tax_residency='domestic', должно быть 'eu'. (2) vat_rate=19%, инвойс содержит 0% + Reverse Charge (§13b UStG). (3) Vorsteuer €3.09 недопустим для Kleinunternehmer (C-01). Ожидаемые срабатывания: A-02, A-09, B-05, C-01."
+    }
+  ],
+
+  "vat_reporting": {
+    "reports": [
+      {
+        "id": "report_001_ustv_q1",
+        "type": "UStVA",
+        "period": "2026-Q1",
+        "status": "submitted",
+        "submitted_at": "2026-04-22T10:15:00Z",
+        "due_date": "2026-04-25",
+        "is_overdue": false,
+        "total_revenue_taxable": 0,
+        "total_vat_collected": 0,
+        "total_vorsteuer": 0,
+        "net_vat_payable": 0,
+        "notes": "Kleinunternehmer — keine Umsatzsteuer gemeldet"
+      },
+      {
+        "id": "report_001_eur_2025",
+        "type": "EÜR",
+        "period": "2025",
+        "status": "draft",
+        "submitted_at": null,
+        "due_date": "2026-07-31",
+        "is_overdue": false,
+        "total_income": 38400.00,
+        "total_expenses": 11200.00,
+        "profit": 27200.00,
+        "notes": "Черновик — не подан"
+      }
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "task_001_fix_openai",
+      "type": "fix_bookkeeping",
+      "title": "Исправить проводку OpenAI — неверный Tax Residency и НДС",
+      "status": "pending",
+      "due_date": null,
+      "linked_report_id": null,
+      "linked_finding_id": "A-02",
+      "created_at": "2026-05-01T09:00:00Z",
+      "completed_at": null,
+      "notes": "Транзакция txn_001_009: Tax Residency = Domestic → EU, VAT Rate = 19% → 0% (Reverse Charge)"
+    },
+    {
+      "id": "task_001_eur_2025",
+      "type": "submit_report",
+      "title": "EÜR 2025 einreichen",
+      "status": "pending",
+      "due_date": "2026-07-31",
+      "linked_report_id": "report_001_eur_2025",
+      "linked_finding_id": null,
+      "created_at": "2026-01-15T09:00:00Z",
+      "completed_at": null,
+      "notes": "Черновик готов, ожидает проверки перед подачей"
     }
   ]
 }
