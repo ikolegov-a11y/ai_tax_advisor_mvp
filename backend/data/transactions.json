@@ -1,0 +1,101 @@
+[
+  {
+    "client_id": "client_001",
+    "id": "txn_001_001",
+    "date": "2026-01-10",
+    "amount": 4200.00,
+    "currency": "EUR",
+    "counterparty": "TechCorp München GmbH",
+    "payment_reference": "Honorar IT-Beratung Januar 2026 / Rg. 2026-001",
+    "type": "incoming",
+    "linked_invoice_id": "inv_001_001"
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_002",
+    "date": "2026-01-22",
+    "amount": 89.00,
+    "currency": "EUR",
+    "counterparty": "Telekom Deutschland GmbH",
+    "payment_reference": "Rechnung 7734521 Januar 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_003",
+    "date": "2026-02-05",
+    "amount": 3800.00,
+    "currency": "EUR",
+    "counterparty": "Wien Digital AT GmbH",
+    "payment_reference": "IT Consulting Feb 2026 / INV-2026-002",
+    "type": "incoming",
+    "linked_invoice_id": "inv_001_002"
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_004",
+    "date": "2026-02-15",
+    "amount": 1299.00,
+    "currency": "EUR",
+    "counterparty": "Apple Store München",
+    "payment_reference": "MacBook Pro 14 M4",
+    "type": "outgoing",
+    "linked_invoice_id": "inv_001_003"
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_005",
+    "date": "2026-02-28",
+    "amount": 4200.00,
+    "currency": "EUR",
+    "counterparty": "TechCorp München GmbH",
+    "payment_reference": "Honorar IT-Beratung Februar 2026 / Rg. 2026-004",
+    "type": "incoming",
+    "linked_invoice_id": "inv_001_004"
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_006",
+    "date": "2026-03-10",
+    "amount": 65.00,
+    "currency": "EUR",
+    "counterparty": "Stadtbibliothek München",
+    "payment_reference": "Jahresgebühr 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_007",
+    "date": "2026-03-20",
+    "amount": 1500.00,
+    "currency": "EUR",
+    "counterparty": "Finanzamt München",
+    "payment_reference": "Einkommensteuer Vorauszahlung Q1 2026 St-Nr 14/234/56789",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_008",
+    "date": "2026-03-31",
+    "amount": 4500.00,
+    "currency": "EUR",
+    "counterparty": "DataStream Berlin GmbH",
+    "payment_reference": "Projekt Alpha Abschluss März 2026 / Rg. 2026-005",
+    "type": "incoming",
+    "linked_invoice_id": "inv_001_005"
+  },
+  {
+    "client_id": "client_001",
+    "id": "txn_001_009",
+    "date": "2026-04-29",
+    "amount": 19.33,
+    "currency": "EUR",
+    "counterparty": "OPENAI *CHATGPT SUBSCR",
+    "payment_reference": "ChatGPT Plus Apr 28 - May 28 2026",
+    "type": "outgoing",
+    "linked_invoice_id": "inv_001_006"
+  }
+]

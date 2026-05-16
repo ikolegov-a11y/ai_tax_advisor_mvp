@@ -1,0 +1,18 @@
+[
+  {
+    "client_id": "client_001",
+    "id": "asset_001_001",
+    "name": "MacBook Pro 14' M4 (2026)",
+    "category": "Technology",
+    "start_date": "2026-02-15",
+    "purchase_price": 1091.61,
+    "amortization_period_years": 1,
+    "annual_depreciation": 1091.61,
+    "depreciated_to_date": 182.00,
+    "remaining_value": 909.61,
+    "status": "depreciating",
+    "linked_transaction_id": "txn_001_004",
+    "is_vehicle": false,
+    "vehicle_details": null
+  }
+]

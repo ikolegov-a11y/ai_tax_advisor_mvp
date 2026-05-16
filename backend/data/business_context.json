@@ -1,0 +1,19 @@
+[
+  {
+    "client_id": "client_001",
+    "sales_channels": ["own_website", "direct_clients"],
+    "client_geography": ["de", "eu"],
+    "has_eu_b2b_clients": true,
+    "has_international_clients": false,
+    "uses_marketplace": false,
+    "marketplace_name": null,
+    "sells_digital_goods": false,
+    "sells_physical_goods": false,
+    "has_ksk_membership": false,
+    "is_licensed_professional": false,
+    "professional_license_type": null,
+    "reverse_charge_applicable": true,
+    "oss_vat_registered": false,
+    "notes": "IT-Freiberuflerin, arbeitet mit deutschen und österreichischen Unternehmen. Reverse Charge gilt für EU B2B."
+  }
+]

@@ -104,30 +104,28 @@ get_transactions  get_invoices  get_company   get_assets
 
 ```json
 {
-  "transactions": [
-    {
-      "id": "txn_001",
-      "date": "2026-03-15",
-      "amount": 5950.00,
-      "currency": "EUR",
-      "counterparty": "Müller GmbH",
-      "payment_reference": "Rechnung 2026-012",
-      "type": "expense",
-      "linked_invoice_id": "inv_012"
-    }
-  ]
+  "client_id": "client_001",
+  "id": "txn_001",
+  "date": "2026-03-15",
+  "amount": 5950.00,
+  "currency": "EUR",
+  "counterparty": "Müller GmbH",
+  "payment_reference": "Rechnung 2026-012",
+  "type": "incoming",
+  "linked_invoice_id": "inv_012"
 }
 ```
 
 | Поле | Описание |
 |---|---|
+| `client_id` | ID клиента (внешний ключ) |
 | `id` | Уникальный ID транзакции |
 | `date` | Дата проведения платежа |
 | `amount` | Сумма (всегда положительная) |
 | `currency` | Валюта |
 | `counterparty` | Название контрагента из банка |
 | `payment_reference` | Назначение платежа (строка из банка) |
-| `type` | `income` или `expense` |
+| `type` | `incoming` (деньги пришли) или `outgoing` (деньги ушли) |
 | `linked_invoice_id` | Ссылка на привязанный инвойс (или `null`) |
 
 ---
@@ -947,12 +945,73 @@ knowledge_base/
 
 | Инструмент | Версия | Назначение | Данные |
 |---|---|---|---|
-| `get_transactions` | existing | Банковские движения за период | `transactions[]` из client JSON |
-| `get_invoices` | existing | Входящие и исходящие инвойсы | `invoices[]` из client JSON |
-| `get_company_settings` | existing | Настройки компании + бизнес-контекст | `company_settings` + `business_context` |
-| `get_assets` | existing | Активы и амортизация | `assets[]` из client JSON |
-| `get_client_knowledge_base` | existing | Личный профиль + бизнес-контекст | `client_kb` раздел из client JSON |
-| `get_bookkeeping_entries` | **NEW** | Бухгалтерские проводки за период | `bookkeeping_entries[]` из client JSON |
-| `get_reports` | **NEW** | Налоговые отчёты и их статусы | `vat_reporting.reports[]` из client JSON |
-| `get_tasks` | **NEW** | Задачи пользователя и их статусы | `tasks[]` из client JSON |
+| `get_transactions` | existing | Банковские движения за период | `backend/data/transactions.json` |
+| `get_invoices` | existing | Входящие и исходящие инвойсы | `backend/data/invoices.json` |
+| `get_company_settings` | existing | Настройки компании + бизнес-контекст | `backend/data/company_settings.json` + `business_context.json` |
+| `get_assets` | existing | Активы и амортизация | `backend/data/assets.json` |
+| `get_client_knowledge_base` | existing | Личный профиль + бизнес-контекст | `backend/data/business_context.json` |
+| `get_bookkeeping_entries` | **NEW** | Бухгалтерские проводки за период | `backend/data/bookkeeping_entries.json` |
+| `get_reports` | **NEW** | Налоговые отчёты и их статусы | `backend/data/reports.json` |
+| `get_tasks` | **NEW** | Задачи пользователя и их статусы | `backend/data/tasks.json` |
 | `recognize_invoice_document` | **NEW** | Распознавание файла инвойса (OCR/Vision) | PDF/image из `invoice_files/` |
+
+---
+
+## 16. Структура хранилища данных (mock, симуляция БД)
+
+Вместо монолитного `client_XXX.json` данные хранятся в **отдельных файлах-"таблицах"**.
+Каждая запись содержит поле `client_id` — симуляция внешнего ключа в реальной БД.
+Инструменты агента фильтруют записи по `client_id` (и по периоду, где применимо).
+
+```
+backend/data/
+├── clients.json                ← [{id, display_name}]
+├── company_settings.json       ← [{client_id, legal_form, vat_status, ...}]
+├── business_context.json       ← [{client_id, sales_channels, has_eu_b2b_clients, ...}]
+├── transactions.json           ← [{client_id, id, date, amount, type: incoming|outgoing, ...}]
+├── invoices.json               ← [{client_id, id, type, amount_gross, vat_rate, supplier_country, ...}]
+├── bookkeeping_entries.json    ← [{client_id, id, type, amount_gross, vat_rate, tax_residency_applied, ...}]
+├── assets.json                 ← [{client_id, id, name, amortization_period_years, ...}]
+├── reports.json                ← [{client_id, id, type: UStVA|EÜR|ZM, status, ...}]
+├── tasks.json                  ← [{client_id, id, type, status, due_date, ...}]
+└── invoice_files/
+    └── client_001/
+        └── inv_001_006.pdf
+```
+
+### Схема транзакции (строго банковые поля)
+
+```json
+{
+  "client_id": "client_001",
+  "id": "txn_001_001",
+  "date": "2026-01-10",
+  "amount": 4200.00,
+  "currency": "EUR",
+  "counterparty": "TechCorp München GmbH",
+  "payment_reference": "Honorar IT-Beratung Januar 2026 / Rg. 2026-001",
+  "type": "incoming",
+  "linked_invoice_id": "inv_001_001"
+}
+```
+
+**Правила схемы транзакции:**
+- `amount` — всегда положительное число; направление определяется полем `type`
+- `type` — только `"incoming"` (деньги пришли) или `"outgoing"` (деньги ушли)
+- Никаких полей: `vat_rate`, `vat_amount`, `net_amount`, `category`, `notes`
+- Категория, НДС и налоговая трактовка живут **только** в `invoices` и `bookkeeping_entries`
+
+### Как инструменты читают данные
+
+```javascript
+// Пример: get_transactions(period, company_id)
+const all = JSON.parse(fs.readFileSync('data/transactions.json'));
+const filtered = all.filter(t =>
+  t.client_id === company_id &&
+  t.date >= period.start &&
+  t.date <= period.end
+);
+return filtered;
+```
+
+Аналогично для всех остальных инструментов — простая фильтрация массива по `client_id`.

@@ -1,0 +1,16 @@
+[
+  {
+    "client_id": "client_001",
+    "legal_form": "Freiberufler",
+    "business_name": "Anna Müller IT-Beratung",
+    "vat_status": "Kleinunternehmer",
+    "vat_report_period": "quarterly",
+    "region": "Bayern",
+    "tax_number": "14/234/56789",
+    "type_of_activity": "Software development and IT consulting",
+    "gewst_required": false,
+    "number_of_employees": 0,
+    "registration_date": "2023-03-01",
+    "address": "Leopoldstraße 18, 80802 München"
+  }
+]
