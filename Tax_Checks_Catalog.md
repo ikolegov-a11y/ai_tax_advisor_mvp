@@ -81,6 +81,33 @@
 - **Ошибка:** Инвойс №{ID} не содержит НДС, но ваш статус — плательщик НДС.
 - **Рекомендация:** Если это EU B2B-продажа — укажите Reverse Charge и VAT ID покупателя. Если освобождение §4 UStG — укажите основание. Иначе добавьте НДС.
 
+### A-10: Возврат (Rückerstattung) без корректирующего документа
+- **Severity:** 🔴 ERROR
+- **Триггер:** always
+- **Данные:** `get_transactions`, `get_invoices`
+- **Логика:** Транзакция с отрицательной суммой ИЛИ payment_reference содержит "Erstattung", "Rückzahlung", "refund", "Storno", "Gutschrift" — AND нет соответствующего инвойса с отрицательной суммой (Stornorechnung / Gutschrift). Либо: исходный инвойс с положительной суммой явно помечен как "исправлённый" без отдельного корректирующего документа.
+- **Ошибка:** Транзакция {ID} ({X} €) выглядит как возврат средств, но нет соответствующей Stornorechnung или Gutschrift с отрицательной суммой.
+- **Рекомендация:** Создайте Stornorechnung или Gutschrift с отрицательной суммой. По GoBD (§146 AO) возврат не может быть внесён правкой исходного инвойса — только отдельным документом с обязательным указанием номера исходного инвойса.
+
+### A-11: Комиссия торговой площадки не отражена отдельной проводкой
+- **Severity:** 🔴 ERROR
+- **Триггер:** always (при наличии маркетплейс-активности)
+- **Данные:** `get_transactions`, `get_invoices`, `get_business_context`
+- **Логика:** `business_context.uses_marketplace == true` AND транзакция от платформы (Amazon, Etsy, Upwork, Fiverr и т.д.) AND сумма транзакции < суммы привязанного инвойса на >2% AND нет отдельной расходной проводки с категорией комиссии/провизии (SKR04: 6300) за тот же период на разницу.
+- **Ошибка:** Транзакция {ID} от {платформа}: зачислено {A} €, инвойс выставлен на {B} €. Разница {C} € (комиссия площадки) не отражена отдельной расходной проводкой.
+- **Рекомендация:** Выручка должна учитываться по полной сумме инвойса ({B} €), комиссия площадки — отдельным расходом ({C} €, SKR04 6300). Занижение дохода на сумму комиссии искажает EÜR и базу по НДС.
+
+### A-12: Страна контрагента в проводке несовместима с применённым НДС-режимом
+- **Severity:** 🔴 ERROR
+- **Триггер:** always
+- **Данные:** `get_invoices`, `get_bookkeeping_entries`
+- **Логика:** Для привязанных пар инвойс–проводка: определить ожидаемый НДС-режим из `invoice.supplier_country` / `invoice.customer_country`. Сравнить с фактически применённым в проводке (`reverse_charge_flag`, `vat_rate_if_domestic`, `account_code`). Конфликты:
+  - `invoice.supplier_country = "DE"` → `entry.reverse_charge_flag = true` (RC к нем. поставщикам не применяется)
+  - `invoice.supplier_country ∈ EU` → `entry.reverse_charge_flag = false` + `entry.vat_rate_if_domestic > 0` (RC должен быть применён)
+  - `invoice.customer_country ∈ EU B2B` → `entry.vat_rate > 0` (должен быть 0% + RC)
+- **Ошибка:** Инвойс {ID}: страна контрагента — {country} ({DE/EU/non-EU}), но в проводке применён НДС-режим, несовместимый с этой юрисдикцией (применён: {applied}; ожидается: {expected}).
+- **Рекомендация:** Исправьте страну контрагента в инвойсе или пересчитайте НДС-режим. Неверная страна → неверный Vorsteuer → ошибка в UStVA.
+
 ### A-09: Расхождение между файлом инвойса и сохранёнными данными ⭐ NEW
 - **Severity:** 🔴 ERROR
 - **Триггер:** always (при наличии прикреплённого файла)
@@ -128,6 +155,18 @@
 - **Ошибка:** Категория "Privateinlage/Privatentnahme" не применима для {legal_form}.
 - **Рекомендация:** Для капитальных компаний используются другие механизмы. Проконсультируйтесь с налоговым консультантом.
 
+### B-Cat-01: SKR04-счёт несовместим с типом расхода
+- **Severity:** 🟡 WARNING
+- **Триггер:** always
+- **Данные:** `get_bookkeeping_entries`, `get_invoices`
+- **Логика:** Проверить детектируемые паттерны конфликта между account_code и реальным характером расхода:
+  1. account_code ∈ {6650 Reisekosten} AND counterparty/description содержит признак ресторана/кафе → скорее Bewirtungskosten (6670): §4 Abs. 5 EStG ограничивает вычет до 70%, требует Bewirtungsbeleg
+  2. account_code ∈ {6815 Bürobedarf} AND description содержит "Lizenz", "Abo", "Software", "SaaS", "Subscription" → должно быть Lizenzen/Software (6832): разный характер расхода в EÜR
+  3. account_code ∈ {6260 GWG-Sofortabschreibung} AND transaction.amount_net < €250 → слишком маленькая сумма для GWG (порог €800); использовать операционный счёт (6815 или 6830)
+  4. account_code ∈ {6830 Büroausstattung} AND transaction.amount_net > €800 → должен быть актив, а не операционный расход (→ см. B-EÜR-02)
+- **Ошибка:** Проводка {ID}: category "{A}" (SKR04: {N}), но характер расхода ({description/counterparty}) указывает на "{B}" (SKR04: {M}) — различные налоговые последствия по §4 Abs. 5 EStG.
+- **Рекомендация:** Исправьте SKR04-счёт. Неверная категория влияет на ограничения вычетов, правильность EÜR и Betriebsprüfung-риск.
+
 ### B-09: Расходы нетипичны для указанного типа деятельности
 - **Severity:** 🟢 INFO
 - **Триггер:** always
@@ -168,6 +207,17 @@
 - **Ошибка:** Актив "{название}" на {X} € не подтверждён транзакцией покупки и проводкой.
 - **Рекомендация:** Привяжите транзакцию оплаты или создайте запись Privateinlage, если актив внесён из личного имущества.
 
+### B-EÜR-02: Расход выше GWG-порога без создания актива
+- **Severity:** 🔴 ERROR
+- **Триггер:** pre-EÜR, always
+- **Данные:** `get_bookkeeping_entries`, `get_assets`, `get_transactions`
+- **Логика:**
+  1. Ищем проводки с `amount_net > €800` AND `account_code ∈ операционным расходам` (6815 Bürobedarf, 6830 Büroausstattung, 6832 Software, 6840 Werkzeuge, и т.п.) AND category/description совместима с долгосрочным активом (компьютер, камера, оборудование, мебель, инструмент).
+  2. Проверяем `get_assets()`: нет актива с `purchase_price ≈ transaction.amount ±5%` за ±14 дней от `entry.date`.
+  3. Исключение: явные расходники и лоты (бумага, картриджи, наборы инструментов) — не флажок даже при сумме > €800.
+- **Ошибка:** Проводка {ID}: расход {X} € нетто по категории «{category}» превышает GWG-порог €800, но актив не создан. Учтено как операционный расход, хотя требуется амортизация.
+- **Рекомендация:** Создайте актив с периодом амортизации по AfA-Tabellen (компьютеры: 3 года; камеры: 7 лет; мебель: 13 лет). Мгновенное списание >€800 занижает расходы в будущих периодах и нарушает §7 EStG.
+
 ### B-EÜR-01: Firmenwagen — отсутствуют ежемесячные проводки по 1%-правилу ⭐ NEW
 - **Severity:** 🟡 WARNING
 - **Триггер:** pre-EÜR (проверяется также ежемесячно при наличии авто в активах)
@@ -206,6 +256,25 @@
 - **Логика:** Проводки "Pendlerpauschale" > 0 AND `client_kb.addresses.home` = `client_kb.addresses.office`.
 - **Ошибка:** Заявлены расходы Pendlerpauschale, но адрес офиса совпадает с домашним.
 - **Рекомендация:** Если работаете из дома — замените на Home Office Pauschale. Если офис другой — обновите адрес в профиле.
+
+### B-Type-01: Тип «товар/услуга» несовместим с применённым НДС-режимом для данной страны
+- **Severity:** 🔴 ERROR
+- **Триггер:** always (при наличии трансграничных транзакций)
+- **Данные:** `get_bookkeeping_entries`, `get_invoices`, `get_business_context`
+- **Логика:** Для каждой трансграничной проводки: сопоставить `entry.service_type` с применённым НДС-режимом с учётом страны и направления (`incoming` / `outgoing`):
+
+  | Направление | Страна | service_type | Корректный режим | Ошибка если |
+  |---|---|---|---|---|
+  | incoming | EU B2B | services | §13b UStG, RC=true | RC не применён |
+  | incoming | EU B2B | goods | §1a UStG (intragemeinschaftlicher Erwerb) | RC применён (RC ≠ §1a) |
+  | incoming | non-EU | services | §13b Abs. 1 UStG, RC=true | RC не применён |
+  | incoming | non-EU | goods | EUSt через Zoll, отдельная проводка | Нет EUSt-проводки |
+  | outgoing | EU B2B | services | 0% + ZM | VAT > 0% применён |
+  | outgoing | EU B2B | goods | 0% innergemeinschaftliche Lieferung | Иной режим |
+
+  Учитывать `business_context.reverse_charge_applicable` и `oss_vat_registered` перед флажком.
+- **Ошибка:** Проводка {ID}: поставщик/покупатель из {country} ({EU/non-EU}), тип «{service_type}», но применён режим «{applied}» — несовместимо. Ожидается: {expected}.
+- **Рекомендация:** Исправьте поле service_type или пересчитайте НДС-режим. EU B2B услуги → §13b RC; EU B2B товары → §1a UStG, другой account_code в SKR04.
 
 ### B-UStVA-01: Аномально высокий Vorsteuer относительно выручки ⭐ NEW
 - **Severity:** 🟡 WARNING
@@ -425,13 +494,19 @@
 | A-05 | Kleinunternehmer выставляет НДС | 🔴 ERROR | A | always |
 | A-06 | НДС-плательщик без НДС в инвойсе | 🟡 WARNING | A | always |
 | A-09 | Файл инвойса ≠ сохранённым данным | 🔴 ERROR | A | always |
+| **A-10** | **Возврат без Stornorechnung / Gutschrift** | 🔴 ERROR | A | always |
+| **A-11** | **Комиссия площадки не отражена отдельной проводкой** | 🔴 ERROR | A | always |
+| **A-12** | **Страна контрагента несовместима с НДС-режимом проводки** | 🔴 ERROR | A | always |
 | B-01 | Расходы на авто без актива | 🔴 ERROR | B-Core | always |
 | B-05 | Vorsteuer от Kleinunternehmer | 🔴 ERROR | B-Core | always |
 | B-08 | Privateinlage для ООО/АО | 🟡 WARNING | B-Core | always |
+| **B-Cat-01** | **SKR04-счёт несовместим с типом расхода** | 🟡 WARNING | B-Core | always |
 | B-09 | Нетипичные расходы для вида деятельности | 🟢 INFO | B-Core | always |
+| **B-EÜR-02** | **Расход > GWG-порога €800 без создания актива** | 🔴 ERROR | B-EÜR | pre-EÜR, always |
 | B-02 | Неверный период амортизации (AfA) | 🟡 WARNING | B-EÜR | pre-EÜR |
 | B-03 | Актив без транзакции покупки | 🟡 WARNING | B-EÜR | pre-EÜR |
 | B-EÜR-01 | Firmenwagen: нет ежемесячных проводок 1%-правила | 🟡 WARNING | B-EÜR | pre-EÜR |
+| **B-Type-01** | **Тип «товар/услуга» несовместим с НДС-режимом для страны** | 🔴 ERROR | B-UStVA | always |
 | B-04 | Home Office + аренда офиса | 🟡 WARNING | B-UStVA | pre-UStVA |
 | B-06 | Телефон/интернет без split | 🟡 WARNING | B-UStVA | pre-UStVA |
 | B-07 | Pendlerpauschale без разных адресов | 🟡 WARNING | B-UStVA | pre-EÜR |
@@ -453,7 +528,8 @@
 | E-07 | Отсутствие ожидаемых парных записей | 🟡 WARNING | E | always |
 | E-08 | Аномальная концентрация расходов в конце года | 🟢 INFO | E | pre-EÜR |
 
-**Итого: 31 проверка** (9 × ERROR, 16 × WARNING, 6 × INFO)
+**Итого: 37 проверок** (15 × ERROR, 16 × WARNING, 6 × INFO)
+*(+6 новых правил: A-10, A-11, A-12, B-Cat-01, B-EÜR-02, B-Type-01)*
 
 ### Удалено из исходного каталога v0.1 (работает в Finom без AI)
 A-03, A-04, A-07 (привязка инвойсов), A-08 (ZM без AI),

@@ -46,6 +46,7 @@ backend/data/
 ├── reports_gewst.json          ← [{client_id, id, year, gewst_payable, ...}]
 ├── tasks.json                  ← [{client_id, id, type, status, due_date, ...}]
 ├── invoice_categories.json     ← mock responses for categorize_invoice tool
+├── expense_categories.json     ← production category list (94 entries): id, group_title, category_title, skr04, skr03, type
 └── invoice_files/
     └── client_001/
         └── inv_001_006.pdf
@@ -128,11 +129,30 @@ backend/data/
 ### 6. Тест-кейсы: принцип построения
 
 Каждый тест-кейс = ошибка видна только через сравнение двух сущностей.
+Данные не содержат явных пометок об ошибке — агент должен найти расхождение самостоятельно.
 
-| Тест-кейс | Клиент | Ошибка |
-|---|---|---|
-| #1 — Reverse Charge | client_001 | `entry_001_009`: tax_residency=domestic, vat_rate=0.19; но `inv_001_006`: supplier_country=IE, vat_rate=0.00 |
-| #2 — Homeoffice | client_002 | `eur_002_2025`: home_office.method=tagespauschale; но проводки на SKR04-6330 (Büroreinigung) за тот же год |
+#### Таблица покрытия по клиентам
+
+| Клиент | Сценарий | Правило | Как скрыта ошибка |
+|---|---|---|---|
+| client_001 — Anna Müller, IT-Freelancer | Reverse Charge: поставщик из ЕС, RC не применён | A-12, A-02 | `entry_001_009`: reverse_charge_flag=false, vat_rate_if_domestic=0.19; `inv_001_006`: supplier_country=IE, vat_rate=0.00 |
+| client_002 — Thomas Schneider, Grafikdesigner | Home Office Tagespauschale + расходы на Büroreinigung за тот же период | B-04 | `eur_002_2025`: home_office.method=tagespauschale; проводки SKR04-6330 (Büroreinigung) в том же году |
+| client_003 — Maria Schmidt, Online-Shop/Amazon FBA | Комиссия Amazon не отражена отдельной проводкой | A-11 | Транзакция от Amazon на ~€820 (нетто после комиссии ~15%), инвойс покупателю на ~€965; разница ~€145 не проведена как Provision (SKR04 6300) |
+| client_003 | + Возврат покупателю без Stornorechnung | A-10 | Входящая транзакция с payment_reference содержит "Rückerstattung" — нет Gutschrift с отрицательной суммой |
+| client_004 — Peter Wagner, Unternehmensberater | Неверная страна поставщика → неверный НДС-режим | A-12 | Поставщик из PL, но в проводке supplier_country="DE" → reverse_charge_flag=false, хотя должен быть true |
+| client_004 | + Неверный тип «товар/услуга» для EU B2B | B-Type-01 | IT-услуга от NL-контрагента: `service_type="goods"`, reverse_charge_flag=false — нарушает §13b UStG |
+| client_005 — Lisa Braun, Fotografin | Оборудование > €800 нетто проведено как расход, актив не создан | B-EÜR-02 | Транзакция: камера €2 400, account_code=6830 (Büroausstattung); нет записи в assets.json с соответствующей суммой |
+| client_005 | + Неправдоподобный сплит (100% бизнес) | E-02 | Телефон: private_use_split=0.00 (100% бизнес), домашний интернет: private_use_split=0.00 — без Fahrtenbuch-аналога |
+| client_006 — Michael Fischer, Software-Entwickler | SaaS/лицензии учтены как Bürobedarf вместо Software | B-Cat-01 | Проводки Figma/GitHub/AWS с account_code=6815 (Bürobedarf) вместо 6832 (Software/Lizenzen) |
+| client_007 — Sarah Klein, Online-Yoga-Trainerin | Возврат за отменённый курс без Stornorechnung | A-10 | Исходящая транзакция с ref "Erstattung Kurs März" — нет корректирующего инвойса с отрицательной суммой |
+| client_007 | + Домашний интернет 100% бизнес при совмещённом адресе | E-02 | internet: private_use_split=0.00, при этом home_address=work_address в business_context |
+
+#### Принцип скрытой ошибки
+
+- Ошибка **никогда** не указана явно в данных (нет поля `"error": true`, нет notes с предупреждением)
+- Ошибка **всегда** видна только через сравнение двух сущностей (транзакция ↔ инвойс, инвойс ↔ проводка, проводка ↔ настройки компании)
+- Данные реалистичны: клиент «не заметил» ошибку, а не «намеренно ввёл неверные данные»
+- Каждый клиент имеет минимум 1 основной сценарий; часть клиентов — 2 (основной + дополнительный)
 
 ---
 
@@ -153,6 +173,7 @@ backend/data/
 | `get_tasks(company_id)` | — | `tasks.json` |
 | `recognize_invoice_document(invoice_id)` | — | `invoice_files/` → Claude Vision |
 | `categorize_invoice(invoice_id, line_items)` | — | `invoice_categories.json` (mock) |
+| `get_expense_categories(group?, skr04?)` | — | `expense_categories.json` (production list) |
 
 **Важно:** `period` — необязательный параметр. Если не указан — возвращаются все записи за текущий год. Это нужно для поиска проводки, когда пользователь не знает точный период.
 
@@ -176,11 +197,11 @@ If business_context is missing or empty, the agent must warn:
 
 ## Tax checks to implement
 
-See `Tax_Checks_Catalog.md` for all 31 rules across 6 blocks:
-- **Block A:** Invoice ↔ stored data + document recognition (5 rules)
-- **Block B-Core:** Accounting contradictions — always applicable (4 rules)
-- **Block B-EÜR:** Issues affecting annual EÜR report (3 rules)
-- **Block B-UStVA:** Issues affecting VAT return UStVA (5 rules)
+See `Tax_Checks_Catalog.md` for all 37 rules across 6 blocks:
+- **Block A:** Invoice ↔ stored data + document recognition (8 rules: A-01, A-02, A-05, A-06, A-09, A-10, A-11, A-12)
+- **Block B-Core:** Accounting contradictions — always applicable (5 rules: B-01, B-05, B-08, B-Cat-01, B-09)
+- **Block B-EÜR:** Issues affecting annual EÜR report (4 rules: B-EÜR-02, B-02, B-03, B-EÜR-01)
+- **Block B-UStVA:** Issues affecting VAT return UStVA (6 rules: B-Type-01, B-04, B-06, B-07, B-UStVA-01, B-UStVA-02)
 - **Block B-ZM:** Issues affecting EU B2B summary report ZM (2 rules)
 - **Block C:** Settings/status contradictions (4 rules)
 - **Block E:** Logical consistency checks — second pass (8 rules)
