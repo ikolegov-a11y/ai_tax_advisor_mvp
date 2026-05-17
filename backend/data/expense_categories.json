@@ -1,0 +1,1694 @@
+[
+  {
+    "id": "038896d6-f7ef-61eb-b3b0-118ebb5c8f4b",
+    "group_title": {
+      "de": "Externe Dienstleister",
+      "en": "External Service Providers"
+    },
+    "category_title": {
+      "de": "Fremdarbeiten (Vertrieb)",
+      "en": "External Work (Sales)"
+    },
+    "category_description": {
+      "de": "Kosten für externe Leistungen, die direkt in Ihre Produkte oder Dienstleistungen einfließen und weiterverkauft werden. Beispiele: freie Designer für Kundenprojekt, Subunternehmer für Kundenauftrag, externe Entwickler für Webshop des Kunden.",
+      "en": "Costs for external work that is directly resold as part of your product or service. Examples: freelance designer for a client project, subcontractor for a customer job, external developer for client's webshop."
+    },
+    "skr04": 6780,
+    "skr03": 4910,
+    "type": "Services"
+  },
+  {
+    "id": "b419a12e-6797-11a1-6733-3c2727fcfd62",
+    "group_title": {
+      "de": "Externe Dienstleister",
+      "en": "External Service Providers"
+    },
+    "category_title": {
+      "de": "Untervergabe",
+      "en": "Subcontracting"
+    },
+    "category_description": {
+      "de": "Ausgaben für externe Unterstützung bei betrieblichen Aufgaben, die nicht direkt weiterverkauft werden. Beispiele: virtuelle Assistenz, Buchhaltungsservice, externe Bürokraft, Support-Team für deine eigene Website.",
+      "en": "Expenses for external support with business operations that are not directly resold. Examples: virtual assistant, external office staff, support team for your own website."
+    },
+    "skr04": 5900,
+    "skr03": 4909,
+    "type": "Services"
+  },
+  {
+    "id": "09cab937-71d4-8048-c4b1-a3c162bc7165",
+    "group_title": {
+      "de": "Waren und Materialien",
+      "en": "Goods & Materials"
+    },
+    "category_title": {
+      "de": "Rohstoff",
+      "en": "Raw material"
+    },
+    "category_description": {
+      "de": "Materialien, die du einkaufst, um sie weiterzuverarbeiten und daraus eigene Produkte zu erstellen. Nutze diese Kategorie bei eigener Herstellung. Beispiele: Holz für Möbelbau, Stoff für Kleidung, Papier für Druckprodukte.",
+      "en": "Materials you buy to process and turn into your own products. Use this category if you manufacture goods. Examples: wood for furniture, fabric for clothing, paper for print products."
+    },
+    "skr04": 5100,
+    "skr03": 3010,
+    "type": "Goods"
+  },
+  {
+    "id": "c91a9d40-0623-eb4a-a605-055c22acf592",
+    "group_title": {
+      "de": "Waren und Materialien",
+      "en": "Goods & Materials"
+    },
+    "category_title": {
+      "de": "Eingekaufte Handelsware",
+      "en": "Goods purchased for resale"
+    },
+    "category_description": {
+      "de": "Eingekaufte Produkte oder Waren, die du unverändert weiterverkaufst. Typisch für Handelsunternehmen und Onlineshops. Beispiele: Elektronik zur Weiterveräußerung, Großhandelseinkauf von Kleidung, Bücher zum Resale.",
+      "en": "Purchased products or goods you resell without modifications. Common for retail and online shops. Examples: electronics for resale, wholesale clothing purchases, books for resale."
+    },
+    "skr04": 5200,
+    "skr03": 3200,
+    "type": "Goods"
+  },
+  {
+    "id": "540709a2-fbe0-c592-ec68-b011085ba41e",
+    "group_title": {
+      "de": "Technologie",
+      "en": "Technology"
+    },
+    "category_title": {
+      "de": "Software-Wartung & Support",
+      "en": "Software Maintenance & Support"
+    },
+    "category_description": {
+      "de": "Ausgaben für technische Wartung, Updates oder Support-Dienstleistungen im IT-Bereich. Beispiele: Software-Supportvertrag, jährliches Systemupdate, Wartung von Servern oder Hostingdiensten.",
+      "en": "Expenses for technical maintenance, updates, or IT support services. Examples: software support contract, yearly system update, maintenance of servers or hosting services."
+    },
+    "skr04": 6495,
+    "skr03": 4806,
+    "type": "Services"
+  },
+  {
+    "id": "94286dd7-7002-c9b5-91e3-30fbc00ed376",
+    "group_title": {
+      "de": "Technologie",
+      "en": "Technology"
+    },
+    "category_title": {
+      "de": "Software-Lizenzen (aktivierungspflichtig)",
+      "en": "Software Licenses (Capitalizable)"
+    },
+    "category_description": {
+      "de": "Dauerhafte oder langfristige Softwarelizenzen, die als immaterielles Wirtschaftsgut zu aktivieren sind. Verwenden Sie dieses Konto, wenn Sie eine Softwarelizenz kaufen, die Ihnen dauerhaft oder länger als ein Jahr gehört. Diese Anschaffung wird aktiviert und über mehrere Jahre abgeschrieben. Beispiele: Kauf einer dauerhaft nutzbaren Lizenz, langfristige Server- oder Datenbanklizenz, einmaliger Erwerb einer professionellen Software ohne Abo-Modell.",
+      "en": "Permanent or long-term software licenses that qualify as intangible assets. Use this account when you purchase a license that you own permanently or for longer than one year. The cost must be capitalized and depreciated over several years. Examples: purchase of a perpetual professional software license, long-term server or database license, one-time acquisition of specialized software without subscription."
+    },
+    "skr04": "0135",
+    "skr03": "0027",
+    "type": "Services"
+  },
+  {
+    "id": "7c2e3679-27b3-397b-15e3-856cac1d8d12",
+    "group_title": {
+      "de": "Technologie",
+      "en": "Technology"
+    },
+    "category_title": {
+      "de": "Software-Abonnements & Nutzungsrechte",
+      "en": "Software Subscriptions & Usage-Based Software"
+    },
+    "category_description": {
+      "de": "Laufende Kosten für Software-Abonnements, Cloud-Services und nutzungsbasierte Software. Verwenden Sie dieses Konto für monatliche oder jährliche SaaS-Abos, Online-Tools oder digitale Nutzungsrechte, die nicht aktiviert werden. Beispiele: Notion, Slack, Figma, Microsoft 365, Google Workspace, API-Nutzung, digitale Plattformzugänge, usage-based Dienste wie Kartendienste oder KI-APIs.",
+      "en": "Recurring expenses for software subscriptions, cloud services, and usage-based software. Use this account for monthly or annual SaaS subscriptions, online tools, or digital usage rights that are not capitalized. Examples: Notion, Slack, Figma, Microsoft 365, Google Workspace, API usage fees, digital platform access, usage-based services such as mapping APIs or AI APIs."
+    },
+    "skr04": 6837,
+    "skr03": 4964,
+    "type": "Services"
+  },
+  {
+    "id": "88e271ed-93fd-58fa-f08d-03c590656b40",
+    "group_title": {
+      "de": "Telefon & Internet",
+      "en": "Phone & Internet"
+    },
+    "category_title": {
+      "de": "Telefax und Internetkosten",
+      "en": "Fax and Internet Costs"
+    },
+    "category_description": {
+      "de": "Ausgaben für geschäftlich genutztes Internet oder Faxgeräte. Auch Router, Hotspots oder Internetdienste. Nur der berufliche Anteil ist abziehbar. Beispiele: DSL-Anschluss, WLAN-Router, mobiler Hotspot, geschäftlicher Anteil am Privatvertrag.",
+      "en": "Expenses for business-related internet or fax services. Includes routers, hotspots or access services. Only the professional portion is deductible. Examples: DSL contract, WiFi router, mobile hotspot, business share of private internet."
+    },
+    "skr04": 6810,
+    "skr03": 4925,
+    "type": "Services"
+  },
+  {
+    "id": "7fe836f3-1eac-af1f-5dd0-dd39d691ea22",
+    "group_title": {
+      "de": "Telefon & Internet",
+      "en": "Phone & Internet"
+    },
+    "category_title": {
+      "de": "Telefon",
+      "en": "Phone"
+    },
+    "category_description": {
+      "de": "Kosten für geschäftlich genutzte Festnetz- oder Mobilfunkverträge. Nur der betriebliche Anteil ist abziehbar. Beispiele: Handyvertrag, geschäftliches Mobiltelefon, Festnetzanschluss im Büro, betrieblicher Anteil an einem Privatvertrag.",
+      "en": "Costs for business-related landline or mobile phone plans. Only the business portion is deductible. Examples: mobile contract, business phone line, landline in office, business share of private plan."
+    },
+    "skr04": 6805,
+    "skr03": 4920,
+    "type": "Services"
+  },
+  {
+    "id": "d6b57517-7c69-e631-d3fd-3fb7f7d7f732",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Heizung",
+      "en": "Heating"
+    },
+    "category_description": {
+      "de": "Heizkosten für betrieblich genutzte Räume außerhalb der Wohnung, zum Beispiel gemietete Büros oder Arbeitsräume. Beispiele: Fernwärme fürs Büro, Gaslieferung, Heizöl für Gewerberäume, Heizkostenpauschale vom Vermieter.",
+      "en": "Heating costs for business spaces outside your home, such as rented offices or commercial premises. Examples: district heating, gas supply, heating oil for business premises, heating flat rate from landlord."
+    },
+    "skr04": 6320,
+    "skr03": 4230,
+    "type": "Services"
+  },
+  {
+    "id": "0d8f5b9d-c67a-7a1f-7aa7-31cc4cade10b",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Gas, Strom, Wasser",
+      "en": "Gas, Electricity, Water"
+    },
+    "category_description": {
+      "de": "Laufende Nebenkosten für externe Büros oder Geschäftsräume. Diese Kosten gelten nur für gewerblich genutzte Räume außerhalb des privaten Haushalts. Beispiele: Stromrechnung fürs Büro, Wasserverbrauch, Abfallgebühren, Abwasserkosten.",
+      "en": "Recurring utility expenses for offices or commercial spaces outside your home. Applies only to business premises, not your private household. Examples: electricity bills, water usage, waste collection fees, sewage costs."
+    },
+    "skr04": 6325,
+    "skr03": 4240,
+    "type": "Services"
+  },
+  {
+    "id": "7279fa33-c8c0-63b9-8b88-6a28e85e011e",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Reinigung",
+      "en": "Cleaning"
+    },
+    "category_description": {
+      "de": "Kosten für Reinigungsdienstleistungen oder Reinigungsmaterialien in gewerblich genutzten Räumen außerhalb der Wohnung. Beispiele: Reinigungsfirma fürs Büro, Fensterputzer, Reinigungsmittel, Putzkraft für Geschäftsräume.",
+      "en": "Costs for cleaning services or materials in commercial premises outside your home. Examples: office cleaning company, window cleaning service, cleaning supplies, cleaner for business spaces."
+    },
+    "skr04": 6330,
+    "skr03": 4250,
+    "type": "Services"
+  },
+  {
+    "id": "ddf34818-96b9-38d6-5a46-d561e403128d",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Instandhaltung betrieblicher Räume",
+      "en": "Maintenance of Business Premises"
+    },
+    "category_description": {
+      "de": "Reparaturen, Renovierungen oder Umbauten in geschäftlich genutzten Räumen außerhalb der privaten Wohnung. Beispiele: Malerarbeiten, Bodenverlegung, Heizungsreparatur, Erneuerung der Beleuchtung, Austausch von Türen oder Fenstern.",
+      "en": "Repairs, renovations, or refurbishments in business spaces outside your home. Examples: painting, floor installation, heating repair, light replacement, door or window updates."
+    },
+    "skr04": 6335,
+    "skr03": 4260,
+    "type": "Services"
+  },
+  {
+    "id": "a9d5491b-a2cf-917c-1287-172a2b548049",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Sonstige Raumkosten",
+      "en": "Other Room Expenses"
+    },
+    "category_description": {
+      "de": "Die Homeoffice-Pauschale (Tagespauschale) können Sie für jeden Kalendertag geltend machen, an dem Sie Ihre betriebliche oder berufliche Tätigkeit überwiegend in der häuslichen Wohnung ausüben und keine erste Tätigkeitsstätte aufsuchen. Beispiele: Tagespauschale multipliziert mit der Anzahl der Homeoffice-Tage, Ansatz in der Steuererklärung.",
+      "en": "The home office lump sum (Homeoffice-Pauschale) can be claimed for each calendar day on which you predominantly carry out your business or professional activities in your home and do not visit a primary place of business. Examples: daily lump sum multiplied by the number of home office days, claimed in the tax return."
+    },
+    "skr04": 6345,
+    "skr03": 4280,
+    "type": "Services"
+  },
+  {
+    "id": "9ba28af0-83da-d3cb-1096-2d5f6ac4a8d7",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Aufwendung. Arbeitszimmer n.abz. Anteil",
+      "en": "Expenses Home Office, Non-Deductible Share"
+    },
+    "category_description": {
+      "de": "Diese Kategorie ist für den privaten Anteil an gemischt genutzten Räumen – also wenn Sie zum Beispiel am Esstisch oder im Wohnzimmer arbeiten. Diese Kosten dürfen nicht steuerlich abgesetzt werden, können aber intern dokumentiert werden. Beispiele: Anteil an Miete, Strom oder Internet bei Nutzung von Küche oder Wohnzimmer als Arbeitsplatz.",
+      "en": "Use this category for the private part of a shared-use room – like if you work from your dining table or living room. These costs are not tax-deductible but can be recorded internally. Examples: share of rent, electricity, or internet when using kitchen or living room as workspace."
+    },
+    "skr04": 6349,
+    "skr03": 4325,
+    "type": "Services"
+  },
+  {
+    "id": "addecf0a-47fb-bf26-3b8a-1c1baa3ab8df",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Aufwendung. Arbeitszimmer, abz. Anteil",
+      "en": "Expenses Home Office, Deductible Share"
+    },
+    "category_description": {
+      "de": "Diese Kategorie ist für Ausgaben gedacht, wenn Sie zu Hause ein separates Zimmer fast ausschließlich für Ihre Arbeit nutzen – zum Beispiel ein abgeschlossenes Arbeitszimmer. Nur wenn dieses Zimmer der Mittelpunkt Ihrer beruflichen Tätigkeit ist, dürfen Sie anteilige Kosten steuerlich absetzen. Beispiele: anteilige Miete, Strom, Internet, Möbel oder Grundsteuer – berechnet nach Fläche des Zimmers.",
+      "en": "Use this category if you work from a separate room at home that is used almost exclusively for business – like a dedicated office. You can deduct a share of your costs only if this room is your main workplace. Examples: part of rent, electricity, internet, furniture, or property tax – calculated based on room size."
+    },
+    "skr04": 6348,
+    "skr03": 4288,
+    "type": "Services"
+  },
+  {
+    "id": "f1d1b220-4509-1ff5-67a4-ed7d9a220099",
+    "group_title": {
+      "de": "Werbung, Geschenke & Repräsentation",
+      "en": "Marketing, Gifts & Representation"
+    },
+    "category_title": {
+      "de": "Werbekosten",
+      "en": "Advertising Costs"
+    },
+    "category_description": {
+      "de": "Ausgaben für klassische Werbung und Maßnahmen zur Kundengewinnung.  Beispiele: Onlineanzeigen, Flyer, Visitenkarten, Google Ads, Website-Gestaltung.",
+      "en": "Expenses for traditional advertising and client acquisition.  Examples: online ads, flyers, business cards, Google Ads, website design."
+    },
+    "skr04": 6600,
+    "skr03": 4600,
+    "type": "Services"
+  },
+  {
+    "id": "61b686f7-213c-ff9a-f4c0-76154b0994e1",
+    "group_title": {
+      "de": "Werbung, Geschenke & Repräsentation",
+      "en": "Marketing, Gifts & Representation"
+    },
+    "category_title": {
+      "de": "Persönliche Geschenke von geringem Wert",
+      "en": "Personal gifts of low value"
+    },
+    "category_description": {
+      "de": "Geschenke an Geschäftspartner:innen oder Kund:innen mit einem Wert von maximal 35 € netto pro Jahr und Person. Nur bei vollständiger Dokumentation steuerlich abziehbar. Beispiele: Weinflasche zu Weihnachten, Kalender mit Firmenlogo, Buch als Dankeschön.",
+      "en": "Gifts to clients or business partners worth up to €35 net per year and person. Only deductible if properly documented. Examples: bottle of wine for Christmas, company-branded calendar, book as thank-you."
+    },
+    "skr04": 6610,
+    "skr03": 4605,
+    "type": "Goods"
+  },
+  {
+    "id": "1693ec62-679f-51cd-93bd-4cb5ba9fb4ec",
+    "group_title": {
+      "de": "Werbung, Geschenke & Repräsentation",
+      "en": "Marketing, Gifts & Representation"
+    },
+    "category_title": {
+      "de": "Persönliche Geschenke von hohem Wert",
+      "en": "Personal gifts of high value"
+    },
+    "category_description": {
+      "de": "Geschenke mit einem Wert über 35 € netto pro Jahr und Person. Diese Kosten sind steuerlich nicht abziehbar. Beispiele: hochwertige Technikgeräte, teurer Alkohol, Luxus-Geschenke.",
+      "en": "Gifts exceeding €35 net per year and person. These are not tax-deductible. Examples: high-end tech items, expensive alcohol, luxury gifts."
+    },
+    "skr04": 6620,
+    "skr03": 4636,
+    "type": "Goods"
+  },
+  {
+    "id": "90b4dd56-d4f5-bfd7-2e20-6f72f73d1551",
+    "group_title": {
+      "de": "Werbung, Geschenke & Repräsentation",
+      "en": "Marketing, Gifts & Representation"
+    },
+    "category_title": {
+      "de": "Repräsentationskosten",
+      "en": "Representation Costs"
+    },
+    "category_description": {
+      "de": "Ausgaben für den Außenauftritt Ihres Unternehmens, die nicht direkt als Werbung gelten – z. B. für Events oder Imagepflege. Steuerlich abziehbar, wenn geschäftlich begründbar. Beispiele: Messestand, Sponsoring, Firmenkleidung mit Logo, Dekoration für Geschäftsräume.",
+      "en": "Expenses related to your company's public image that are not classic advertising – such as events or brand presentation. Deductible if business-related. Examples: trade show booth, sponsorship, branded workwear, office decoration."
+    },
+    "skr04": 6630,
+    "skr03": 4650,
+    "type": "Goods"
+  },
+  {
+    "id": "6111d9d3-727f-d5d4-40ee-340746480229",
+    "group_title": {
+      "de": "Werbung, Geschenke & Repräsentation",
+      "en": "Marketing, Gifts & Representation"
+    },
+    "category_title": {
+      "de": "Nicht abzugsfähige Betriebsausgaben",
+      "en": "Non-Deductible Operating Expenses"
+    },
+    "category_description": {
+      "de": "Werbe- oder Repräsentationskosten, die steuerlich nicht anerkannt werden – z. B. wegen fehlendem Geschäftsbezug oder übermäßiger Höhe. Beispiele: Luxus-Event ohne nachweisbare Kund:innen, VIP-Geschenke ohne Dokumentation, teures Entertainment ohne Anlass.",
+      "en": "Advertising or representation expenses that are not accepted by tax authorities – e.g. due to lack of business purpose or excessive value. Examples: luxury event without client reference, undocumented VIP gifts, expensive entertainment with no clear purpose."
+    },
+    "skr04": 6645,
+    "skr03": 4656,
+    "type": "Goods"
+  },
+  {
+    "id": "74629f89-8c90-2015-dd7a-5ad7944e774c",
+    "group_title": {
+      "de": "Fahrzeugbetrieb",
+      "en": "Vehicle Operation"
+    },
+    "category_title": {
+      "de": "Kfz-Versicherungen",
+      "en": "Motor Vehicle Insurances"
+    },
+    "category_description": {
+      "de": "Versicherungsbeiträge für geschäftlich genutzte Fahrzeuge, wie z. B. Haftpflicht oder Vollkasko. Beispiele: Kfz-Haftpflichtversicherung, Teilkaskoversicherung, Kfz-Rechtsschutz.",
+      "en": "Insurance premiums for business vehicles such as liability or comprehensive insurance. Examples: liability insurance, partial or full coverage, legal expenses insurance."
+    },
+    "skr04": 6520,
+    "skr03": 4520,
+    "type": "Services"
+  },
+  {
+    "id": "959d786f-d643-c9a3-6fbd-1e5e0e7d51ef",
+    "group_title": {
+      "de": "Fahrzeugbetrieb",
+      "en": "Vehicle Operation"
+    },
+    "category_title": {
+      "de": "Laufende Kfz-Betriebskosten",
+      "en": "Ongoing Motor Vehicle Operating Costs"
+    },
+    "category_description": {
+      "de": "Regelmäßige oder einzelne Ausgaben für den täglichen Fahrzeugbetrieb. Dazu zählen auch kleine Einzelkosten wie Parkscheine, Maut oder Waschanlage. Beispiele: Tanken, Parkgebühren, Ölwechsel, Waschanlage, Autobahnvignette.",
+      "en": "Recurring or one-off expenses for daily vehicle use. This includes small incidental costs such as parking tickets, tolls or car wash. Examples: fuel, parking fees, oil change, car wash, highway vignette."
+    },
+    "skr04": 6530,
+    "skr03": 4530,
+    "type": "Services"
+  },
+  {
+    "id": "39ed7ebb-4083-e6af-5a78-e21ff2f1bca4",
+    "group_title": {
+      "de": "Fahrzeugbetrieb",
+      "en": "Vehicle Operation"
+    },
+    "category_title": {
+      "de": "Kfz-Reparaturen",
+      "en": "Motor Vehicle Repairs"
+    },
+    "category_description": {
+      "de": "Reparaturkosten für geschäftlich genutzte Fahrzeuge. Beispiele: Bremsentausch, Kupplungserneuerung, Reifenersatz.",
+      "en": "Repair expenses for business vehicles. Examples: brake replacement, clutch repair, new tires."
+    },
+    "skr04": 6540,
+    "skr03": 4540,
+    "type": "Services"
+  },
+  {
+    "id": "e2739cc3-bf96-7a1c-86b0-dce8d8b69f87",
+    "group_title": {
+      "de": "Fahrzeugbetrieb",
+      "en": "Vehicle Operation"
+    },
+    "category_title": {
+      "de": "Garagenmieten",
+      "en": "Garage Rentals"
+    },
+    "category_description": {
+      "de": "Mietkosten für Parkplätze oder Garagen zur Unterbringung deines Geschäftsfahrzeugs. Beispiele: Tiefgaragenplatz, Außenstellplatz, Parkplatzanmietung bei Coworking.",
+      "en": "Rental costs for parking spaces or garages used to store your business vehicle. Examples: underground parking, outdoor spot, coworking space parking rental."
+    },
+    "skr04": 6550,
+    "skr03": 4525,
+    "type": "Services"
+  },
+  {
+    "id": "6a1863ac-7858-5a89-bc9e-e68990a28586",
+    "group_title": {
+      "de": "Fahrzeugbetrieb",
+      "en": "Vehicle Operation"
+    },
+    "category_title": {
+      "de": "Sonstige Kfz-Kosten",
+      "en": "Other Motor Vehicle Costs"
+    },
+    "category_description": {
+      "de": "Fahrzeugbezogene Ausgaben, die sich keiner anderen Kfz-Kategorie eindeutig zuordnen lassen. Wird z. B. verwendet für Zubehör oder separate Leistungen rund ums Fahrzeug. Beispiele: neue Autobatterie (nicht im Rahmen einer Reparatur), Lagerung von Reifen, Autozubehör wie Handyhalterung oder Schneeketten.",
+      "en": "Vehicle-related expenses that don't clearly fit into any other car-related category. Typically used for accessories or standalone services related to the vehicle. Examples: new car battery (outside of repair), tire storage, accessories like phone mounts or snow chains."
+    },
+    "skr04": 6570,
+    "skr03": 4580,
+    "type": "Services"
+  },
+  {
+    "id": "2828c260-8eb0-f332-90de-5f83d016ec57",
+    "group_title": {
+      "de": "Fahrzeugbetrieb",
+      "en": "Vehicle Operation"
+    },
+    "category_title": {
+      "de": "Straßensteuern",
+      "en": "Road Taxes"
+    },
+    "category_description": {
+      "de": "Jährliche Kfz-Steuer für geschäftlich genutzte Fahrzeuge. Beispiele: Steuerbescheid vom Finanzamt für Pkw oder Transporter.",
+      "en": "Annual road tax for business vehicles. Examples: tax notice from Finanzamt for cars or vans."
+    },
+    "skr04": 6580,
+    "skr03": 4560,
+    "type": "Services"
+  },
+  {
+    "id": "72236517-7227-7844-a3e1-304d4c58bda9",
+    "group_title": {
+      "de": "Fahrzeugbetrieb",
+      "en": "Vehicle Operation"
+    },
+    "category_title": {
+      "de": "Kfz-Steuer (Fahrzeugsteuer)",
+      "en": "Motor Vehicle Tax (Ownership)"
+    },
+    "category_description": {
+      "de": "Jährliche Kraftfahrzeugsteuer für betrieblich genutzte Fahrzeuge, die dem Unternehmen gehören oder zugeordnet sind. Verwenden Sie dieses Konto, wenn Sie die Kfz-Steuer vom Finanzamt oder der Zulassungsstelle zahlen. Nicht für Miete, Leasing, Tanken oder Reparaturen.",
+      "en": "Annual motor vehicle tax for business vehicles that belong to or are assigned to the business. Use this account when you pay motor vehicle tax to the tax office or registration authority. Do not use it for rental, leasing, fuel, or repairs."
+    },
+    "skr04": 7685,
+    "skr03": 4510,
+    "type": "Services"
+  },
+  {
+    "id": "5cf5db34-f5cb-c6fc-9e59-bc9d4b3f34e0",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Reisekosten Unternehmer, Fahrtkosten",
+      "en": "Entrepreneur Travel Expenses, Travel Costs"
+    },
+    "category_description": {
+      "de": "Kosten für Ihre eigene geschäftliche An- und Abreise als Unternehmer:in. Verwenden Sie dieses Konto, wenn Sie als Einzelunternehmer:in oder Gesellschafter selbst reisen (nicht für Mitarbeitende oder Geschäftsführer von Kapitalgesellschaften). Beispiele: Bahnticket zur Messe, Flug zum Kundentermin, Kilometerpauschale für die eigene Fahrt.",
+      "en": "Costs for your own business trips as the entrepreneur. Use this account when you personally travel as a sole proprietor or partner, not for employees or managing directors of companies. Examples: train to a trade fair, flight to a client meeting, mileage allowance for your own car."
+    },
+    "skr04": 6673,
+    "skr03": 4673,
+    "type": "Services"
+  },
+  {
+    "id": "dc4bf699-f4ea-35d8-bcf3-261516ea1e7e",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Reisekosten UN Verpfleg.mehraufwand",
+      "en": "Entrepreneur Travel Expenses Meal Allowances"
+    },
+    "category_description": {
+      "de": "Pauschale für zusätzliche Verpflegungskosten bei Geschäftsreisen. Beispiele: Tagespauschale für Verpflegung bei eintägiger oder mehrtägiger Dienstreise.",
+      "en": "Flat-rate allowances for additional meal expenses while on business trips. Examples: daily meal allowance for one-day or multi-day trips."
+    },
+    "skr04": 6674,
+    "skr03": 4674,
+    "type": "Services"
+  },
+  {
+    "id": "fc490c24-15b8-32d6-cd51-349ec2276f35",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Hotels",
+      "en": "Hotels"
+    },
+    "category_description": {
+      "de": "Übernachtungskosten während geschäftlicher Reisen. Beispiele: Hotelrechnung, Airbnb-Gebühren für Dienstreise, Geschäftsapartment auf Zeit.",
+      "en": "Accommodation costs during business trips. Examples: hotel bill, Airbnb for a work trip, short-term serviced apartment."
+    },
+    "skr04": 6680,
+    "skr03": 4676,
+    "type": "Services"
+  },
+  {
+    "id": "4bbcfa17-82de-86c0-bee6-eb7218d9c760",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Miete für Fahrzeuge (kurzfristig)",
+      "en": "Short-Term Vehicle Rental"
+    },
+    "category_description": {
+      "de": "Kosten für kurzfristig gemietete Fahrzeuge im Rahmen der Geschäftstätigkeit, z. B. Mietwagen oder Carsharing. Verwenden Sie dieses Konto, wenn Sie kein eigenes Firmenfahrzeug nutzen, sondern ein Auto, Transporter oder ähnliches nur vorübergehend mieten. Beispiele: MILES-, Sixt- oder Europcar-Rechnung für Geschäftsreise oder Kundenevent.",
+      "en": "Costs for short-term rental vehicles used for business purposes, e.g. rental cars or carsharing. Use this account when you temporarily rent a car, van, or similar vehicle instead of using a company-owned vehicle. Examples: MILES, Sixt or Europcar invoice for a business trip or client event."
+    },
+    "skr04": 6595,
+    "skr03": 4595,
+    "type": "Services"
+  },
+  {
+    "id": "69b886b3-72fc-e921-b247-e9d65005f177",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Sonstige Reisekosten",
+      "en": "Other travel fees"
+    },
+    "category_description": {
+      "de": "Diverse Reisekosten, die nicht in andere spezifische Kategorien fallen. Beispiele: Gebühren für Visa, Reiseversicherungen (Reiserücktritt, Auslandskrankenversicherung), Kosten für Gepäckaufbewahrung, Mautgebühren im Ausland (sofern nicht Fahrzeugkosten), Telefonkosten auf Reisen.",
+      "en": "Various travel expenses that do not fall into other specific categories. Examples: visa fees, travel insurance (cancellation, international health), luggage storage costs, toll fees abroad (if not vehicle costs), telephone costs during travel."
+    },
+    "skr04": 6670,
+    "skr03": 4670,
+    "type": "Services"
+  },
+  {
+    "id": "f858251f-04bd-ce09-7eec-50c909ab3125",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Reisekosten Arbeitnehmer",
+      "en": "Employee Travel Expenses"
+    },
+    "category_description": {
+      "de": "Allgemeine Ausgaben für Geschäftsreisen deiner Mitarbeitenden. Beispiele: Sammelbeleg mit Bahnticket, Hotel und Taxi.",
+      "en": "General business travel expenses for your employees. Examples: combined receipt for train ticket, hotel and taxi."
+    },
+    "skr04": 6650,
+    "skr03": 4660,
+    "type": "Services"
+  },
+  {
+    "id": "b60af242-aa40-958d-fd13-2d5b7c11c60b",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Reisekosten AN Übernachtungsaufwand",
+      "en": "Employee Travel Expenses Accommodation Costs"
+    },
+    "category_description": {
+      "de": "Hotel- oder Übernachtungskosten bei Dienstreisen von Arbeitnehmer:innen. Beispiele: Hotelübernachtung während Messebesuchs, Airbnb-Rechnung für Mitarbeiterreise.",
+      "en": "Hotel or accommodation costs for employee business trips. Examples: hotel stay during a trade fair visit, Airbnb invoice for a team trip."
+    },
+    "skr04": 6660,
+    "skr03": 4661,
+    "type": "Services"
+  },
+  {
+    "id": "6c3d0efc-7ae2-6e73-887a-6ba8b84a7463",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Reisekosten Arbeitnehmer, Fahrtkosten",
+      "en": "Employee Travel Expenses, Travel Costs"
+    },
+    "category_description": {
+      "de": "Reisekosten für Arbeitnehmer:innen oder Geschäftsführer. Verwenden Sie dieses Konto, wenn Mitarbeitende oder der/die Geschäftsführer:in geschäftlich reisen (auch bei GmbH/UG-Geschäftsführern). Beispiele: Bahnticket, Flug zum Kundentermin, Kilometerpauschale für private Fahrzeugnutzung.",
+      "en": "Travel expenses for employees or managing directors. Use this account when staff members or the managing director travel for business (including GmbH/UG managing directors). Examples: train ticket, flight to a client meeting, mileage allowance for using a personal car."
+    },
+    "skr04": 6663,
+    "skr03": 4663,
+    "type": "Services"
+  },
+  {
+    "id": "aadbb410-054a-2ccd-bbe2-d4209a511d70",
+    "group_title": {
+      "de": "Reisen",
+      "en": "Travel"
+    },
+    "category_title": {
+      "de": "Reisekosten AN Verpfleg.mehraufwand",
+      "en": "Employee Travel Expenses Meal Allowances"
+    },
+    "category_description": {
+      "de": "Pauschalen für zusätzliche Verpflegung deiner Mitarbeitenden auf Dienstreisen. Beispiele: Tagespauschale bei 8+ Stunden Dienstreise, Verpflegungsgeld für mehrtägige Reisen.",
+      "en": "Daily allowances for employee meals during business travel. Examples: daily per diem for trips over 8 hours, meal allowance for multi-day travel."
+    },
+    "skr04": 6664,
+    "skr03": 4664,
+    "type": "Services"
+  },
+  {
+    "id": "3cb9ec03-fa36-9688-18fb-e3ee310eceba",
+    "group_title": {
+      "de": "Essen & Trinken",
+      "en": "Food & Drinks"
+    },
+    "category_title": {
+      "de": "Bewirtungskosten",
+      "en": "Entertainment Expenses"
+    },
+    "category_description": {
+      "de": "Kosten für die Bewirtung von Geschäftspartnern in Restaurants, Cafés oder Bars. Die Abzugsfähigkeit ist oft auf 70% beschränkt und ein ordnungsgemäßer Bewirtungsbeleg ist erforderlich. Beispiele: Geschäftsessen mit Kunden, Arbeitsessen mit Kollegen zur Besprechung betrieblicher Themen, Einladung eines potenziellen Geschäftspartners.",
+      "en": "Entertainment expenses are costs incurred when providing food, drinks, or other hospitality to business partners or clients for professional reasons. Examples: Business lunch with a client Dinner with a potential partner Coffee meeting with a supplier"
+    },
+    "skr04": 6640,
+    "skr03": 4650,
+    "type": "Services"
+  },
+  {
+    "id": "0e9cbea4-0b7f-513b-e64e-5ed6e74f3215",
+    "group_title": {
+      "de": "Essen & Trinken",
+      "en": "Food & Drinks"
+    },
+    "category_title": {
+      "de": "Nicht abzugsfähige Bewirtungskosten",
+      "en": "Non-Deductible Entertainment Expenses"
+    },
+    "category_description": {
+      "de": "Bewirtungskosten, die nicht ausreichend begründet oder dokumentiert wurden – z. B. ohne geschäftlichen Anlass oder bei rein privaten Treffen. Diese Ausgaben dürfen steuerlich nicht abgesetzt werden. Beispiele: Essen mit Freund:innen, nicht belegte Restaurantrechnungen, private Feiern.",
+      "en": "Entertainment expenses that lack proper documentation or business purpose – such as private meals or informal gatherings. These are not tax-deductible. Examples: dinner with friends, undocumented restaurant bills, private celebrations."
+    },
+    "skr04": 6644,
+    "skr03": 4654,
+    "type": "Services"
+  },
+  {
+    "id": "e4963341-6979-5cf9-729b-4bdc624759ed",
+    "group_title": {
+      "de": "Essen & Trinken",
+      "en": "Food & Drinks"
+    },
+    "category_title": {
+      "de": "Aufmerksamkeiten",
+      "en": "Courtesies"
+    },
+    "category_description": {
+      "de": "Kleine Snacks oder Getränke für Mitarbeitende oder Kund:innen – keine vollständige Bewirtung. Diese sogenannten Aufmerksamkeiten sind steuerlich meist voll abziehbar. Beispiele: Kaffee im Büro, Wasserflaschen für Besprechungen, Süßigkeiten für Kund:innen.",
+      "en": "Small snacks or drinks for employees or clients – not considered full meals. These 'courtesies' are usually fully tax-deductible. Examples: office coffee, bottled water for meetings, sweets for clients."
+    },
+    "skr04": 6643,
+    "skr03": 4653,
+    "type": "Services"
+  },
+  {
+    "id": "36b3cf6d-84a0-0eb6-527e-2d51b2599577",
+    "group_title": {
+      "de": "Bürobedarf",
+      "en": "Office Supplies"
+    },
+    "category_title": {
+      "de": "Bürobedarf",
+      "en": "Office Supplies"
+    },
+    "category_description": {
+      "de": "Typische Alltagsmaterialien fürs Büro, die regelmäßig verbraucht werden. Diese Ausgaben gehören zu den laufenden Betriebskosten. Beispiele: Papier, Kugelschreiber, Druckerpatronen, Ordner, Notizblöcke.",
+      "en": "Everyday office materials that are used regularly and quickly consumed. These are part of your regular business expenses. Examples: paper, pens, printer cartridges, folders, notepads."
+    },
+    "skr04": 6815,
+    "skr03": 4930,
+    "type": "Goods"
+  },
+  {
+    "id": "91d2bb6b-6299-342b-4460-2e2cdb167112",
+    "group_title": {
+      "de": "Bürobedarf",
+      "en": "Office Supplies"
+    },
+    "category_title": {
+      "de": "Briefmarken & Porto",
+      "en": "Stamps & Postage"
+    },
+    "category_description": {
+      "de": "Kosten für Briefmarken und Postsendungen im Rahmen der Geschäftstätigkeit. Gilt auch für Einschreiben oder Kurierdienste. Beispiele: Briefmarken, Einschreiben, DHL-Paket, UPS-Versand, Frankiermaschine.",
+      "en": "Costs for stamps and mailing related to business activities. Also includes registered mail or courier services. Examples: stamps, registered letters, postage machine."
+    },
+    "skr04": 6800,
+    "skr03": 4910,
+    "type": "Services"
+  },
+  {
+    "id": "655d23fa-1f99-a7f7-f668-a231fe028a2a",
+    "group_title": {
+      "de": "Bürobedarf",
+      "en": "Office Supplies"
+    },
+    "category_title": {
+      "de": "Büromöbel",
+      "en": "Office furniture"
+    },
+    "category_description": {
+      "de": "Möbelstücke für Ihren Arbeitsplatz oder Ihr Büro, die dauerhaft genutzt werden. In der Regel über 250 € und mit längerer Nutzungsdauer. Beispiele: Schreibtisch, Bürostuhl, Regal, Rollcontainer, Konferenztisch.",
+      "en": "Furniture used in your office or workspace that is intended for long-term use. Typically over €250 and with longer useful life. Examples: desk, office chair, shelving unit, drawer cabinet, conference table."
+    },
+    "skr04": "0650",
+    "skr03": "0420",
+    "type": "Goods"
+  },
+  {
+    "id": "faf17b88-ac68-63d3-0c84-afd26c1811ff",
+    "group_title": {
+      "de": "Ausstattung & Arbeitsmittel",
+      "en": "Equipment & Work Tools"
+    },
+    "category_title": {
+      "de": "Betriebsausstattung",
+      "en": "Operating equipment"
+    },
+    "category_description": {
+      "de": "Dauerhaft genutzte Ausstattung mit einer Nutzungsdauer über einem Jahr und einem Wert über 800 €. Diese Investitionen gehören zum Anlagevermögen und werden über mehrere Jahre abgeschrieben. Beispiele: Werkbank, Regalsysteme, Druckmaschine, Etikettiergerät, schwere Bürogeräte.",
+      "en": "Equipment used permanently in your business, with a useful life of more than one year and a value above €800. These are fixed assets and must be depreciated over several years. Examples: workbench, shelving systems, printing machine, labeling device, heavy office machinery."
+    },
+    "skr04": "0630",
+    "skr03": "0400",
+    "type": "Goods"
+  },
+  {
+    "id": "87fe428e-ce72-0c69-3ad9-4b0e65e6f570",
+    "group_title": {
+      "de": "Ausstattung & Arbeitsmittel",
+      "en": "Equipment & Work Tools"
+    },
+    "category_title": {
+      "de": "Geringwertige Wirtschaftsgüter",
+      "en": "Low-value assets"
+    },
+    "category_description": {
+      "de": "Bewegliche Gegenstände mit einem Nettoanschaffungspreis bis 800 € oder kurzer Nutzungsdauer (unter einem Jahr). Sie können im Jahr der Anschaffung komplett abgeschrieben werden. Beispiele: Bürostuhl, Monitor, Tastatur, Taschenrechner, externe Festplatte.",
+      "en": "Movable items with a net acquisition cost up to €800 or a short useful life (under one year). These can be fully written off in the year of purchase. Examples: office chair, monitor, keyboard, calculator, external hard drive."
+    },
+    "skr04": "0670",
+    "skr03": "0480",
+    "type": "Goods"
+  },
+  {
+    "id": "52a2476e-a688-23e9-0dce-3fc3d382fa98",
+    "group_title": {
+      "de": "Ausstattung & Arbeitsmittel",
+      "en": "Equipment & Work Tools"
+    },
+    "category_title": {
+      "de": "Werkzeuge und Kleingeräte",
+      "en": "Tools and Small Equipment"
+    },
+    "category_description": {
+      "de": "Spezialisierte Werkzeuge oder Kleingeräte, die regelmäßig in der täglichen Arbeit eingesetzt oder ersetzt werden – unabhängig vom Wert. Diese Kategorie eignet sich besonders für Handwerk, Technik oder mobile Arbeit. Beispiele: Bohrmaschine, Schraubenzieher, Barcodescanner, Etikettiergerät, Headset.",
+      "en": "Specialised tools or small devices regularly used or replaced in daily work – regardless of their value. This is especially relevant for craftspeople, technical professions, or mobile workers. Examples: drill, screwdriver, barcode scanner, label printer, headset."
+    },
+    "skr04": 6845,
+    "skr03": 4850,
+    "type": "Goods"
+  },
+  {
+    "id": "7e053e17-e13b-4c1d-9e8a-8994623b1a6f",
+    "group_title": {
+      "de": "Ausstattung & Arbeitsmittel",
+      "en": "Equipment & Work Tools"
+    },
+    "category_title": {
+      "de": "Sonstiger Betriebsbedarf",
+      "en": "Other Operating Supplies"
+    },
+    "category_description": {
+      "de": "Allgemeine Verbrauchsmaterialien und Ausstattung, die weder zu Bürobedarf noch zu Anlagen oder Werkzeugen zählen. Meist handelt es sich um Sicherheits-, Hygiene- oder Schutzmaterial. Beispiele: Feuerlöscher, Erste-Hilfe-Set, Schutzkleidung, Hygieneboxen, Batterien, Reinigungshandschuhe.",
+      "en": "General consumables and supplies that do not fall under office, equipment or tool categories. Mostly safety, hygiene or protective materials. Examples: fire extinguisher, first aid kit, protective clothing, hygiene kits, batteries, cleaning gloves."
+    },
+    "skr04": 6850,
+    "skr03": 4980,
+    "type": "Services"
+  },
+  {
+    "id": "b80f1fd4-0fca-dcba-a1e6-a0eea21faf86",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Zoll- und Einfuhrgebühren",
+      "en": "Customs and Import fees"
+    },
+    "category_description": {
+      "de": "Gebühren und Steuern, die bei der Einfuhr von Waren aus Nicht-EU-Ländern anfallen. Beispiele: Einfuhrumsatzsteuer, Zollgebühren, Verbrauchssteuern auf importierte Waren, Bearbeitungsgebühren des Spediteurs für die Zollabwicklung.",
+      "en": "Fees and taxes incurred when importing goods from non-EU countries. Examples: import turnover tax (Einfuhrumsatzsteuer), customs duties, excise duties on imported goods, handling fees from the forwarder for customs clearance."
+    },
+    "skr04": 5840,
+    "skr03": 3850,
+    "type": "Services"
+  },
+  {
+    "id": "2fd80ef5-fc74-d25c-2f6d-75883a1735af",
+    "group_title": {
+      "de": "Personal",
+      "en": "Employees"
+    },
+    "category_title": {
+      "de": "Löhne und Gehälter",
+      "en": "Wages and Salaries"
+    },
+    "category_description": {
+      "de": "Bruttolöhne und -gehälter für Mitarbeitende – also der volle Betrag vor Abzug von Lohnsteuer und Sozialabgaben. Diese Beträge werden später vom Arbeitgeber einbehalten und abgeführt. Beispiele: Monatsgehalt für Angestellte, Lohn für Aushilfen, Vergütung von Minijobbern.",
+      "en": "Gross salaries and wages paid to employees before payroll tax and social contributions are deducted. This includes the full amount agreed with the employee, even though parts are later withheld. Examples: monthly salary for employees, wages for assistants, pay for mini-job workers."
+    },
+    "skr04": 6000,
+    "skr03": 4100,
+    "type": "Services"
+  },
+  {
+    "id": "9caee275-591a-626e-4ae6-e8e22df77159",
+    "group_title": {
+      "de": "Personal",
+      "en": "Employees"
+    },
+    "category_title": {
+      "de": "Pauschale Steuer für Arbeitnehmer",
+      "en": "Flat-Rate Tax for Employees"
+    },
+    "category_description": {
+      "de": "Pauschalsteuerzahlungen des Arbeitgebers für Mitarbeiter. Beispiele: pauschal versteuerte Sachzuwendungen, Geschenke an Arbeitnehmer, Steuer für geringfügige Beschäftigungen.",
+      "en": "Flat-rate tax payments made by the employer on behalf of employees. Examples: pauschal taxed job benefits, gifts to employees, or minor employment tax."
+    },
+    "skr04": 6039,
+    "skr03": 4198,
+    "type": "Services"
+  },
+  {
+    "id": "de83f968-64f5-61e8-e545-e77154db9c4a",
+    "group_title": {
+      "de": "Personal",
+      "en": "Employees"
+    },
+    "category_title": {
+      "de": "Gesetzliche Sozialaufwendungen",
+      "en": "Statutory Social Expenses"
+    },
+    "category_description": {
+      "de": "Pflichtbeiträge des Arbeitgebers zur Sozialversicherung (Renten-, Kranken-, Pflege-, Arbeitslosenversicherung). Gilt nur bei echten Anstellungsverhältnissen. Beispiele: Arbeitgeberanteil zur Rentenversicherung, Krankenkasse, Pflegeversicherung.",
+      "en": "Mandatory employer contributions to social security (pension, health, unemployment, long-term care). Only applies to official employment relationships. Examples: employer's share for pension insurance, health insurance, care insurance."
+    },
+    "skr04": 6110,
+    "skr03": 4130,
+    "type": "Services"
+  },
+  {
+    "id": "d7609683-e5d2-063e-dca8-11eb409f3d32",
+    "group_title": {
+      "de": "Personal",
+      "en": "Employees"
+    },
+    "category_title": {
+      "de": "Beiträge zur Berufsgenossenschaft",
+      "en": "Contributions to Employer's Liability Insurance Association"
+    },
+    "category_description": {
+      "de": "Pflichtversicherung gegen Arbeitsunfälle und Berufskrankheiten für Ihre Angestellten. Mitgliedschaft bei der zuständigen Berufsgenossenschaft ist gesetzlich vorgeschrieben. Beispiele: Jahresbeitrag an die BG Bau, Verwaltungs- oder Gesundheitsbranche.",
+      "en": "Mandatory insurance covering workplace accidents and occupational illnesses for employees. You must register with the responsible Berufsgenossenschaft. Examples: annual contribution to BG Bau, healthcare, or office sectors."
+    },
+    "skr04": 6120,
+    "skr03": 4138,
+    "type": "Services"
+  },
+  {
+    "id": "03ef1cb7-1906-99f5-423f-a8acd0473966",
+    "group_title": {
+      "de": "Postversand",
+      "en": "Mailing / Shipping"
+    },
+    "category_title": {
+      "de": "Kosten Warenabgabe",
+      "en": "Costs of Goods Delivery"
+    },
+    "category_description": {
+      "de": "Kosten für die Auslieferung deiner Produkte an Kund:innen durch Versanddienstleister. Dazu zählen Versandgebühren, Transportversicherung und Übergabekosten. Nutze diese Kategorie nicht für selbst gekaufte Verpackungsmaterialien – verwende dafür bitte die Kategorie \"Verpackungsmaterial\". Beispiele: DHL- oder UPS-Versandgebühren, Abholung durch Spedition, Transportversicherung.",
+      "en": "Costs for delivering your products to customers using shipping providers. This includes shipping fees, transport insurance, and handover costs. Do not use this category for packaging materials you buy yourself – please use the \"Packaging Material\" category instead. Examples: DHL or UPS shipping fees, courier pickup, transport insurance."
+    },
+    "skr04": 6700,
+    "skr03": 4700,
+    "type": "Services"
+  },
+  {
+    "id": "32d359fb-503b-15ee-8b5d-a6b5fae824b7",
+    "group_title": {
+      "de": "Postversand",
+      "en": "Mailing / Shipping"
+    },
+    "category_title": {
+      "de": "Verpackungsmaterial",
+      "en": "Packaging Material"
+    },
+    "category_description": {
+      "de": "Kosten für Materialien, die du zum Verpacken deiner Produkte oder Sendungen vor dem Versand benötigst. Diese Kategorie bezieht sich auf die Vorbereitung des Versands – also alles, was deine Ware schützt und versandbereit macht. Nutze diese Kategorie nicht für Versandkosten – verwende dafür bitte die Kategorie \"Kosten Warenabgabe\". Beispiele: Versandkartons, Luftpolstertaschen, Klebeband, Etiketten, Füllmaterial.",
+      "en": "Costs for materials used to package your products or shipments before sending them out. This category covers the preparation phase – everything that protects your goods and makes them ready for shipping. Do not use this category for delivery costs – please use the 'Costs of Goods Delivery' category instead.Examples: shipping boxes, padded envelopes, tape, labels, packing material."
+    },
+    "skr04": 6710,
+    "skr03": 410,
+    "type": "Goods"
+  },
+  {
+    "id": "a557c0c2-d0a7-b9bf-79d2-2c6bfefa542a",
+    "group_title": {
+      "de": "Schulung & Dokumentation",
+      "en": "Training & Documentation"
+    },
+    "category_title": {
+      "de": "Fortbildungskosten",
+      "en": "Training Costs"
+    },
+    "category_description": {
+      "de": "Kosten für Seminare, Workshops oder Online-Kurse zur beruflichen Weiterbildung. Beispiele: Excel-Training für Buchhaltung, Onlinekurs zu Datenschutz, Teilnahme an Fachkonferenz.",
+      "en": "Expenses for seminars, workshops or online courses aimed at professional development. Examples: Excel training for bookkeeping, online GDPR course, participation in industry conference."
+    },
+    "skr04": 6821,
+    "skr03": 4945,
+    "type": "Services"
+  },
+  {
+    "id": "60eb6028-cdd3-4201-1705-0513ca0403a6",
+    "group_title": {
+      "de": "Schulung & Dokumentation",
+      "en": "Training & Documentation"
+    },
+    "category_title": {
+      "de": "Zeitschriften, Bücher (Fachliteratur)",
+      "en": "Journals, Books (Specialized Literature)"
+    },
+    "category_description": {
+      "de": "Kosten für gedruckte oder digitale Fachliteratur, die du für deine berufliche Tätigkeit nutzt. Beispiele: Steuerfachbuch, Fachzeitschrift für deine Branche, PDF-Handbuch zu Unternehmensrecht.",
+      "en": "Costs of printed or digital professional literature used for your business activity. Examples: tax guidebook, industry-specific journal, PDF manual on business law."
+    },
+    "skr04": 6820,
+    "skr03": 4940,
+    "type": "Services"
+  },
+  {
+    "id": "abc6e1de-5035-3d17-45ba-6effe3c12baa",
+    "group_title": {
+      "de": "Rechts- und sonstige Gebühren",
+      "en": "Legal & Other Fees"
+    },
+    "category_title": {
+      "de": "Buchhaltungsgebühren",
+      "en": "Accounting fees"
+    },
+    "category_description": {
+      "de": "Kosten für externe Buchhaltungs- oder Steuerberatungsleistungen. Beispiele: laufende Buchführung, Erstellung der EÜR oder UStVA, Honorar für Steuerberater.",
+      "en": "Expenses for external accounting or tax consulting services. Examples: ongoing bookkeeping, preparation of income statement or VAT return, accountant's fees."
+    },
+    "skr04": 6830,
+    "skr03": 4955,
+    "type": "Services"
+  },
+  {
+    "id": "00532555-1d34-5512-3dfc-462f9f347c3b",
+    "group_title": {
+      "de": "Rechts- und sonstige Gebühren",
+      "en": "Legal & Other Fees"
+    },
+    "category_title": {
+      "de": "Beiträge",
+      "en": "Contributions"
+    },
+    "category_description": {
+      "de": "Pflichtbeiträge an Kammern, Verbände oder ähnliche Institutionen, soweit betrieblich veranlasst. Beispiele: IHK-Beitrag, Handelskammer, Branchenverband.",
+      "en": "Mandatory contributions to chambers, associations or similar institutions related to your business. Examples: Chamber of Commerce fee, industry association membership."
+    },
+    "skr04": 6420,
+    "skr03": 4380,
+    "type": "Services"
+  },
+  {
+    "id": "81375f3a-17f8-5be8-80a8-1a6afd5a5d59",
+    "group_title": {
+      "de": "Rechts- und sonstige Gebühren",
+      "en": "Legal & Other Fees"
+    },
+    "category_title": {
+      "de": "Rechts- und Beratungskosten",
+      "en": "Legal and Consulting Costs"
+    },
+    "category_description": {
+      "de": "Kosten für rechtliche Beratung oder geschäftsbezogene externe Fachberatung. Beispiele: Rechtsanwalt für Vertragsprüfung, Datenschutzberatung, externe Business-Beratung.",
+      "en": "Fees for legal or business-related professional advice. Examples: lawyer reviewing contracts, GDPR consultancy, external business consultant."
+    },
+    "skr04": 6825,
+    "skr03": 4950,
+    "type": "Services"
+  },
+  {
+    "id": "efaca739-c131-a0d2-381a-4c35ee430bf8",
+    "group_title": {
+      "de": "Rechts- und sonstige Gebühren",
+      "en": "Legal & Other Fees"
+    },
+    "category_title": {
+      "de": "Prüfungs- und Abschlussgebühren",
+      "en": "Audit & closing fees"
+    },
+    "category_description": {
+      "de": "Ausgaben für betriebliche Abschlussprüfungen oder Jahresabschlüsse, z. B. bei Kapitalgesellschaften. Beispiele: Wirtschaftsprüfer-Honorar, Jahresabschluss durch Steuerberater, externe Auditkosten.",
+      "en": "Expenses for business audits or annual financial statements, especially for corporations. Examples: auditor's fee, financial statement prepared by tax advisor, external audit services."
+    },
+    "skr04": 6827,
+    "skr03": 4957,
+    "type": "Services"
+  },
+  {
+    "id": "85a534a1-73a3-f528-dcde-2df3e04d1c31",
+    "group_title": {
+      "de": "Rechts- und sonstige Gebühren",
+      "en": "Legal & Other Fees"
+    },
+    "category_title": {
+      "de": "Steuerlich nicht abzugsfähige Verspätungszuschläge und Zwangsgelder",
+      "en": "Non-tax deductible late filing penalties and administrative fines"
+    },
+    "category_description": {
+      "de": "Offizielle Geldbußen und Verwarnungsgelder von Behörden, Gerichten oder der Polizei. Diese Kosten sind gesetzlich nicht steuerlich abziehbar. Verwenden Sie dieses Konto für staatliche oder behördliche Strafen. Beispiele: Strafzettel wegen Falschparkens, Bußgeld wegen Geschwindigkeitsüberschreitung, behördliche Verwarnung oder Ordnungsgeld.",
+      "en": "Official fines and penalties issued by authorities, courts, or the police. These costs are not tax-deductible by law. Use this account for any government-issued penalties. Examples: parking ticket, speeding fine, official warning fee, regulatory penalty from a government authority."
+    },
+    "skr04": 6437,
+    "skr03": 4397,
+    "type": "Services"
+  },
+  {
+    "id": "346c514f-5371-b936-7b84-e0f507b71f1b",
+    "group_title": {
+      "de": "Rechts- und sonstige Gebühren",
+      "en": "Legal & Other Fees"
+    },
+    "category_title": {
+      "de": "Steuerlich abzugsfähige Verspätungszuschläge und Zwangsgelder",
+      "en": "Tax-deductible late filing penalties and administrative fines"
+    },
+    "category_description": {
+      "de": "Gebühren oder Vertragsstrafen, die von privaten Unternehmen erhoben werden und steuerlich abziehbar sind. Verwenden Sie dieses Konto, wenn ein Lieferant, Dienstleister oder anderes Unternehmen Ihnen eine Gebühr wegen Verzug, Vertragsverletzung oder ähnlichem berechnet. Beispiele: Mahngebühr eines Lieferanten, Vertragsstrafe aus einem Dienstleistungsvertrag, Verzugsgebühr eines Software- oder Telefonanbieters.",
+      "en": "Fees or contractual penalties charged by private companies that are tax-deductible. Use this account when a supplier, service provider, or any private business charges you a fee for late payment, breach of contract, or similar issues. Examples: reminder fee from a supplier, contractual penalty under a service agreement, late payment fee from a software or telecom provider."
+    },
+    "skr04": 6436,
+    "skr03": 4396,
+    "type": "Services"
+  },
+  {
+    "id": "a5806bde-6eed-b67c-9d53-3bdf80882088",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Umsatzsteuer-Vorauszahlungen",
+      "en": "Advance VAT payments"
+    },
+    "category_description": {
+      "de": "Regelmäßige Vorauszahlungen der Umsatzsteuer an das Finanzamt. Beispiele: monatliche oder vierteljährliche Zahlung der Umsatzsteuer laut UStVA.",
+      "en": "Regular advance payments of VAT to the Finanzamt. Examples: monthly or quarterly VAT payments based on VAT return."
+    },
+    "skr04": 3820,
+    "skr03": 1780,
+    "type": "Services"
+  },
+  {
+    "id": "bd4a9f8b-66e8-5a53-52e8-8dd7960cbf13",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Betriebsversicherungen",
+      "en": "Business Insurances"
+    },
+    "category_description": {
+      "de": "Versicherungsbeiträge, die betriebliche Risiken Ihrer selbstständigen Tätigkeit abdecken. Beispiele: Betriebshaftpflichtversicherung, Berufshaftpflichtversicherung (besonders für beratende Berufe), Inhaltsversicherung für Büro oder Werkstatt, Elektronikversicherung für betriebliche Geräte, Rechtsschutzversicherung für Firmen.",
+      "en": "Insurance costs for risks related to your professional activity, for yourself as self-employed."
+    },
+    "skr04": 6400,
+    "skr03": 4360,
+    "type": "Services"
+  },
+  {
+    "id": "b0fb3aaf-72f5-860d-77c3-9ac6794e4a06",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Außenstelle",
+      "en": "External office"
+    },
+    "category_description": {
+      "de": "Grundsteuer, die für ein extern angemietetes oder eigenes Büro oder eine andere Betriebsstätte anfällt. Beispiele: Jährlicher Grundsteuerbescheid von der Gemeinde für Geschäftsräume, Grundsteuer für ein Werkstattgebäude, Grundsteuer für ein Ladenlokal.",
+      "en": "Property tax (Grundsteuer) incurred for an externally rented or owned office or other business premises. Examples: annual Grundsteuer assessment from the municipality for business premises, Grundsteuer for a workshop building, Grundsteuer for a retail shop."
+    },
+    "skr04": 7680,
+    "skr03": 2375,
+    "type": "Services"
+  },
+  {
+    "id": "6f309712-71ff-dd27-8f5d-e7085ffb561d",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Umsatzsteuer Vorjahr",
+      "en": "VAT Previous Year"
+    },
+    "category_description": {
+      "de": "Offene Umsatzsteuer aus dem vorherigen Geschäftsjahr. Beispiele: Korrekturen, verspätete Meldungen, Abschlusszahlungen.",
+      "en": "Outstanding VAT from the previous fiscal year. Examples: adjustments, late declarations, final payments from last year."
+    },
+    "skr04": 3841,
+    "skr03": 1783,
+    "type": "Services"
+  },
+  {
+    "id": "18b1cdbe-d8e2-14fb-8a04-bf733fdfdb1b",
+    "group_title": {
+      "de": "Raumkosten & Nebenkosten",
+      "en": "Office & Utility Costs"
+    },
+    "category_title": {
+      "de": "Miete, unbewegliche Wirtschaftsgüter",
+      "en": "Rent, Immovable Assets"
+    },
+    "category_description": {
+      "de": "Mietkosten für unbewegliche Wirtschaftsgüter im betrieblichen Einsatz. Beispiele: Büroräume, Ladengeschäft, Lagerflächen.",
+      "en": "Rental costs for immovable property used for business. Examples: office space, retail store, warehouse rental."
+    },
+    "skr04": 6310,
+    "skr03": 4210,
+    "type": "Services"
+  },
+  {
+    "id": "f6ff2f6e-f03d-c703-0e29-275d1786a23d",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Umsatzsteuer frühere Jahre",
+      "en": "VAT Earlier Years"
+    },
+    "category_description": {
+      "de": "Offene oder korrigierte Umsatzsteuer aus Jahren vor dem Vorjahr. Beispiele: Korrekturen alter Umsatzsteuererklärungen, Prüfungsanpassungen.",
+      "en": "Outstanding or corrected VAT from years before the previous year. Examples: corrections of old VAT returns, audit adjustments."
+    },
+    "skr04": 3845,
+    "skr03": 1785,
+    "type": "Services"
+  },
+  {
+    "id": "4a0e5274-976a-42bc-74bc-65f52593cced",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Gewerbesteuer",
+      "en": "Trade Tax"
+    },
+    "category_description": {
+      "de": "Zahlungen der Gewerbesteuer an die Gemeinde oder Stadt, basierend auf dem Gewerbesteuermessbetrag vom Finanzamt. Relevant für Gewerbetreibende, nicht für Freiberufler. Beispiele: Vorauszahlungen der Gewerbesteuer, Abschlusszahlung der Gewerbesteuer nach Erhalt des Bescheids.",
+      "en": "Your trade tax (Gewerbesteuer)"
+    },
+    "skr04": 7610,
+    "skr03": 4320,
+    "type": "Services"
+  },
+  {
+    "id": "b387b044-3a8a-2f64-92f7-a64649ff379e",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Umsatzsteuer-Vorauszahlungen 1/11",
+      "en": "VAT Prepayments 1/11"
+    },
+    "category_description": {
+      "de": "Wählen Sie diese Kategorie, wenn es sich um Ihre jährliche Sondervorauszahlung an das Finanzamt handelt, die normalerweise im Februar bezahlt wird. Zweck dieser Zahlung ist die Dauerfristverlängerung – also ein Monat mehr Zeit für Ihre Umsatzsteuer-Voranmeldungen. Der Betrag entspricht 1/11 der gesamten Umsatzsteuer des Vorjahres. Diese Zahlung wird als Kaution und nicht als Betriebsausgabe behandelt.",
+      "en": "Choose this category if this was your special, once-a-year payment to the tax office (Finanzamt), usually made in February. Its purpose was to get a one-month filing extension for your VAT returns. The amount is calculated as 1/11th of your total VAT from last year. This is treated as a temporary deposit, not an expense."
+    },
+    "skr04": 3830,
+    "skr03": 1781,
+    "type": "Services"
+  },
+  {
+    "id": "87bb5770-d1d3-6f95-16de-eb69bb054f2d",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Umsatzsteuer laufendes Jahr",
+      "en": "VAT Current Year"
+    },
+    "category_description": {
+      "de": "Fällige Umsatzsteuer des laufenden Geschäftsjahres. Beispiele: monatliche Umsatzsteuervoranmeldungen, laufende Umsatzsteuerverbindlichkeiten.",
+      "en": "Collected and payable VAT for the current fiscal year. Examples: monthly VAT declarations, ongoing sales tax obligations."
+    },
+    "skr04": 3840,
+    "skr03": 1782,
+    "type": "Services"
+  },
+  {
+    "id": "ea40d576-5e01-f184-9c09-2654c25b2990",
+    "group_title": {
+      "de": "Steuern & Versicherungen",
+      "en": "Taxes & Insurances"
+    },
+    "category_title": {
+      "de": "Soziale Abgaben, Altersversorgung",
+      "en": "Social Contributions, Pension Provision"
+    },
+    "category_description": {
+      "de": "Pflichtbeiträge zur Sozialversicherung und Altersvorsorge für Arbeitnehmer. Beispiele: Krankenversicherung, Rentenversicherung, Arbeitslosenbeiträge.",
+      "en": "Mandatory social contributions and pension-related payments for employees. Examples: health insurance, pension insurance, unemployment contributions."
+    },
+    "skr04": 6100,
+    "skr03": 4144,
+    "type": "Services"
+  },
+  {
+    "id": "1d78637f-e1a9-fb35-4381-b417bd9b4b48",
+    "group_title": {
+      "de": "Zinsen & Bankgebühren",
+      "en": "Interest & Bank charges"
+    },
+    "category_title": {
+      "de": "Zinsen und ähnliche Aufwendungen",
+      "en": "Interest and Similar Expenses"
+    },
+    "category_description": {
+      "de": "Zinsaufwendungen für Kredite, Darlehen oder Finanzierungen, die betrieblich genutzt werden. Beispiele: Zinsen für Betriebskredit, Finanzierungskosten beim Ratenkauf, Sollzinsen auf Kontokorrent.",
+      "en": "Interest expenses for loans, financing or credit lines used for business purposes. Examples: interest on business loan, financing charges on installment purchase, overdraft interest."
+    },
+    "skr04": 7300,
+    "skr03": 6855,
+    "type": "Services"
+  },
+  {
+    "id": "2ef8433e-ad7f-1d61-1633-b87eb29496f7",
+    "group_title": {
+      "de": "Zinsen & Bankgebühren",
+      "en": "Interest & Bank charges"
+    },
+    "category_title": {
+      "de": "Nebenkosten des Geldverkehrs",
+      "en": "Incidental Costs of Money Transactions"
+    },
+    "category_description": {
+      "de": "Bankgebühren und Transaktionskosten im Zusammenhang mit deinem Geschäftskonto. Beispiele: Kontoführungsgebühr, SEPA-Gebühr, Gebühr für Auslandsüberweisung, Bargeldeinzahlung am Schalter.",
+      "en": "Bank charges and transaction costs related to your business account. Examples: account maintenance fee, SEPA fee, fee for international transfers, cash deposit fee."
+    },
+    "skr04": 6855,
+    "skr03": 4970,
+    "type": "Services"
+  },
+  {
+    "id": "75b76d5b-5df9-f402-0caa-cdee94c662bd",
+    "group_title": {
+      "de": "Fahrzeuganschaffung & Leasing",
+      "en": "Vehicle Purchase & Leasing"
+    },
+    "category_title": {
+      "de": "Autokauf",
+      "en": "Purchase Car"
+    },
+    "category_description": {
+      "de": "Kauf eines Fahrzeugs für die geschäftliche Nutzung. Beispiele: Pkw-Kauf, Zahlung an Autohaus, Erwerb eines gebrauchten Firmenwagens.",
+      "en": "Purchase of a vehicle for business use. Examples: buying a car, payment to dealership, purchase of a used company car."
+    },
+    "skr04": "0520",
+    "skr03": "0320",
+    "type": "Goods"
+  },
+  {
+    "id": "ce85abec-2954-0916-371f-44f507fd9cfd",
+    "group_title": {
+      "de": "Fahrzeuganschaffung & Leasing",
+      "en": "Vehicle Purchase & Leasing"
+    },
+    "category_title": {
+      "de": "Lkw-Kauf",
+      "en": "Purchase Truck"
+    },
+    "category_description": {
+      "de": "Anschaffung von Nutzfahrzeugen für betriebliche Zwecke. Beispiele: Transporter, Lieferwagen, kleiner Lkw.",
+      "en": "Acquisition of utility vehicles for business operations. Examples: van, delivery vehicle, light-duty truck."
+    },
+    "skr04": "0540",
+    "skr03": "0350",
+    "type": "Goods"
+  },
+  {
+    "id": "7ac8d513-8e02-2fe9-4477-55b5e068d0f4",
+    "group_title": {
+      "de": "Fahrzeuganschaffung & Leasing",
+      "en": "Vehicle Purchase & Leasing"
+    },
+    "category_title": {
+      "de": "Kauf Sonstiges",
+      "en": "Purchase Other"
+    },
+    "category_description": {
+      "de": "Anschaffungskosten für sonstige betriebliche Fortbewegungsmittel, die nicht unter klassische Pkw oder Lkw fallen. Beispiele: E-Bike für Lieferdienste, Anhänger, Elektroroller, Lastenrad.",
+      "en": "Acquisition costs for other business-related means of transport that are not standard cars or trucks. Examples: e-bike for deliveries, trailer, electric scooter, cargo bike."
+    },
+    "skr04": "0560",
+    "skr03": "0380",
+    "type": "Goods"
+  },
+  {
+    "id": "1bf5f8c3-2c7b-5308-09ba-b10fee393ab8",
+    "group_title": {
+      "de": "Fahrzeuganschaffung & Leasing",
+      "en": "Vehicle Purchase & Leasing"
+    },
+    "category_title": {
+      "de": "Mietleasing Kfz",
+      "en": "Car Leasing"
+    },
+    "category_description": {
+      "de": "Monatliche Leasingraten für geschäftlich genutzte Fahrzeuge. Beispiele: Leasingvertrag für Firmenwagen, Rate für Hybridfahrzeug.",
+      "en": "Monthly leasing payments for business vehicles. Examples: leasing agreement for company car, hybrid vehicle installment."
+    },
+    "skr04": 6560,
+    "skr03": 4570,
+    "type": "Services"
+  },
+  {
+    "id": "acab98e7-0965-116b-2869-bf8c022433b0",
+    "group_title": {
+      "de": "Fahrzeuganschaffung & Leasing",
+      "en": "Vehicle Purchase & Leasing"
+    },
+    "category_title": {
+      "de": "Mietleasing Elektrofahrzeuge",
+      "en": "Electric Vehicle Leasing"
+    },
+    "category_description": {
+      "de": "Leasing von elektrisch betriebenen Fahrzeugen zur geschäftlichen Nutzung. Beispiele: E-Auto-Leasing, Leasingrate für Tesla Model 3.",
+      "en": "Leasing of electric vehicles for business use. Examples: e-car leasing, leasing installment for Tesla Model 3."
+    },
+    "skr04": 6565,
+    "skr03": 4540,
+    "type": "Services"
+  },
+  {
+    "id": "d57f740d-958d-3cff-dfee-6a866624b0d8",
+    "group_title": {
+      "de": "Leasing",
+      "en": "Leasing"
+    },
+    "category_title": {
+      "de": "Computer-Leasing",
+      "en": "Computer lease"
+    },
+    "category_description": {
+      "de": "Monatliche oder periodische Zahlungen für geleaste IT‑Geräte, die du geschäftlich nutzt. Nutze diese Kategorie, wenn du Hardware nicht kaufst, sondern least – also kein Eigentum erwirbst. Beispiele: Leasingraten für Laptop, Desktop‑PC, Server, Büro‑Drucker oder Kopierer.",
+      "en": "Monthly or periodic payments for leased IT hardware used in your business. Use this category when you lease equipment instead of purchasing it – meaning you do not own it. Examples: leasing installments for laptop, desktop PC, server, office printer or copier."
+    },
+    "skr04": 6498,
+    "skr03": 4810,
+    "type": "Goods"
+  },
+  {
+    "id": "4b95e9e1-c788-0a65-2cc0-d736163e6f0e",
+    "group_title": {
+      "de": "Leasing",
+      "en": "Leasing"
+    },
+    "category_title": {
+      "de": "Ratenkauf",
+      "en": "Instalment purchase"
+    },
+    "category_description": {
+      "de": "Anschaffung von Geräten oder Ausstattung über mehrere Raten. Wenn du den Kaufpreis sofort zahlst, verwende bitte die passende Kategorie wie 'Operating Equipment' oder 'Vehicle Purchase'. Beispiele: Kamera mit Ratenzahlung, Monitor in monatlichen Teilbeträgen, Drucker mit Finanzierung.",
+      "en": "Purchasing equipment through installment payments. If you paid the full amount upfront, use a specific category like 'Operating Equipment' or 'Vehicle Purchase'. Examples: financed camera, monitor paid monthly, printer on installment plan."
+    },
+    "skr04": 6250,
+    "skr03": 4815,
+    "type": "Goods"
+  },
+  {
+    "id": "c9aab636-000f-6931-d067-72a83a7f9e6c",
+    "group_title": {
+      "de": "Leasing",
+      "en": "Leasing"
+    },
+    "category_title": {
+      "de": "Mieten für Einrichtungen bewegliche WG",
+      "en": "Rents for Equipment Movable Assets"
+    },
+    "category_description": {
+      "de": "Mietkosten für vorübergehend genutzte bewegliche Ausstattung wie Maschinen oder Büromöbel. Wenn du die Geräte geleast hast, verwende 'Computer Lease'. Bei Kauf: 'Operating Equipment'. Beispiele: Miete für Labelgerät, Messeausstattung, kurzfristige Möblierung fürs Büro.",
+      "en": "Rental costs for temporarily used movable equipment like machinery or office furniture. If the item is leased, use 'Computer Lease'. If purchased: 'Operating Equipment'. Examples: rental label printer, trade fair setup, short-term office furniture rental."
+    },
+    "skr04": 6835,
+    "skr03": 4215,
+    "type": "Goods"
+  },
+  {
+    "id": "a0a2e316-9a76-73b1-79e6-88688dc8c30e",
+    "group_title": {
+      "de": "Leasing",
+      "en": "Leasing"
+    },
+    "category_title": {
+      "de": "Sofortabschreibung GWG",
+      "en": "Immediate Depreciation Low-Value Assets"
+    },
+    "category_description": {
+      "de": "Ausgaben für Arbeitsmittel unter 800 € netto, die sofort abgeschrieben werden dürfen. Für höherwertige Käufe verwende bitte 'Operating Equipment'. Beispiele: Tastatur, einfache Schreibtischlampe, Headset, kleiner Scanner.",
+      "en": "Expenses for business items under €800 net that can be fully depreciated immediately. For higher-value items, use 'Operating Equipment'. Examples: keyboard, basic desk lamp, headset, small scanner."
+    },
+    "skr04": 6260,
+    "skr03": 4855,
+    "type": "Goods"
+  },
+  {
+    "id": "61d3f686-86d5-a295-7392-08a034e49288",
+    "group_title": {
+      "de": "Investitionen",
+      "en": "Investments"
+    },
+    "category_title": {
+      "de": "Land",
+      "en": "Land"
+    },
+    "category_description": {
+      "de": "Kosten für den Erwerb von Grundstücken oder Landflächen, die betrieblich genutzt werden. Beispiele: Grundstück für Bürogebäude, Gewerbefläche für Werkstatt, Baugrundstück.",
+      "en": "Expenses for purchasing land or plots for business use. Examples: land for an office building, industrial lot for a workshop, commercial construction site."
+    },
+    "skr04": "0235",
+    "skr03": "0085",
+    "type": "Goods"
+  },
+  {
+    "id": "ec13e3f4-8bfc-004a-984d-43f37ba30b73",
+    "group_title": {
+      "de": "Investitionen",
+      "en": "Investments"
+    },
+    "category_title": {
+      "de": "Konstruktion",
+      "en": "Construction"
+    },
+    "category_description": {
+      "de": "Ausgaben für den Bau neuer Gebäude oder bauliche Erweiterungen bestehender Immobilien. Beispiele: Neubau eines Bürogebäudes, Anbau an bestehende Halle, Baukosten für Lagerflächen.",
+      "en": "Costs for constructing new buildings or extending existing business premises. Examples: new office building construction, extension to existing warehouse, construction of storage space."
+    },
+    "skr04": "0240",
+    "skr03": "0090",
+    "type": "Goods"
+  },
+  {
+    "id": "dcc2a242-0206-265d-74f0-250751b81f55",
+    "group_title": {
+      "de": "Investitionen",
+      "en": "Investments"
+    },
+    "category_title": {
+      "de": "Betriebs- und Geschäftsausstattung",
+      "en": "Operating and business equipment"
+    },
+    "category_description": {
+      "de": "Investitionen in langlebige, fest verbaute Ausstattung von Geschäftsräumen. Wird genutzt, wenn es sich nicht um bewegliche Geräte handelt (→ siehe 'Operating Equipment'). Beispiele: fest installierte Theken, Empfangsmöbel, Einbauküche im Büro.",
+      "en": "Investments in long-lasting, fixed equipment used in business premises. Use this for non-movable items (for movable, see 'Operating Equipment'). Examples: built-in counters, reception area furniture, office kitchen installation."
+    },
+    "skr04": "0500",
+    "skr03": "0300",
+    "type": "Goods"
+  },
+  {
+    "id": "fe519073-dca6-325a-e5df-56c1d1e0ff74",
+    "group_title": {
+      "de": "Investitionen",
+      "en": "Investments"
+    },
+    "category_title": {
+      "de": "Installationen",
+      "en": "Installations"
+    },
+    "category_description": {
+      "de": "Kosten für technische Installationen in betrieblich genutzten Immobilien. Dazu zählen fest verbaute Anlagen, die der Infrastruktur dienen. Beispiele: Elektroinstallation, Sanitäranlagen, Klimaanlage, Netzwerkverkabelung.",
+      "en": "Costs for technical installations in business properties. This includes permanently installed infrastructure systems. Examples: electrical systems, plumbing, air conditioning, network cabling."
+    },
+    "skr04": "0680",
+    "skr03": "0450",
+    "type": "Goods"
+  },
+  {
+    "id": "406bcea7-df80-2925-db7e-9c28a0c37216",
+    "group_title": {
+      "de": "Finanzielle Vermögenswerte und Verbindlichkeiten",
+      "en": "Financial Assets and Liabilities"
+    },
+    "category_title": {
+      "de": "Kautionen",
+      "en": "Deposits"
+    },
+    "category_description": {
+      "de": "Sicherheitsleistungen an Vermieter, Lieferanten oder Dienstleister, die als Finanzanlagen gelten. Es handelt sich um rückzahlbare Beträge und keine Ausgaben im engeren Sinne. Beispiele: Mietkautionen, Kautionen für Geräte, Kautionen bei Strom- oder Internetanbietern.",
+      "en": "Security deposits paid to landlords, suppliers, or service providers as financial assets. These are typically refundable amounts and not considered expenses. Examples include rental deposits, equipment deposits, or deposits for utility contracts."
+    },
+    "skr04": 1350,
+    "skr03": 1525,
+    "type": "FinancialAsset"
+  },
+  {
+    "id": "14b9e850-de33-62fe-5229-c470a8bc0acd",
+    "group_title": {
+      "de": "Finanzielle Vermögenswerte und Verbindlichkeiten",
+      "en": "Financial Assets and Liabilities"
+    },
+    "category_title": {
+      "de": "Darlehen (sonstige VermG)",
+      "en": "Loans (other assets)"
+    },
+    "category_description": {
+      "de": "Darlehen an Dritte, die nicht zum gewöhnlichen Geschäftsbetrieb gehören. Sie werden als Finanzanlagen verbucht. Beispiele: Darlehen an Geschäftspartner, Mitarbeiter oder verbundene Unternehmen.",
+      "en": "Loans granted to third parties that are not part of regular operating activity. These are recorded as financial assets. Examples include loans to partners, employees, or related companies."
+    },
+    "skr04": 1360,
+    "skr03": 1550,
+    "type": "FinancialAsset"
+  },
+  {
+    "id": "53cd09ee-f73a-e713-6be1-5fff41c36284",
+    "group_title": {
+      "de": "Finanzielle Vermögenswerte und Verbindlichkeiten",
+      "en": "Financial Assets and Liabilities"
+    },
+    "category_title": {
+      "de": "Privatsteuern (VH), EK",
+      "en": "Private taxes (owner), equity"
+    },
+    "category_description": {
+      "de": "Vom Unternehmen gezahlte private Steuerverpflichtungen des Unternehmers, die nicht als Betriebsausgaben abzugsfähig sind. Beispiele: Einkommensteuer, Kirchensteuer, Solidaritätszuschlag.",
+      "en": "Private tax payments made by the business for the owner, which are not deductible as business expenses. Examples include personal income tax, church tax, or solidarity surcharge."
+    },
+    "skr04": 2150,
+    "skr03": 1810,
+    "type": "FinancialAsset"
+  },
+  {
+    "id": "c5fc38c2-4f0d-d32e-a87d-a589d2d545ae",
+    "group_title": {
+      "de": "Finanzielle Vermögenswerte und Verbindlichkeiten",
+      "en": "Financial Assets and Liabilities"
+    },
+    "category_title": {
+      "de": "Unentgeltliche Wertabgaben (VH), EK",
+      "en": "Non-cash withdrawals (owner), equity"
+    },
+    "category_description": {
+      "de": "Sachentnahmen des Unternehmers zur privaten Nutzung, etwa die Nutzung betrieblicher Gegenstände. Diese werden zum Marktwert als Entnahmen bewertet. Beispiele: Privatnutzung eines Firmenwagens oder Laptops.",
+      "en": "Non-cash private withdrawals by the owner, such as the private use of business assets. These are treated as withdrawals at market value. Examples include using a business car or computer for personal purposes."
+    },
+    "skr04": 2130,
+    "skr03": 1880,
+    "type": "FinancialAsset"
+  },
+  {
+    "id": "7a396b11-841c-86b8-8d10-c9af8dbb232c",
+    "group_title": {
+      "de": "Finanzielle Vermögenswerte und Verbindlichkeiten",
+      "en": "Financial Assets and Liabilities"
+    },
+    "category_title": {
+      "de": "Privatentnahmen allgemein (VH), EK",
+      "en": "General private withdrawals (owner), equity"
+    },
+    "category_description": {
+      "de": "Entnahmen von Bargeld oder Vermögenswerten durch den Unternehmer zur privaten Nutzung. Diese mindern das Eigenkapital und stellen keine Betriebsausgaben dar. Beispiele: Bargeldabhebung vom Geschäftskonto, Entnahme von Waren für den Eigenbedarf.",
+      "en": "Withdrawals of cash or assets by the business owner for private use. These reduce the owner's equity and are not business expenses. Examples include cash withdrawals from the business account or taking goods for personal use."
+    },
+    "skr04": 2100,
+    "skr03": 1800,
+    "type": "FinancialAsset"
+  },
+  {
+    "id": "f880383e-e5cd-510f-b7cd-98a66dd0ef7e",
+    "group_title": {
+      "de": "Finanzielle Vermögenswerte und Verbindlichkeiten",
+      "en": "Financial Assets and Liabilities"
+    },
+    "category_title": {
+      "de": "Kreditkartenabrechnung",
+      "en": "Credit card statement"
+    },
+    "category_description": {
+      "de": "Abrechnungen und Salden im Zusammenhang mit der Nutzung einer geschäftlichen Kreditkarte. Dazu zählen Kartenzahlungen, Gebühren und Ausgleichszahlungen an das Kreditkartenunternehmen.",
+      "en": "Settlements and balances related to business credit card use. This includes purchases made by card, fees, and payments to the credit card provider."
+    },
+    "skr04": 3610,
+    "skr03": 1730,
+    "type": "FinancialAsset"
+  },
+  {
+    "id": "0438acad-02ae-1e18-1170-6a273b5392a6",
+    "group_title": {
+      "de": "Andere",
+      "en": "Other"
+    },
+    "category_title": {
+      "de": "Nicht meldepflichtig",
+      "en": "Non-reportable"
+    },
+    "category_description": {
+      "de": "Diese Kategorie ist für Vorgänge gedacht, die nicht als Betriebseinnahmen oder -ausgaben gelten und daher nicht in der Gewinnermittlung berücksichtigt werden. Typische Beispiele sind Privateinlagen oder -entnahmen, Rückzahlung von Darlehen (ohne Zinsen), Zahlung von Kautionen oder durchlaufende Posten wie vorübergehende Kundengelder.",
+      "en": "This category is for transactions that do not count as business income or expenses and are therefore excluded from the profit calculation. Typical examples include private deposits or withdrawals, loan repayments (excluding interest), payments of security deposits, or transitory items such as temporary client funds."
+    },
+    "skr04": 6999,
+    "skr03": 1800,
+    "type": "Services"
+  }
+]

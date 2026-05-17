@@ -300,6 +300,34 @@ If a field is not present on the document, use null.`
 }
 
 /**
+ * get_expense_categories
+ * Returns the full production expense category list.
+ * Each category has: id, group_title (de/en), category_title (de/en),
+ * category_description (de/en), skr04, skr03, type.
+ * Use to validate account_code in bookkeeping entries, or to suggest
+ * the correct SKR-04 code when the agent detects a miscategorization.
+ */
+function get_expense_categories({ group, skr04 } = {}) {
+  const all = readJson('expense_categories.json');
+  let rows = all;
+
+  if (group) {
+    const g = group.toLowerCase();
+    rows = rows.filter(c =>
+      c.group_title.en.toLowerCase().includes(g) ||
+      c.group_title.de.toLowerCase().includes(g)
+    );
+  }
+
+  if (skr04 !== undefined && skr04 !== null) {
+    const code = String(skr04);
+    rows = rows.filter(c => String(c.skr04) === code);
+  }
+
+  return { expense_categories: rows };
+}
+
+/**
  * categorize_invoice
  * Returns suggested SKR-04 account code and VAT/RC metadata for an invoice.
  * In Phase 0: looks up mock data in invoice_categories.json by invoice_id.
@@ -344,7 +372,8 @@ const TOOL_MAP = {
   get_reports_gewst,
   get_tasks,
   recognize_invoice_document,
-  categorize_invoice
+  categorize_invoice,
+  get_expense_categories
 };
 
 async function executeTool(name, input) {
@@ -496,6 +525,18 @@ const TOOL_DEFINITIONS = [
         company_id:  { type: 'string', description: 'Client ID (optional if invoice_id is unique)' }
       },
       required: ['invoice_id']
+    }
+  },
+  {
+    name: 'get_expense_categories',
+    description: 'Returns the full production expense category list (94 categories). Each entry has SKR-04/SKR-03 account codes, group, title (de/en), type (Goods/Services/FinancialAsset). Use to validate whether a bookkeeping entry uses the correct account_code, or to suggest the right code when a miscategorization is detected. Can be filtered by group name or skr04 code.',
+    input_schema: {
+      type: 'object',
+      properties: {
+        group: { type: 'string', description: 'Optional. Filter by group name, e.g. "Technology", "Travel", "Vehicle Operation".' },
+        skr04: { description: 'Optional. Filter by exact SKR-04 account code, e.g. 6837 or "0135".', oneOf: [{ type: 'number' }, { type: 'string' }] }
+      },
+      required: []
     }
   },
   {
