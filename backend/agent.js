@@ -213,6 +213,7 @@ async function analyzeClient(clientId, period, userQuery, threadId = null) {
 
     if (response.stop_reason === 'tool_use') {
       const toolCalls = response.content.filter(b => b.type === 'tool_use');
+      console.log(`[agent] iter ${iterations}: calling ${toolCalls.map(c => c.name).join(', ')}`);
 
       // Execute all tool calls in parallel
       const results = await Promise.all(
