@@ -480,3 +480,129 @@ categorize_invoice({
 
 В продакшене — вызов реального сервиса категоризации. В MVP — поиск по `invoice_categories.json`.
 Если `invoice_id` не найден в mock — возвращается `{ confidence: 0, suggested_account_code: null }`.
+
+---
+
+## 13. Проверка соответствия категорий виду деятельности (C-Act-01)
+
+Задача: убедиться, что категории доходных проводок совместимы с зарегистрированным видом деятельности компании.
+
+### Алгоритм
+
+```
+[Шаг 1] get_company_settings(company_id)
+        → type_of_activity: "Software Development"
+        → legal_form: "Freiberufler"
+
+[Шаг 2] get_bookkeeping_entries(company_id)
+        → отфильтровать записи с type == "income" (входящие доходные проводки)
+        → для каждой: получить account_code
+
+[Шаг 3] Сопоставить account_code с матрицей несовместимости:
+
+  type_of_activity          | Несовместимые account_code (доход)  | Причина
+  --------------------------|-------------------------------------|---------------------------
+  IT / Software / Freelancer| 8510 Mieteinnahmen                  | Арендный доход → §21 EStG
+  IT / Software / Freelancer| 8400 Erlöse Warenverkauf            | Продажа товаров → Gewerbe
+  Fotograf / Designer       | 8510 Mieteinnahmen                  | Аренда ≠ творческая деят.
+  Любой Freiberufler §18    | Gewerbeertrag-счета                 | GewSt не применяется
+  Unternehmensberater       | 8400 Warenverkauf                   | Товары → не консалтинг
+
+  Универсально допустимые (не флажить):
+    8600 Zinsen (проценты), 8730 Skonti, 8736 Provisionen, 8910 Sonstige Erlöse
+
+[Шаг 4] При несовместимости → WARNING C-Act-01
+        { affected_items: [entry_id, invoice_id], account_code, type_of_activity }
+```
+
+### Граничный случай: легитимный побочный доход
+
+Если клиент сдаёт в аренду оборудование коллеге (Sachmiete) — это может быть правомерным доходом, но тогда он **должен быть задекларирован по §21 EStG отдельно**, а не смешан с основной деятельностью. Агент предупреждает об этом, не констатирует ошибку автоматически.
+
+**Тест-кейс (client_006 — Michael Fischer):**
+```
+company_settings.type_of_activity = "Software Development"
+bookkeeping_entry: { id: "entry_006_XXX", account_code: "8510", amount: 500,
+                     description: "Kamera-Verleih an Kollegen" }
+→ WARNING C-Act-01: доход SKR04-8510 не типичен для Software Development
+```
+
+---
+
+## 14. Обнаружение двунаправленных платежей (E-09)
+
+Двунаправленные платежи — наиболее частый источник ошибок у клиентов, работающих с маркетплейсами и оформляющих возвраты. Агент должен выявлять этот паттерн, классифицировать его и проверять корректность оформления.
+
+### Алгоритм обнаружения
+
+```
+[Шаг 1] get_transactions(company_id)
+        → нормализовать counterparty: lowercase, убрать GmbH/AG/Ltd/UG/e.V., trim
+
+[Шаг 2] Сгруппировать по нормализованному counterparty_normalized:
+        {
+          "amazon": [ txn_incoming_1, txn_incoming_2, txn_outgoing_1 ],
+          "max mustermann": [ txn_incoming_A, txn_outgoing_B ]
+        }
+
+[Шаг 3] Для каждой группы с обоими направлениями:
+        incoming_total = sum(amount) for type=="incoming"
+        outgoing_total = sum(amount) for type=="outgoing"
+        fee_ratio = outgoing_total / incoming_total
+
+[Шаг 4] Классифицировать паттерн:
+
+  Паттерн              | Признак                              | Проверка
+  ---------------------|--------------------------------------|------------------------------
+  Маркетплейс-комиссия | outgoing регулярные, fee_ratio 5–30% | A-11: комиссия как Provision?
+  Возврат клиенту      | outgoing ≤ одного incoming, Δt ≤ 60d | A-10: есть Stornorechnung?
+  Кредит-нота          | incoming ≤ одного outgoing, Δt ≤ 90d | Получен документ Gutschrift?
+  Возможный зачёт      | 1 incoming ≈ разнице (net amount)    | Нарушение §11 EStG!
+
+[Шаг 5] Для каждой транзакции в группе:
+        → get_bookkeeping_entries: есть ли отдельная проводка на эту транзакцию?
+        → get_invoices: есть ли соответствующий инвойс/Gutschrift?
+        → Если нет → флажок по соответствующему правилу (A-10, A-11)
+        → Если проводок меньше, чем транзакций → возможный нетто-зачёт → E-09 ERROR
+```
+
+### Ключевое правило: запрет нетто-зачёта в EÜR
+
+В системе **Einnahmenüberschussrechnung (§4 Abs. 3 EStG)** действует принцип **Zufluss-Abfluss (§11 EStG)**:
+- Каждый денежный поток записывается **в момент реального движения денег**
+- **Зачёт (Aufrechnung) встречных требований запрещён** — даже если стороны договорились о нетто-расчёте
+- Исключение: если платёжная система сама перечисляет нетто (Amazon Auszahlung) — это не зачёт, но тогда комиссия должна быть отражена **отдельной расходной проводкой**
+
+### Типичные сценарии
+
+**Сценарий A — Маркетплейс (client_003, Amazon FBA):**
+```
+txn_003_incoming: { counterparty: "Amazon EU SARL", type: "incoming", amount: 820.00 }
+txn_003_outgoing: { counterparty: "Amazon EU SARL", type: "outgoing", amount: 147.60 }
+  → fee_ratio = 147.60 / 820.00 = 18% → маркетплейс-комиссия
+  → entry_003_XXX: account_code=8400, amount=820.00  ← ошибка: доход должен быть 967.60
+  → нет отдельной расходной проводки на 147.60 (SKR04 6300) ← ошибка A-11
+  → E-09 WARNING: двунаправленные платежи Amazon не оформлены раздельно
+```
+
+**Сценарий B — Возврат клиенту (client_007, Sarah Klein):**
+```
+txn_007_incoming: { counterparty: "Hans Schmidt", type: "incoming", amount: 120.00,
+                    date: "2026-03-05", ref: "Kurs März" }
+txn_007_outgoing: { counterparty: "Hans Schmidt", type: "outgoing", amount: 120.00,
+                    date: "2026-03-21", ref: "Erstattung Kurs März" }
+  → Δt = 16 дней, суммы равны → возврат клиенту
+  → нет инвойса с отрицательной суммой ← ошибка A-10
+  → нет проводки по outgoing транзакции ← нарушение Zufluss-Abfluss
+  → E-09 WARNING: контрагент "Hans Schmidt" — обе стороны без документального оформления
+```
+
+**Сценарий C — Частичный кредит от поставщика:**
+```
+txn_004_outgoing: { counterparty: "IT-Lieferant GmbH", amount: 500.00, date: "2026-01-15" }
+txn_004_incoming: { counterparty: "IT-Lieferant GmbH", amount: 85.00, date: "2026-01-28" }
+  → Δt = 13 дней, incoming = 17% → кредит-нота поставщика (рекламация?)
+  → проверить: есть ли Gutschrift от IT-Lieferant GmbH?
+  → входящая сумма должна быть проведена как снижение расхода, не как доход
+  → E-09 WARNING: требует ручной проверки
+```

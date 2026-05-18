@@ -144,8 +144,10 @@ backend/data/
 | client_005 — Lisa Braun, Fotografin | Оборудование > €800 нетто проведено как расход, актив не создан | B-EÜR-02 | Транзакция: камера €2 400, account_code=6830 (Büroausstattung); нет записи в assets.json с соответствующей суммой |
 | client_005 | + Неправдоподобный сплит (100% бизнес) | E-02 | Телефон: private_use_split=0.00 (100% бизнес), домашний интернет: private_use_split=0.00 — без Fahrtenbuch-аналога |
 | client_006 — Michael Fischer, Software-Entwickler | SaaS/лицензии учтены как Bürobedarf вместо Software | B-Cat-01 | Проводки Figma/GitHub/AWS с account_code=6815 (Bürobedarf) вместо 6832 (Software/Lizenzen) |
+| client_006 | + Доход проведён под категорией, несовместимой с видом деятельности | C-Act-01 | Одна проводка: доход account_code=8510 (Mieteinnahmen) — аренда оборудования указана как "rental income"; company.type_of_activity="Software Development"; категория 8510 не соответствует IT-профилю |
 | client_007 — Sarah Klein, Online-Yoga-Trainerin | Возврат за отменённый курс без Stornorechnung | A-10 | Исходящая транзакция с ref "Erstattung Kurs März" — нет корректирующего инвойса с отрицательной суммой |
 | client_007 | + Домашний интернет 100% бизнес при совмещённом адресе | E-02 | internet: private_use_split=0.00, при этом home_address=work_address в business_context |
+| client_003 — Maria Schmidt, Amazon FBA | + Двунаправленные платежи Amazon: Auszahlung (входящий) + FBA-fee (исходящий) без отдельных проводок | E-09, A-11 | Amazon фигурирует как counterparty в обоих направлениях: incoming txn "Amazon Auszahlung" + outgoing txn "Amazon FBA Gebühren"; исходящая сумма не проведена отдельной расходной проводкой — скрытый нетто-зачёт |
 
 #### Принцип скрытой ошибки
 
@@ -197,14 +199,14 @@ If business_context is missing or empty, the agent must warn:
 
 ## Tax checks to implement
 
-See `Tax_Checks_Catalog.md` for all 37 rules across 6 blocks:
+See `Tax_Checks_Catalog.md` for all 39 rules across 6 blocks:
 - **Block A:** Invoice ↔ stored data + document recognition (8 rules: A-01, A-02, A-05, A-06, A-09, A-10, A-11, A-12)
 - **Block B-Core:** Accounting contradictions — always applicable (5 rules: B-01, B-05, B-08, B-Cat-01, B-09)
 - **Block B-EÜR:** Issues affecting annual EÜR report (4 rules: B-EÜR-02, B-02, B-03, B-EÜR-01)
 - **Block B-UStVA:** Issues affecting VAT return UStVA (6 rules: B-Type-01, B-04, B-06, B-07, B-UStVA-01, B-UStVA-02)
 - **Block B-ZM:** Issues affecting EU B2B summary report ZM (2 rules)
-- **Block C:** Settings/status contradictions (4 rules)
-- **Block E:** Logical consistency checks — second pass (8 rules)
+- **Block C:** Settings/status contradictions (5 rules: C-01, C-02, C-04, C-Act-01, C-08)
+- **Block E:** Logical consistency checks — second pass (9 rules: E-01 … E-09)
 
 ---
 
