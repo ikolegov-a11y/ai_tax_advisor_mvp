@@ -370,6 +370,84 @@ Until then, Phase 5 testing uses manual inspection of outputs.
 
 ---
 
+### Phase 6 — Task Lifecycle & AI-Assisted Fixes ⚠️ TO BE DESIGNED
+
+**Goal:** Findings from the advisor don't disappear after the user closes the report.
+They become persistent tasks, resurface on schedule, and can be resolved via AI.
+
+**Status:** Placeholder — design in detail before implementation.
+
+---
+
+#### Key questions to answer before Phase 6
+
+**1. When are tasks created?**
+- After every `/api/analyze` call, agent findings → `tasks.json` entries
+- Or only for findings above a severity threshold (ERROR always, WARNING optional)?
+- Duplicate handling: if the same finding fires again next month → update existing task or create new?
+
+**2. Task lifecycle states**
+```
+open → snoozed → in_progress → resolved | dismissed
+```
+- `open` — finding detected, user hasn't acted
+- `snoozed` — user said "remind me later" (with explicit re-surface date)
+- `in_progress` — user started AI-assisted fix
+- `resolved` — fix confirmed (either by AI re-check or manual mark)
+- `dismissed` — user explicitly said "not relevant for me"
+
+**3. AI-assisted fix flow**
+When a user clicks "Fix with AI" on a task:
+- Agent proposes specific changes: "Change entry_001_009: set reverse_charge_flag=true, vat_rate=0.00"
+- User sees diff: what will change and why
+- Options: "Apply all", "Apply one by one", "Decline"
+- After applying: agent re-runs the specific check to confirm it's resolved
+
+**4. Partial application**
+- User applies some fixes but not others → task stays `in_progress`, tracks which items are done
+- Unapplied items resurface in the next analysis cycle
+
+**5. Re-surface logic (avoid noise, don't forget)**
+- ERROR tasks: resurface every analysis cycle until resolved or explicitly dismissed
+- WARNING tasks: resurface once per month (or before the relevant deadline — UStVA, EÜR)
+- INFO tasks: resurface once per quarter, or only when user requests
+- Dismissed tasks: never resurface automatically, but visible in task history
+- Hard rule: never show the same finding more than once per session
+
+**6. Response format extension**
+Current agent output: `{ errors[], warnings[], ok_checks[], steuerreserve }`
+Phase 6 addition: each finding gets a `task_action` field:
+```json
+{
+  "id": "A-02",
+  "title": "...",
+  "affected_items": ["entry_001_009"],
+  "task_action": {
+    "type": "ai_fix_available",
+    "proposed_changes": [
+      { "entity": "bookkeeping_entry", "id": "entry_001_009",
+        "field": "reverse_charge_flag", "from": false, "to": true },
+      { "entity": "bookkeeping_entry", "id": "entry_001_009",
+        "field": "vat_rate", "from": 0.19, "to": 0.00 }
+    ],
+    "requires_human": false
+  }
+}
+```
+`type` options:
+- `ai_fix_available` — agent can propose exact changes
+- `human_review_needed` — agent can explain but can't auto-fix (e.g. missing invoice)
+- `settings_change` — fix requires changing company settings (e.g. VAT status)
+- `info_only` — finding is informational, no fix needed
+
+**7. Open design questions (decide before Phase 6)**
+- Where is task state persisted? (In-memory for Phase 0, DB in production)
+- Who triggers re-analysis? User manually or scheduled cron?
+- Can a task be "resolved" without re-running the agent? (Manual confirm)
+- How to handle conflicts: user dismisses a task, but agent finds it again next cycle?
+
+---
+
 ### Note on proactive checks in MVP
 
 All checks — including those tagged `pre-UStVA`, `pre-EÜR`, `pre-ZM` — are triggered

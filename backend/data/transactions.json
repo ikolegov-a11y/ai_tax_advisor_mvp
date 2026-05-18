@@ -452,7 +452,7 @@
     "counterparty": "Adobe Systems Software Ireland Ltd",
     "payment_reference": "Lightroom + Photoshop März 2026",
     "type": "outgoing",
-    "linked_invoice_id": null
+    "linked_invoice_id": "inv_005_008"
   },
 
   {
@@ -481,7 +481,7 @@
     "client_id": "client_006",
     "id": "txn_006_003",
     "date": "2026-02-10",
-    "amount": 7140.00,
+    "amount": 6000.00,
     "currency": "EUR",
     "counterparty": "TechSolutions Wien GmbH",
     "payment_reference": "API Integration Projekt / INV-2026-002",
@@ -598,5 +598,131 @@
     "payment_reference": "Zoom Pro März 2026",
     "type": "outgoing",
     "linked_invoice_id": "inv_007_003"
+  },
+
+  {
+    "client_id": "client_003",
+    "id": "txn_003_008",
+    "date": "2026-03-15",
+    "amount": 820.00,
+    "currency": "EUR",
+    "counterparty": "Amazon EU SARL",
+    "payment_reference": "FBA Auszahlung März 2026 — Settlement ID 3051-2026-03",
+    "type": "incoming",
+    "linked_invoice_id": "inv_003_008"
+  },
+  {
+    "client_id": "client_003",
+    "id": "txn_003_009",
+    "date": "2026-02-28",
+    "amount": 89.00,
+    "currency": "EUR",
+    "counterparty": "Amazon EU SARL",
+    "payment_reference": "Rückerstattung Bestellung #DE-2025-0192",
+    "type": "incoming",
+    "linked_invoice_id": null
+  },
+
+  {
+    "client_id": "client_004",
+    "id": "txn_004_008",
+    "date": "2026-02-10",
+    "amount": 357.00,
+    "currency": "EUR",
+    "counterparty": "Progmatic Sp. z o.o.",
+    "payment_reference": "Software Consulting Tools Feb / INV-PL-2026-0214",
+    "type": "outgoing",
+    "linked_invoice_id": "inv_004_006"
+  },
+  {
+    "client_id": "client_004",
+    "id": "txn_004_009",
+    "date": "2026-03-12",
+    "amount": 178.50,
+    "currency": "EUR",
+    "counterparty": "CloudPlatform B.V.",
+    "payment_reference": "Platform Subscription März / INV-NL-2026-1103",
+    "type": "outgoing",
+    "linked_invoice_id": "inv_004_007"
+  },
+
+  {
+    "client_id": "client_005",
+    "id": "txn_005_008",
+    "date": "2026-03-05",
+    "amount": 2856.00,
+    "currency": "EUR",
+    "counterparty": "Foto Koch GmbH",
+    "payment_reference": "Canon EOS R5 Mark II Kauf / Rg. FK-2026-03-8821",
+    "type": "outgoing",
+    "linked_invoice_id": "inv_005_007"
+  },
+  {
+    "client_id": "client_005",
+    "id": "txn_005_009",
+    "date": "2026-02-28",
+    "amount": 49.90,
+    "currency": "EUR",
+    "counterparty": "Vodafone GmbH",
+    "payment_reference": "Mobilfunk Februar 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+  {
+    "client_id": "client_005",
+    "id": "txn_005_010",
+    "date": "2026-02-28",
+    "amount": 39.99,
+    "currency": "EUR",
+    "counterparty": "Telekom Deutschland GmbH",
+    "payment_reference": "DSL Internet Februar 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+
+  {
+    "client_id": "client_006",
+    "id": "txn_006_008",
+    "date": "2026-02-05",
+    "amount": 11.01,
+    "currency": "EUR",
+    "counterparty": "Figma Inc",
+    "payment_reference": "Figma Professional Feb 2026",
+    "type": "outgoing",
+    "linked_invoice_id": "inv_006_007"
+  },
+  {
+    "client_id": "client_006",
+    "id": "txn_006_009",
+    "date": "2026-02-15",
+    "amount": 500.00,
+    "currency": "EUR",
+    "counterparty": "Klaus Weber",
+    "payment_reference": "Kamera-Verleih Januar 2026",
+    "type": "incoming",
+    "linked_invoice_id": "inv_006_008"
+  },
+
+  {
+    "client_id": "client_007",
+    "id": "txn_007_007",
+    "date": "2026-03-20",
+    "amount": 120.00,
+    "currency": "EUR",
+    "counterparty": "Hans Müller",
+    "payment_reference": "Erstattung Yoga-Kurs März 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+  {
+    "client_id": "client_007",
+    "id": "txn_007_008",
+    "date": "2026-03-31",
+    "amount": 44.99,
+    "currency": "EUR",
+    "counterparty": "Telekom Deutschland GmbH",
+    "payment_reference": "DSL-Anschluss März 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
   }
 ]
