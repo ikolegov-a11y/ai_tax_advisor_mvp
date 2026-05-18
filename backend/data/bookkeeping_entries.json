@@ -19,6 +19,7 @@
     "linked_transaction_id": "txn_001_001",
     "linked_invoice_id": "inv_001_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "TechCorp München GmbH"
   },
   {
@@ -41,6 +42,7 @@
     "linked_transaction_id": "txn_001_002",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Telekom Deutschland GmbH"
   },
   {
@@ -63,6 +65,7 @@
     "linked_transaction_id": "txn_001_003",
     "linked_invoice_id": "inv_001_002",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Wien Digital AT GmbH"
   },
   {
@@ -86,6 +89,7 @@
     "linked_invoice_id": "inv_001_003",
     "linked_asset_id": "asset_001_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Apple Store München"
   },
   {
@@ -109,6 +113,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_001_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
   {
@@ -131,6 +136,7 @@
     "linked_transaction_id": "txn_001_005",
     "linked_invoice_id": "inv_001_004",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "TechCorp München GmbH"
   },
   {
@@ -154,6 +160,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_001_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
   {
@@ -176,6 +183,7 @@
     "linked_transaction_id": "txn_001_008",
     "linked_invoice_id": "inv_001_005",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "DataStream Berlin GmbH"
   },
   {
@@ -198,6 +206,7 @@
     "linked_transaction_id": "txn_001_009",
     "linked_invoice_id": "inv_001_006",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "OpenAI Ireland Limited"
   },
   {
@@ -220,6 +229,7 @@
     "linked_transaction_id": "txn_002_c1_2025",
     "linked_invoice_id": "inv_002_c1_2025",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Reinigung Express Hamburg GmbH"
   },
   {
@@ -242,6 +252,7 @@
     "linked_transaction_id": "txn_002_c2_2025",
     "linked_invoice_id": "inv_002_c2_2025",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Reinigung Express Hamburg GmbH"
   },
   {
@@ -264,6 +275,7 @@
     "linked_transaction_id": "txn_002_c3_2025",
     "linked_invoice_id": "inv_002_c3_2025",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Reinigung Express Hamburg GmbH"
   },
   {
@@ -286,6 +298,7 @@
     "linked_transaction_id": "txn_002_c4_2025",
     "linked_invoice_id": "inv_002_c4_2025",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Reinigung Express Hamburg GmbH"
   },
   {
@@ -308,6 +321,7 @@
     "linked_transaction_id": "txn_002_001",
     "linked_invoice_id": "inv_002_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Agentur Kreativ GmbH"
   },
   {
@@ -330,6 +344,7 @@
     "linked_transaction_id": "txn_002_002",
     "linked_invoice_id": "inv_002_002",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Adobe Systems Software Ireland Ltd"
   },
   {
@@ -352,6 +367,7 @@
     "linked_transaction_id": "txn_002_003",
     "linked_invoice_id": "inv_002_003",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Muster Verlag GmbH"
   },
   {
@@ -374,6 +390,7 @@
     "linked_transaction_id": "txn_002_004",
     "linked_invoice_id": "inv_002_004",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Figma Inc"
   },
   {
@@ -396,6 +413,7 @@
     "linked_transaction_id": "txn_002_005",
     "linked_invoice_id": "inv_002_005",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "StartUp Berlin GmbH"
   },
   {
@@ -418,6 +436,7 @@
     "linked_transaction_id": "txn_002_006",
     "linked_invoice_id": "inv_002_006",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Reinigung Express Hamburg GmbH"
   },
   {
@@ -440,6 +459,7 @@
     "linked_transaction_id": "txn_003_001",
     "linked_invoice_id": "inv_003_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon EU SARL"
   },
   {
@@ -462,6 +482,7 @@
     "linked_transaction_id": "txn_003_002",
     "linked_invoice_id": "inv_003_002",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Alibaba Trade Ltd"
   },
   {
@@ -484,6 +505,7 @@
     "linked_transaction_id": "txn_003_003",
     "linked_invoice_id": "inv_003_003",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon EU SARL"
   },
   {
@@ -506,6 +528,7 @@
     "linked_transaction_id": "txn_003_004",
     "linked_invoice_id": "inv_003_004",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "DHL Express GmbH"
   },
   {
@@ -528,6 +551,7 @@
     "linked_transaction_id": "txn_003_005",
     "linked_invoice_id": "inv_003_005",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon EU SARL"
   },
   {
@@ -550,6 +574,7 @@
     "linked_transaction_id": "txn_003_006",
     "linked_invoice_id": "inv_003_006",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon EU SARL"
   },
   {
@@ -572,6 +597,7 @@
     "linked_transaction_id": "txn_003_007",
     "linked_invoice_id": "inv_003_007",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Alibaba Trade Ltd"
   },
   {
@@ -594,6 +620,7 @@
     "linked_transaction_id": "txn_004_001",
     "linked_invoice_id": "inv_004_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Commerzbank AG"
   },
   {
@@ -616,6 +643,7 @@
     "linked_transaction_id": "txn_004_002",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "BP Station Frankfurt Nordwest"
   },
   {
@@ -638,6 +666,7 @@
     "linked_transaction_id": "txn_004_003",
     "linked_invoice_id": "inv_004_002",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Restaurant Metropol Frankfurt GmbH"
   },
   {
@@ -660,6 +689,7 @@
     "linked_transaction_id": "txn_004_004",
     "linked_invoice_id": "inv_004_003",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Deutsche Bank AG"
   },
   {
@@ -682,6 +712,7 @@
     "linked_transaction_id": "txn_004_005",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Shell Station Frankfurt Süd"
   },
   {
@@ -705,6 +736,7 @@
     "linked_invoice_id": "inv_004_004",
     "linked_asset_id": "asset_004_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "BMW Niederlassung Frankfurt GmbH"
   },
   {
@@ -727,6 +759,7 @@
     "linked_transaction_id": "txn_004_007",
     "linked_invoice_id": "inv_004_005",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Allianz SE"
   },
   {
@@ -750,6 +783,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_004_001",
     "is_private_use": true,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
   {
@@ -773,6 +807,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_004_001",
     "is_private_use": true,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
   {
@@ -796,6 +831,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_004_001",
     "is_private_use": true,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
   {
@@ -818,6 +854,7 @@
     "linked_transaction_id": "txn_005_001",
     "linked_invoice_id": "inv_005_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "WeddingDream GbR"
   },
   {
@@ -840,6 +877,7 @@
     "linked_transaction_id": "txn_005_002",
     "linked_invoice_id": "inv_005_002",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon Services Europe SARL"
   },
   {
@@ -862,6 +900,7 @@
     "linked_transaction_id": "txn_005_003",
     "linked_invoice_id": "inv_005_003",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "KölnEvent GmbH"
   },
   {
@@ -884,6 +923,7 @@
     "linked_transaction_id": "txn_005_004",
     "linked_invoice_id": "inv_005_004",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "H. Müller"
   },
   {
@@ -906,6 +946,7 @@
     "linked_transaction_id": "txn_005_005",
     "linked_invoice_id": "inv_005_005",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Restaurant Im Goldenen Einhorn GmbH"
   },
   {
@@ -928,6 +969,7 @@
     "linked_transaction_id": "txn_005_006",
     "linked_invoice_id": "inv_005_006",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "ModeMagazin Köln Verlag GmbH"
   },
   {
@@ -950,6 +992,7 @@
     "linked_transaction_id": "txn_006_001",
     "linked_invoice_id": "inv_006_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Apex Digital Inc"
   },
   {
@@ -972,6 +1015,7 @@
     "linked_transaction_id": "txn_006_002",
     "linked_invoice_id": "inv_006_002",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "GitHub Inc"
   },
   {
@@ -994,6 +1038,7 @@
     "linked_transaction_id": "txn_006_003",
     "linked_invoice_id": "inv_006_003",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "TechSolutions Wien GmbH"
   },
   {
@@ -1016,6 +1061,7 @@
     "linked_transaction_id": "txn_006_004",
     "linked_invoice_id": "inv_006_004",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Vercel Inc"
   },
   {
@@ -1038,6 +1084,7 @@
     "linked_transaction_id": "txn_006_005",
     "linked_invoice_id": "inv_006_005",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Apex Digital Inc"
   },
   {
@@ -1060,6 +1107,7 @@
     "linked_transaction_id": "txn_006_006",
     "linked_invoice_id": "inv_006_006",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon Web Services EMEA SARL"
   },
   {
@@ -1082,6 +1130,7 @@
     "linked_transaction_id": "txn_007_001",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Teachable Inc"
   },
   {
@@ -1104,6 +1153,7 @@
     "linked_transaction_id": "txn_007_002",
     "linked_invoice_id": "inv_007_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Zoom Video Communications Inc"
   },
   {
@@ -1126,6 +1176,7 @@
     "linked_transaction_id": "txn_007_003",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Teachable Inc"
   },
   {
@@ -1148,6 +1199,7 @@
     "linked_transaction_id": "txn_007_004",
     "linked_invoice_id": "inv_007_002",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Bodhi Yoga GmbH"
   },
   {
@@ -1170,6 +1222,7 @@
     "linked_transaction_id": "txn_007_005",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Teachable Inc"
   },
   {
@@ -1192,6 +1245,7 @@
     "linked_transaction_id": "txn_007_006",
     "linked_invoice_id": "inv_007_003",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Zoom Video Communications Inc"
   },
 
@@ -1215,6 +1269,7 @@
     "linked_transaction_id": "txn_003_008",
     "linked_invoice_id": "inv_003_008",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon EU SARL"
   },
   {
@@ -1237,6 +1292,7 @@
     "linked_transaction_id": "txn_003_009",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Amazon EU SARL"
   },
 
@@ -1260,6 +1316,7 @@
     "linked_transaction_id": "txn_004_008",
     "linked_invoice_id": "inv_004_006",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Progmatic Sp. z o.o."
   },
   {
@@ -1282,6 +1339,7 @@
     "linked_transaction_id": "txn_004_009",
     "linked_invoice_id": "inv_004_007",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "CloudPlatform B.V."
   },
 
@@ -1305,6 +1363,7 @@
     "linked_transaction_id": "txn_005_008",
     "linked_invoice_id": "inv_005_007",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Foto Koch GmbH"
   },
   {
@@ -1327,6 +1386,7 @@
     "linked_transaction_id": "txn_005_007",
     "linked_invoice_id": "inv_005_008",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Adobe Systems Software Ireland Ltd"
   },
   {
@@ -1350,6 +1410,7 @@
     "linked_invoice_id": null,
     "is_private_use": true,
     "private_use_split": 0.0,
+    "transaction_subtype": null,
     "counterparty_name": "Vodafone GmbH"
   },
   {
@@ -1373,6 +1434,7 @@
     "linked_invoice_id": null,
     "is_private_use": true,
     "private_use_split": 0.0,
+    "transaction_subtype": null,
     "counterparty_name": "Telekom Deutschland GmbH"
   },
 
@@ -1396,6 +1458,7 @@
     "linked_transaction_id": "txn_006_008",
     "linked_invoice_id": "inv_006_007",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Figma Inc"
   },
   {
@@ -1418,6 +1481,7 @@
     "linked_transaction_id": "txn_006_009",
     "linked_invoice_id": "inv_006_008",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Klaus Weber"
   },
 
@@ -1441,6 +1505,7 @@
     "linked_transaction_id": "txn_007_007",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Hans Müller"
   },
   {
@@ -1464,6 +1529,7 @@
     "linked_invoice_id": null,
     "is_private_use": true,
     "private_use_split": 0.0,
+    "transaction_subtype": null,
     "counterparty_name": "Telekom Deutschland GmbH"
   },
 
@@ -1488,6 +1554,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_004_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
   {
@@ -1511,6 +1578,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_004_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
   {
@@ -1534,6 +1602,7 @@
     "linked_invoice_id": null,
     "linked_asset_id": "asset_004_001",
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": null
   },
 
@@ -1557,6 +1626,7 @@
     "linked_transaction_id": "txn_001_006",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Stadtbibliothek München"
   },
   {
@@ -1579,6 +1649,7 @@
     "linked_transaction_id": "txn_001_007",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Finanzamt München"
   },
   {
@@ -1601,6 +1672,7 @@
     "linked_transaction_id": "txn_002_007",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Finanzamt Hamburg"
   },
   {
@@ -1623,6 +1695,7 @@
     "linked_transaction_id": "txn_006_007",
     "linked_invoice_id": null,
     "is_private_use": false,
+    "transaction_subtype": null,
     "counterparty_name": "Finanzamt München"
   }
 ]
