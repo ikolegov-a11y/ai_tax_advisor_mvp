@@ -146,14 +146,17 @@ backend/data/
 | client_002 — Thomas Schneider, Grafikdesigner | Home Office Tagespauschale + расходы на Büroreinigung за тот же период | B-04 | `eur_002_2025`: home_office.method=tagespauschale; проводки SKR04-6330 (Büroreinigung) в том же году |
 | client_003 — Maria Schmidt, Online-Shop/Amazon FBA | Комиссия Amazon не отражена отдельной проводкой | A-11 | Транзакция от Amazon на ~€820 (нетто после комиссии ~15%), инвойс покупателю на ~€965; разница ~€145 не проведена как Provision (SKR04 6300) |
 | client_003 | + Возврат покупателю без Stornorechnung | A-10 | Входящая транзакция с payment_reference содержит "Rückerstattung" — нет Gutschrift с отрицательной суммой |
-| client_004 — Peter Wagner, Unternehmensberater | Неверная страна поставщика → неверный НДС-режим | A-12 | Поставщик из PL, но в проводке supplier_country="DE" → reverse_charge_flag=false, хотя должен быть true |
-| client_004 | + Неверный тип «товар/услуга» для EU B2B | B-Type-01 | IT-услуга от NL-контрагента: `service_type="goods"`, reverse_charge_flag=false — нарушает §13b UStG |
-| client_005 — Lisa Braun, Fotografin | Оборудование > €800 нетто проведено как расход, актив не создан | B-EÜR-02 | Транзакция: камера €2 400, account_code=6830 (Büroausstattung); нет записи в assets.json с соответствующей суммой |
-| client_005 | + Неправдоподобный сплит (100% бизнес) | E-02 | Телефон: private_use_split=0.00 (100% бизнес), домашний интернет: private_use_split=0.00 — без Fahrtenbuch-аналога |
-| client_006 — Michael Fischer, Software-Entwickler | SaaS/лицензии учтены как Bürobedarf вместо Software | B-Cat-01 | Проводки Figma/GitHub/AWS с account_code=6815 (Bürobedarf) вместо 6832 (Software/Lizenzen) |
-| client_006 | + Доход проведён под категорией, несовместимой с видом деятельности | C-Act-01 | Одна проводка: доход account_code=8510 (Mieteinnahmen) — аренда оборудования указана как "rental income"; company.type_of_activity="Software Development"; категория 8510 не соответствует IT-профилю |
-| client_007 — Sarah Klein, Online-Yoga-Trainerin | Возврат за отменённый курс без Stornorechnung | A-10 | Исходящая транзакция с ref "Erstattung Kurs März" — нет корректирующего инвойса с отрицательной суммой |
-| client_007 | + Домашний интернет 100% бизнес при совмещённом адресе | E-02 | internet: private_use_split=0.00, при этом home_address=work_address в business_context |
+| client_004 — Peter Wagner, Unternehmensberater | Неверная страна поставщика → неверный НДС-режим | A-12 | Поставщик из PL: `entry_004_008` reverse_charge_flag=false, tax_residency_applied="domestic" — inv_004_006 указывает supplier_country="PL", VAT=0, RC |
+| client_004 | + Неверный тип «товар/услуга» для EU B2B | B-Type-01 | IT-услуга от NL-контрагента: `entry_004_009` service_type="goods", reverse_charge_flag=false — нарушает §13b UStG |
+| client_004 | + Ремонт BMW при отсутствии текущих расходов | B-Kfz-01 (WARNING) | `entry_004_kfz_repair` account_code=6570 (ремонт BMW). Нет записей 6520/6530/6540/6560. Актив BMW в assets.json есть → при 1%-Regelung отсутствие Kraftstoff подозрительно |
+| client_005 — Lisa Braun, Fotografin | Оборудование > €800 нетто проведено как расход, актив не создан | B-EÜR-02 | Canon EOS R5: txn 2856 EUR (Foto Koch GmbH), inv net=2400+VAT=456. `entry_005_camera` account_code=6830; нет актива в assets.json |
+| client_005 | + Неправдоподобный сплит (100% бизнес) | E-02 | `entry_005_phone`: is_private_use=true, private_use_split=0.00. `entry_005_internet`: private_use_split=0.00. home_address=work_address |
+| client_005 | + Ремонт частного автомобиля как Betriebsausgabe | B-Kfz-01 (ERROR) | `entry_005_kfz_repair` account_code=6570 (ремонт авто ~320 EUR). Нет vehicle-актива в assets.json → фактические расходы на частный авто не вычитаются |
+| client_006 — Michael Fischer, Software-Entwickler | Исходящий RC-инвойс к EU-клиенту без VAT ID | B-ZM-01 | Исходящий инвойс к AT-клиенту: vat_rate=0, RC, но customer_vat_id=null → ZM невозможна |
+| client_006 | + Неверный период подачи UStVA | C-04 | company_settings.vat_report_period="quarterly". Годовой НДС (DE-клиенты, 19%) > €7 500 → обязательна ежемесячная подача |
+| client_007 — Sarah Klein, Online-Yoga-Trainerin | Возврат не помечен в проводке | A-10 | `txn_007_007`: ref="Erstattung Yoga-Kurs März 2026". `entry_007_erstattung`: transaction_subtype=null вместо "refund" |
+| client_007 | + Домашний интернет 100% бизнес при совмещённом адресе | E-02 | `entry_007_internet`: private_use_split=0.00, home_address=work_address в business_context |
+| client_007 | + VAT-статус в настройках противоречит инвойсам | C-05 | company_settings.vat_status="Regelbesteuerer" (ошибка в анкете). Все исходящие инвойсы: vat_rate=0, vat_exempt_reason="§19 UStG". Реальный статус — Kleinunternehmerin |
 | client_003 — Maria Schmidt, Amazon FBA | + Двунаправленные платежи Amazon: Auszahlung (входящий) + FBA-fee (исходящий) без отдельных проводок | E-09, A-11 | Amazon фигурирует как counterparty в обоих направлениях: incoming txn "Amazon Auszahlung" + outgoing txn "Amazon FBA Gebühren"; исходящая сумма не проведена отдельной расходной проводкой — скрытый нетто-зачёт |
 
 #### Принцип скрытой ошибки
