@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rechnung 2026-002 – Anna Müller IT-Beratung</title>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #222;
+    background: #fff;
+    width: 210mm;
+    height: 297mm;
+    padding: 20mm 25mm;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 18pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 6mm;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10mm;
+  }
+
+  .seller,
+  .buyer {
+    width: 48%;
+  }
+
+  .seller .label,
+  .buyer .label {
+    font-size: 8pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #666;
+    margin-bottom: 2mm;
+  }
+
+  .seller p,
+  .buyer p {
+    font-size: 10pt;
+    color: #222;
+  }
+
+  .invoice-meta {
+    margin-top: 8mm;
+    margin-bottom: 10mm;
+  }
+
+  .invoice-meta table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .invoice-meta td {
+    padding: 1.5mm 0;
+    vertical-align: top;
+  }
+
+  .invoice-meta td:first-child {
+    width: 40%;
+    font-weight: 600;
+    color: #444;
+  }
+
+  .line-items {
+    margin-bottom: 8mm;
+  }
+
+  .line-items table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+  }
+
+  .line-items thead th {
+    border-bottom: 1.5pt solid #1a1a1a;
+    padding: 3mm 2mm;
+    text-align: left;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    font-size: 8pt;
+    letter-spacing: 0.5px;
+  }
+
+  .line-items tbody td {
+    padding: 4mm 2mm;
+    border-bottom: 0.5pt solid #ddd;
+    vertical-align: top;
+  }
+
+  .line-items tbody tr:last-child td {
+    border-bottom: 1.5pt solid #1a1a1a;
+  }
+
+  .line-items .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .totals {
+    width: 60%;
+    margin-left: auto;
+    margin-bottom: 10mm;
+  }
+
+  .totals table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .totals td {
+    padding: 2mm 2mm;
+    font-size: 10pt;
+  }
+
+  .totals td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: #444;
+  }
+
+  .totals td:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .totals .grand-total td {
+    border-top: 1.5pt solid #1a1a1a;
+    font-weight: 700;
+    font-size: 11pt;
+    color: #1a1a1a;
+    padding-top: 3mm;
+  }
+
+  .note {
+    background: #f7f7f7;
+    border-left: 3pt solid #1a1a1a;
+    padding: 4mm 5mm;
+    font-size: 9pt;
+    color: #333;
+    margin-bottom: 10mm;
+  }
+
+  .footer {
+    margin-top: auto;
+    padding-top: 6mm;
+    border-top: 0.5pt solid #ccc;
+    font-size: 8pt;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .footer .bank {
+    margin-bottom: 3mm;
+  }
+
+  .footer .legal {
+    font-size: 7.5pt;
+    color: #888;
+  }
+
+  @media print {
+    body {
+      margin: 0;
+      padding: 20mm 25mm;
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Rechnung</h1>
+
+<div class="meta-row">
+  <div class="seller">
+    <div class="label">Rechnungssteller</div>
+    <p><strong>Anna Müller IT-Beratung</strong></p>
+    <p>Leopoldstraße 18</p>
+    <p>80802 München</p>
+    <p>Deutschland</p>
+    <p style="margin-top:2mm;">Steuernummer: 14/234/56789</p>
+  </div>
+  <div class="buyer">
+    <div class="label">Rechnungsempfänger</div>
+    <p><strong>Wien Digital AT GmbH</strong></p>
+    <p>Mariahilfer Straße 77</p>
+    <p>1060 Wien</p>
+    <p>Österreich</p>
+    <p style="margin-top:2mm;">USt-IdNr.: ATU12345678</p>
+  </div>
+</div>
+
+<div class="invoice-meta">
+  <table>
+    <tr>
+      <td>Rechnungsnummer</td>
+      <td>2026-002</td>
+    </tr>
+    <tr>
+      <td>Ausstellungsdatum</td>
+      <td>03.02.2026</td>
+    </tr>
+    <tr>
+      <td>Leistungszeitraum</td>
+      <td>Februar 2026</td>
+    </tr>
+    <tr>
+      <td>Zahlungsziel</td>
+      <td>17.02.2026 (14 Tage netto)</td>
+    </tr>
+  </table>
+</div>
+
+<div class="line-items">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:40%;">Bezeichnung</th>
+        <th style="width:8%;">Menge</th>
+        <th style="width:12%;">Einheit</th>
+        <th style="width:20%;" class="num">Einzelpreis</th>
+        <th style="width:20%;" class="num">Nettobetrag</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>IT Consulting und technische Beratung</td>
+        <td>1</td>
+        <td>Monat</td>
+        <td class="num">3.800,00 €</td>
+        <td class="num">3.800,00 €</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="totals">
+  <table>
+    <tr>
+      <td>Nettobetrag</td>
+      <td>3.800,00 €</td>
+    </tr>
+    <tr>
+      <td>Steuersatz</td>
+      <td>0 %</td>
+    </tr>
+    <tr>
+      <td>Umsatzsteuer</td>
+      <td>0,00 €</td>
+    </tr>
+    <tr class="grand-total">
+      <td>Gesamtbetrag</td>
+      <td>3.800,00 €</td>
+    </tr>
+  </table>
+</div>
+
+<div class="note">
+  <strong>Hinweis:</strong> Steuerschuldnerschaft des Leistungsempfängers gemäß §13b UStG.
+</div>
+
+<div class="footer">
+  <div class="bank">
+    <strong>Bankverbindung</strong><br>
+    IBAN: DE89 3704 0044 0532 0130 00<br>
+    BIC: COBADEFFXXX
+  </div>
+  <div class="legal">
+    Diese Rechnung wurde maschinell erstellt und ist ohne Unterschrift gültig.
+  </div>
+</div>
+
+</body>
+</html>

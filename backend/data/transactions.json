@@ -312,17 +312,6 @@
   },
   {
     "client_id": "client_004",
-    "id": "txn_004_002",
-    "date": "2026-01-31",
-    "amount": 654.50,
-    "currency": "EUR",
-    "counterparty": "BP Station Frankfurt Nordwest",
-    "payment_reference": "Kraftstoff Januar 2026",
-    "type": "outgoing",
-    "linked_invoice_id": null
-  },
-  {
-    "client_id": "client_004",
     "id": "txn_004_003",
     "date": "2026-02-14",
     "amount": 380.00,
@@ -342,17 +331,6 @@
     "payment_reference": "Strategy Workshop Projekt / Rg. 2026-001",
     "type": "incoming",
     "linked_invoice_id": "inv_004_003"
-  },
-  {
-    "client_id": "client_004",
-    "id": "txn_004_005",
-    "date": "2026-03-05",
-    "amount": 485.00,
-    "currency": "EUR",
-    "counterparty": "Shell Station Frankfurt Süd",
-    "payment_reference": "Kraftstoff Feb/März 2026",
-    "type": "outgoing",
-    "linked_invoice_id": null
   },
   {
     "client_id": "client_004",

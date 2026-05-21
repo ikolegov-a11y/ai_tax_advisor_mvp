@@ -279,13 +279,23 @@
 > Агент запускает эти проверки **проактивно до дедлайна UStVA** (25-го числа)
 > или по запросу "проверить текущий квартал".
 
-### B-04: Home Office Pauschale + аренда офиса одновременно
+### B-04: Home Office Pauschale + офисные расходы одновременно
 - **Severity:** 🟡 WARNING
 - **Триггер:** pre-UStVA, always
-- **Данные:** `get_bookkeeping_entries`, `get_client_knowledge_base`
-- **Логика:** Проводки "Home Office Pauschale" AND проводки "Büromiete" за тот же период AND `client_kb.home_office.has_dedicated_room` ≠ true.
-- **Ошибка:** Одновременно заявлены Home Office Pauschale и аренда офиса ({X} €). Совмещение допустимо только при наличии отдельного домашнего кабинета.
-- **Рекомендация:** Если нет отдельной комнаты — уберите Home Office Pauschale. Если комната есть — укажите её площадь в профиле.
+- **Данные:** `get_bookkeeping_entries`, `get_reports_eur`
+- **Логика:** `reports_eur.home_office.method = "tagespauschale"` AND в `bookkeeping_entries` за тот же год есть проводки с account_code из следующих групп:
+
+  | account_code | Категория | Severity |
+  |---|---|---|
+  | 6310 | Büromiete (аренда офиса) | 🔴 ERROR — аренда прямо противоречит home office |
+  | 6330 | Büroreinigung (уборка офиса) | 🟡 WARNING — уборка подразумевает отдельный офис |
+  | 6300 | Sonstige Raumkosten (прочие расходы на помещение) | 🟡 WARNING |
+
+  Tagespauschale применяется при работе из дома без выделенного кабинета. Наличие расходов на аренду, уборку или содержание офиса подразумевает существование отдельного помещения — что противоречит заявленному методу.
+
+- **Ошибка (ERROR — Büromiete):** Заявлена Home Office Tagespauschale (EÜR), но одновременно учтена аренда офиса ({X} €, SKR04 6310). Оба вычета одновременно невозможны без выделенного домашнего кабинета.
+- **Ошибка (WARNING — Büroreinigung / Raumkosten):** Заявлена Home Office Tagespauschale (EÜR), но в учёте есть расходы на уборку или содержание офиса ({X} €). Tagespauschale подразумевает работу из дома — офисные расходы подозрительны.
+- **Рекомендация:** Если у вас есть отдельная рабочая комната — замените Tagespauschale на метод реальных расходов (Tatsächliche Kosten) и укажите площадь комнаты. Если офиса нет — уберите соответствующие расходы из учёта.
 
 ### B-06: Расходы на телефон/интернет без private use split
 - **Severity:** 🟡 WARNING

@@ -18,8 +18,8 @@
     "customer_country": "DE",
     "linked_transaction_id": "txn_001_001",
     "vat_exempt_note": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_001/inv_001_001.html",
+    "file_available": true
   },
   {
     "client_id": "client_001",
@@ -40,8 +40,8 @@
     "customer_country": "AT",
     "linked_transaction_id": "txn_001_003",
     "vat_exempt_note": "Steuerschuldnerschaft des Leistungsempfängers gem. §13b UStG.",
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_001/inv_001_002.html",
+    "file_available": true
   },
   {
     "client_id": "client_001",
@@ -61,8 +61,8 @@
     "customer_vat_id": null,
     "linked_transaction_id": "txn_001_004",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_001/inv_001_003.html",
+    "file_available": true
   },
   {
     "client_id": "client_001",
@@ -83,8 +83,8 @@
     "customer_country": "DE",
     "linked_transaction_id": "txn_001_005",
     "vat_exempt_note": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_001/inv_001_004.html",
+    "file_available": true
   },
   {
     "client_id": "client_001",
@@ -93,9 +93,9 @@
     "invoice_number": "2026-005",
     "date": "2026-03-28",
     "amount_gross": 4500.00,
-    "amount_net": 3781.51,
-    "vat_rate": 0.19,
-    "vat_amount": 718.49,
+    "amount_net": 4500.00,
+    "vat_rate": 0,
+    "vat_amount": 0,
     "currency": "EUR",
     "supplier_name": "Anna Müller IT-Beratung",
     "supplier_tax_number": "14/234/56789",
@@ -104,9 +104,9 @@
     "customer_vat_id": "DE112233445",
     "customer_country": "DE",
     "linked_transaction_id": "txn_001_008",
-    "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "vat_exempt_note": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
+    "file_path": "invoice_files/client_001/inv_001_005.html",
+    "file_available": true
   },
   {
     "client_id": "client_001",
@@ -148,8 +148,8 @@
     "customer_vat_id": "DE234567891",
     "linked_transaction_id": "txn_002_c1_2025",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_c1_2025.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -169,8 +169,8 @@
     "customer_vat_id": "DE234567891",
     "linked_transaction_id": "txn_002_c2_2025",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_c2_2025.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -190,8 +190,8 @@
     "customer_vat_id": "DE234567891",
     "linked_transaction_id": "txn_002_c3_2025",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_c3_2025.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -211,8 +211,8 @@
     "customer_vat_id": "DE234567891",
     "linked_transaction_id": "txn_002_c4_2025",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_c4_2025.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -233,8 +233,8 @@
     "customer_country": "DE",
     "linked_transaction_id": "txn_002_001",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_001.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -254,8 +254,8 @@
     "customer_vat_id": "DE234567891",
     "linked_transaction_id": "txn_002_002",
     "vat_exempt_note": "Tax to be paid on reverse charge basis.",
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_002.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -276,8 +276,8 @@
     "customer_country": "DE",
     "linked_transaction_id": "txn_002_003",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_003.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -297,8 +297,8 @@
     "customer_vat_id": "DE234567891",
     "linked_transaction_id": "txn_002_004",
     "vat_exempt_note": "VAT reverse charged to customer.",
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_004.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -319,8 +319,8 @@
     "customer_country": "DE",
     "linked_transaction_id": "txn_002_005",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_005.html",
+    "file_available": true
   },
   {
     "client_id": "client_002",
@@ -340,8 +340,8 @@
     "customer_vat_id": "DE234567891",
     "linked_transaction_id": "txn_002_006",
     "vat_exempt_note": null,
-    "file_path": null,
-    "file_available": false
+    "file_path": "invoice_files/client_002/inv_002_006.html",
+    "file_available": true
   },
 
   {
@@ -456,9 +456,9 @@
     "invoice_number": "AMZN-FEE-2026-Q1",
     "date": "2026-03-17",
     "amount_gross": 450.00,
-    "amount_net": 378.15,
-    "vat_rate": 0.19,
-    "vat_amount": 71.85,
+    "amount_net": 450.00,
+    "vat_rate": 0.00,
+    "vat_amount": 0.00,
     "currency": "EUR",
     "supplier_name": "Amazon EU SARL",
     "supplier_vat_id": "LU26375245",
@@ -466,7 +466,7 @@
     "customer_name": "Maria Schmidt Handelskontor",
     "customer_vat_id": "DE345678912",
     "linked_transaction_id": "txn_003_006",
-    "vat_exempt_note": null,
+    "vat_exempt_note": "Steuerschuldnerschaft des Leistungsempfängers gem. §13b UStG.",
     "file_path": null,
     "file_available": false
   },

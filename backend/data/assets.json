@@ -23,6 +23,7 @@
     "start_date": "2023-09-01",
     "purchase_price": 57143.00,
     "amortization_period_years": 6,
+    "method": "linear",
     "annual_depreciation": 9523.83,
     "depreciated_to_date": 23809.58,
     "remaining_value": 33333.42,

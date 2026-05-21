@@ -7,16 +7,9 @@
     "status": "not_required",
     "submitted_at": null,
     "due_date": null,
-    "total_eu_b2b_supplies": 3800.00,
-    "eu_customers": [
-      {
-        "vat_id": "ATU12345678",
-        "country": "AT",
-        "amount": 3800.00,
-        "transaction_type": "services"
-      }
-    ],
-    "notes": "Kleinunternehmer ohne USt-ID — ZM-Pflicht prüfen (Schwelle > 0 € bei Dienstleistungen)"
+    "total_eu_b2b_supplies": 0,
+    "eu_customers": [],
+    "notes": "Kleinunternehmerin §19 UStG — keine ZM-Pflicht"
   },
   {
     "client_id": "client_006",

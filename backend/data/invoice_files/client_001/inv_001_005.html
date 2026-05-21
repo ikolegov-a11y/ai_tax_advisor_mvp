@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Rechnung 2026-005</title>
+<style>
+  @page { size: A4; margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    color: #000;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm 25mm 20mm 25mm;
+    margin: 0 auto;
+    background: #fff;
+    position: relative;
+  }
+  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10mm; }
+  .logo-box { font-weight: 700; font-size: 14pt; letter-spacing: -0.2pt; }
+  .meta-box { text-align: right; font-size: 9pt; color: #444; }
+  .meta-box strong { color: #000; font-size: 10pt; }
+
+  .addresses { display: flex; justify-content: space-between; margin-bottom: 8mm; }
+  .address-block { width: 45%; }
+  .address-block h2 { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5pt; color: #666; margin: 0 0 2mm 0; font-weight: 600; }
+  .address-block p { margin: 0; }
+
+  .details { display: flex; justify-content: space-between; margin-bottom: 10mm; border-top: 1pt solid #000; border-bottom: 1pt solid #000; padding: 3mm 0; }
+  .detail-col { width: 30%; }
+  .detail-col h3 { font-size: 8pt; text-transform: uppercase; letter-spacing: 0.5pt; color: #666; margin: 0 0 1mm 0; font-weight: 600; }
+  .detail-col p { margin: 0; font-weight: 700; }
+
+  h1.invoice-title { font-size: 18pt; font-weight: 700; margin: 0 0 6mm 0; letter-spacing: -0.4pt; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 6mm; font-variant-numeric: tabular-nums; }
+  thead th { border-bottom: 1.5pt solid #000; padding: 2mm 1mm; text-align: left; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.4pt; color: #666; font-weight: 600; }
+  tbody td { padding: 2.5mm 1mm; border-bottom: 0.5pt solid #ddd; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 1.5pt solid #000; }
+  td.num, th.num { text-align: right; }
+  td.num { font-variant-numeric: tabular-nums; }
+
+  .totals { width: 55%; margin-left: auto; margin-bottom: 8mm; }
+  .totals table { width: 100%; border-collapse: collapse; }
+  .totals td { padding: 1.5mm 1mm; border: none; }
+  .totals tr.total-row td { border-top: 1.5pt solid #000; font-weight: 700; font-size: 11pt; padding-top: 2.5mm; }
+  .totals td:first-child { text-align: left; }
+  .totals td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .note { background: #f9f9f9; padding: 3mm 4mm; border-left: 2pt solid #000; font-size: 9pt; margin-bottom: 6mm; }
+
+  footer { position: absolute; bottom: 15mm; left: 25mm; right: 25mm; font-size: 8pt; color: #666; border-top: 0.5pt solid #ccc; padding-top: 3mm; display: flex; justify-content: space-between; }
+  footer div { width: 30%; }
+  footer strong { color: #000; display: block; margin-bottom: 0.5mm; font-weight: 600; }
+
+  @media print {
+    body { margin: 0; }
+    .sheet { width: 100%; min-height: 100vh; padding: 20mm 25mm 20mm 25mm; margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <div class="logo-box">Anna Müller IT-Beratung</div>
+    <div class="meta-box">
+      <strong>Rechnung</strong><br>
+      Nr. 2026-005
+    </div>
+  </header>
+
+  <section class="addresses">
+    <div class="address-block">
+      <h2>Rechnung von</h2>
+      <p><strong>Anna Müller IT-Beratung</strong></p>
+      <p>Leopoldstraße 18</p>
+      <p>80802 München</p>
+      <p style="margin-top:2mm;">Steuernummer: 14/234/56789</p>
+      <p>IBAN: DE89 3704 0044 0532 0130 00</p>
+      <p>BIC: COBADEFFXXX</p>
+    </div>
+    <div class="address-block">
+      <h2>Rechnung an</h2>
+      <p><strong>DataStream Berlin GmbH</strong></p>
+      <p>Alexanderplatz 3</p>
+      <p>10178 Berlin</p>
+      <p style="margin-top:2mm;">USt-IdNr.: DE112233445</p>
+    </div>
+  </section>
+
+  <section class="details">
+    <div class="detail-col">
+      <h3>Rechnungsdatum</h3>
+      <p>28.03.2026</p>
+    </div>
+    <div class="detail-col">
+      <h3>Leistungszeitraum</h3>
+      <p>Januar – März 2026</p>
+    </div>
+    <div class="detail-col">
+      <h3>Zahlungsziel</h3>
+      <p>11.04.2026 (14 Tage)</p>
+    </div>
+  </section>
+
+  <h1 class="invoice-title">Rechnung Nr. 2026-005</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:40%">Bezeichnung</th>
+        <th style="width:8%" class="num">Menge</th>
+        <th style="width:10%">Einheit</th>
+        <th style="width:14%" class="num">Einzelpreis</th>
+        <th style="width:10%" class="num">Netto</th>
+        <th style="width:8%" class="num">USt %</th>
+        <th style="width:10%" class="num">USt €</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Softwareentwicklung Projekt Alpha — Abschlussrechnung</td>
+        <td class="num">1</td>
+        <td>Pauschal</td>
+        <td class="num">4.500,00 €</td>
+        <td class="num">4.500,00 €</td>
+        <td class="num">0 %</td>
+        <td class="num">0,00 €</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <table>
+      <tr>
+        <td>Nettosumme</td>
+        <td>4.500,00 €</td>
+      </tr>
+      <tr>
+        <td>Umsatzsteuer (0 %)</td>
+        <td>0,00 €</td>
+      </tr>
+      <tr class="total-row">
+        <td>Gesamtbetrag</td>
+        <td>4.500,00 €</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="note">
+    Gemäß §19 UStG wird keine Umsatzsteuer berechnet.
+  </div>
+
+  <footer>
+    <div>
+      <strong>Anna Müller IT-Beratung</strong>
+      Leopoldstraße 18<br>
+      80802 München
+    </div>
+    <div>
+      <strong>Kontakt</strong>
+      Telefon: +49 89 12345678<br>
+      E-Mail: rechnung@annamueller-it.de
+    </div>
+    <div>
+      <strong>Bankverbindung</strong>
+      IBAN: DE89 3704 0044 0532 0130 00<br>
+      BIC: COBADEFFXXX
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

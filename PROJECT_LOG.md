@@ -32,6 +32,9 @@
 | 0.5 | Тестовые данные — 7 клиентов (JSON) | ✅ Готово | `backend/data/client_001..007.json` |
 | 0.6 | Finanzamt Methodology Reference | ✅ Готово | `knowledge_base/Finanzamt_Methodology_Reference.md` |
 | 0.7 | Anthropic API key | ⬜ Не начат | Нужен для запуска агента — console.anthropic.com |
+| 0.8 | Tax_Rules_Reference.md — заполнен | ✅ Готово | Пороги, AfA-Tabellen, §14 UStG, Reverse Charge, SKR-04, Richtsätze |
+| 0.9 | Richtsatzsammlung — верифицировать значения | ⬜ До Этапа 3 | Проверить актуальный BMF-Schreiben за 2024/2025 и обновить раздел 6 |
+| 0.10 | Пороговые значения 2026 — добавить недостающие | ⬜ До Этапа 3 | Grundfreibetrag, SolZ-Grenze, KSK-Beitragssatz — уточнить по Jahressteuergesetz 2025 |
 
 ---
 
