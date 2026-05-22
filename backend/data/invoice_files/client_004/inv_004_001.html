@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Rechnung 2025-012 – Peter Wagner Unternehmensberatung</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #f0f0f0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1a1a1a; }
+  .page {
+    width: 210mm; min-height: 297mm; padding: 20mm 18mm;
+    margin: 10mm auto; background: #fff;
+    font-size: 10.5pt; line-height: 1.45;
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; }
+  }
+  header.top { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #1a1a1a; padding-bottom: 10mm; }
+  .sender-block { font-size: 9.5pt; line-height: 1.4; }
+  .sender-block .name { font-weight: 700; font-size: 12pt; margin-bottom: 2mm; }
+  .doc-title { text-align: right; }
+  .doc-title h1 { margin: 0; font-size: 26pt; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+  .doc-title .meta { margin-top: 4mm; font-size: 9.5pt; color: #444; }
+  .doc-title .meta div { display: flex; justify-content: space-between; gap: 8mm; }
+  .doc-title .meta strong { color: #1a1a1a; font-weight: 600; }
+
+  .addresses { display: flex; justify-content: space-between; margin-top: 12mm; gap: 10mm; }
+  .addr { width: 48%; }
+  .addr .label { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 1.5px; color: #888; margin-bottom: 2mm; }
+  .addr .body { font-size: 10.5pt; line-height: 1.5; }
+  .addr .body .name { font-weight: 600; }
+
+  .intro { margin-top: 12mm; font-size: 10.5pt; }
+
+  table.items { width: 100%; border-collapse: collapse; margin-top: 6mm; font-size: 10pt; }
+  table.items thead th {
+    background: #1a1a1a; color: #fff; font-weight: 500;
+    text-align: left; padding: 3mm 3mm; font-size: 9.5pt;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  table.items tbody td { padding: 3mm 3mm; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+  table.items .num, table.items .qty, table.items .price, table.items .total, table.items .vat { text-align: right; white-space: nowrap; }
+  table.items .desc-sub { font-size: 9pt; color: #666; margin-top: 1mm; }
+
+  .summary { display: flex; justify-content: flex-end; margin-top: 6mm; }
+  .summary table { border-collapse: collapse; min-width: 85mm; font-size: 10.5pt; }
+  .summary td { padding: 2mm 3mm; }
+  .summary td.label { text-align: right; color: #444; }
+  .summary td.val { text-align: right; white-space: nowrap; min-width: 35mm; }
+  .summary tr.total td { border-top: 2px solid #1a1a1a; font-weight: 700; font-size: 12pt; padding-top: 3mm; }
+
+  .notes { margin-top: 10mm; font-size: 10pt; line-height: 1.55; }
+  .notes .block { margin-bottom: 4mm; }
+  .notes .label { font-weight: 600; margin-bottom: 1mm; }
+
+  footer.bottom {
+    margin-top: 14mm; padding-top: 5mm; border-top: 1px solid #ccc;
+    display: flex; justify-content: space-between; font-size: 8.5pt; color: #666; line-height: 1.5;
+  }
+  footer.bottom .col { width: 32%; }
+  footer.bottom .col .label { font-weight: 600; color: #1a1a1a; margin-bottom: 1mm; text-transform: uppercase; letter-spacing: 0.5px; font-size: 8pt; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="top">
+    <div class="sender-block">
+      <div class="name">Peter Wagner Unternehmensberatung</div>
+      <div>Bockenheimer Anlage 12</div>
+      <div>60322 Frankfurt am Main</div>
+      <div>Deutschland</div>
+    </div>
+    <div class="doc-title">
+      <h1>Rechnung</h1>
+      <div class="meta">
+        <div><strong>Rechnungsnummer:</strong>&nbsp;2025-012</div>
+        <div><strong>Ausstellungsdatum:</strong>&nbsp;22.12.2025</div>
+        <div><strong>Leistungszeitraum:</strong>&nbsp;Oktober – Dezember 2025</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="addresses">
+    <div class="addr">
+      <div class="label">Rechnungssteller</div>
+      <div class="body">
+        <div class="name">Peter Wagner Unternehmensberatung</div>
+        <div>Bockenheimer Anlage 12</div>
+        <div>60322 Frankfurt am Main</div>
+        <div>Deutschland</div>
+        <div style="margin-top:2mm;">Steuernummer: 04/567/89012</div>
+        <div>USt-IdNr.: DE456789123</div>
+      </div>
+    </div>
+    <div class="addr">
+      <div class="label">Rechnungsempfänger</div>
+      <div class="body">
+        <div class="name">Commerzbank AG</div>
+        <div>Kaiserplatz 16</div>
+        <div>60311 Frankfurt am Main</div>
+        <div>Deutschland</div>
+        <div style="margin-top:2mm;">USt-IdNr.: DE114103514</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="intro">
+    Sehr geehrte Damen und Herren,<br>
+    vielen Dank für Ihren Auftrag. Wir erlauben uns, Ihnen folgende Leistungen in Rechnung zu stellen:
+  </div>
+
+  <table class="items">
+    <thead>
+      <tr>
+        <th class="num" style="width:8%;">Pos.</th>
+        <th style="width:42%;">Bezeichnung</th>
+        <th class="qty" style="width:10%;">Menge</th>
+        <th class="price" style="width:15%;">Einzelpreis</th>
+        <th class="vat" style="width:10%;">USt.</th>
+        <th class="total" style="width:15%;">Gesamt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">1</td>
+        <td>
+          Managementberatung Q4 2025 — Prozessoptimierung Kreditabteilung
+          <div class="desc-sub">Leistungszeitraum: Oktober – Dezember 2025</div>
+        </td>
+        <td class="qty">1 Pauschal</td>
+        <td class="price">15.000,00 €</td>
+        <td class="vat">19 %</td>
+        <td class="total">15.000,00 €</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <table>
+      <tr>
+        <td class="label">Zwischensumme (netto):</td>
+        <td class="val">15.000,00 €</td>
+      </tr>
+      <tr>
+        <td class="label">zzgl. 19 % USt.:</td>
+        <td class="val">2.850,00 €</td>
+      </tr>
+      <tr class="total">
+        <td class="label">Gesamtbetrag (brutto):</td>
+        <td class="val">17.850,00 €</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="notes">
+    <div class="block">
+      <div class="label">Zahlungsbedingungen</div>
+      Bitte überweisen Sie den Rechnungsbetrag von <strong>17.850,00 €</strong> innerhalb von <strong>14 Tagen</strong> bis zum <strong>05.01.2026</strong> unter Angabe der Rechnungsnummer <strong>2025-012</strong> auf das unten angegebene Konto.
+    </div>
+    <div class="block">
+      Wir bedanken uns für die gute Zusammenarbeit.<br>
+      Mit freundlichen Grüßen<br>
+      Peter Wagner Unternehmensberatung
+    </div>
+  </div>
+
+  <footer class="bottom">
+    <div class="col">
+      <div class="label">Unternehmen</div>
+      Peter Wagner Unternehmensberatung<br>
+      Bockenheimer Anlage 12<br>
+      60322 Frankfurt am Main
+    </div>
+    <div class="col">
+      <div class="label">Steuerliche Angaben</div>
+      Steuernummer: 04/567/89012<br>
+      USt-IdNr.: DE456789123
+    </div>
+    <div class="col">
+      <div class="label">Bankverbindung</div>
+      IBAN: DE82 5004 0000 0604 0012 00<br>
+      BIC: COBADEFFXXX
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -657,6 +657,50 @@
     "type": "outgoing",
     "linked_invoice_id": null
   },
+  {
+    "client_id": "client_005",
+    "id": "txn_005_011",
+    "date": "2026-03-12",
+    "amount": 320.00,
+    "currency": "EUR",
+    "counterparty": "Auto-Service Köln GmbH",
+    "payment_reference": "Kfz-Reparatur / Auftrag 2026-KA-1152",
+    "type": "outgoing",
+    "linked_invoice_id": "inv_005_009"
+  },
+  {
+    "client_id": "client_005",
+    "id": "txn_005_ksk_jan",
+    "date": "2026-01-31",
+    "amount": 131.00,
+    "currency": "EUR",
+    "counterparty": "Künstlersozialkasse",
+    "payment_reference": "KSK-Beitrag Januar 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+  {
+    "client_id": "client_005",
+    "id": "txn_005_ksk_feb",
+    "date": "2026-02-28",
+    "amount": 131.00,
+    "currency": "EUR",
+    "counterparty": "Künstlersozialkasse",
+    "payment_reference": "KSK-Beitrag Februar 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
+  {
+    "client_id": "client_005",
+    "id": "txn_005_ksk_mar",
+    "date": "2026-03-31",
+    "amount": 131.00,
+    "currency": "EUR",
+    "counterparty": "Künstlersozialkasse",
+    "payment_reference": "KSK-Beitrag März 2026",
+    "type": "outgoing",
+    "linked_invoice_id": null
+  },
 
   {
     "client_id": "client_006",
