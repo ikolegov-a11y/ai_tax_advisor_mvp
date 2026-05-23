@@ -11,6 +11,24 @@ const { analyzeClient }      = require('./agent');
 const { handleBookingCheck } = require('./booking_check');
 
 // ---------------------------------------------------------------------------
+// Error message cleaner — extracts readable text from Anthropic SDK errors
+// Raw format: "400 {"type":"error","error":{"message":"..."}}"
+// ---------------------------------------------------------------------------
+
+function cleanAgentError(err) {
+  const raw = err?.message ?? String(err);
+  const match = raw.match(/^\d{3}\s+(\{[\s\S]*\})$/);
+  if (match) {
+    try {
+      const body = JSON.parse(match[1]);
+      const msg = body?.error?.message;
+      if (msg) return msg;
+    } catch {}
+  }
+  return raw;
+}
+
+// ---------------------------------------------------------------------------
 // Express setup
 // ---------------------------------------------------------------------------
 
@@ -100,8 +118,9 @@ app.post('/api/analyze', async (req, res) => {
     if (err.message === 'agent_loop_limit_exceeded') {
       return res.status(500).json({ error: 'agent_loop_limit_exceeded', message: 'Agent loop exceeded 10 iterations' });
     }
-    console.error('[server] agent error:', err.message);
-    res.status(500).json({ error: 'agent_error', message: err.message });
+    const message = cleanAgentError(err);
+    console.error('[server] agent error:', message);
+    res.status(500).json({ error: 'agent_error', message });
   }
 });
 
