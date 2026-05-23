@@ -22,13 +22,20 @@ app.use(express.json());
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  process.env.FRONTEND_URL
+  process.env.FRONTEND_URL,
+  // Vercel sets VERCEL_URL per deployment and VERCEL_PROJECT_PRODUCTION_URL for the stable alias
+  process.env.VERCEL_URL                    ? `https://${process.env.VERCEL_URL}`                    : null,
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null,
 ].filter(Boolean);
 
 app.use(cors({
   origin: (origin, cb) => {
-    // Allow requests with no origin (curl, Postman, same-origin)
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+    // Allow requests with no origin (curl, Postman, server-side)
+    if (!origin) return cb(null, true);
+    // Allow any *.vercel.app subdomain (all deployments of this project)
+    if (allowedOrigins.includes(origin) || /^https:\/\/[a-z0-9-]+-ikolegov-1111s-projects\.vercel\.app$/.test(origin) || origin === 'https://ai-tax-advisor-mvp.vercel.app') {
+      return cb(null, true);
+    }
     cb(new Error(`CORS: origin ${origin} not allowed`));
   },
   methods: ['GET', 'POST']
