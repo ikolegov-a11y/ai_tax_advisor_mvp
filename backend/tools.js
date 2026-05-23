@@ -339,7 +339,16 @@ function get_expense_categories({ group, skr04 } = {}) {
     rows = rows.filter(c => String(c.skr04) === code);
   }
 
-  return { expense_categories: rows };
+  // Return compact format only — strip descriptions, UUIDs, skr03, de translations
+  // Full entries are ~800 chars each; compact entries are ~100 chars each (8x smaller)
+  const compact = rows.map(c => ({
+    skr04:    c.skr04,
+    group:    c.group_title.en,
+    category: c.category_title.en,
+    type:     c.type
+  }));
+
+  return { expense_categories: compact };
 }
 
 /**
@@ -544,7 +553,7 @@ const TOOL_DEFINITIONS = [
   },
   {
     name: 'get_expense_categories',
-    description: 'Returns the full production expense category list (94 categories). Each entry has SKR-04/SKR-03 account codes, group, title (de/en), type (Goods/Services/FinancialAsset). Use to validate whether a bookkeeping entry uses the correct account_code, or to suggest the right code when a miscategorization is detected. Can be filtered by group name or skr04 code.',
+    description: 'Returns the expense category list (104 categories, compact format). Each entry: skr04, group, category (English name), type (Services/Goods/FinancialAsset). Use to validate whether a bookkeeping entry uses the correct account_code, or to suggest the correct SKR-04 code. Filter by group name or exact skr04 to avoid fetching all 104 entries at once.',
     input_schema: {
       type: 'object',
       properties: {

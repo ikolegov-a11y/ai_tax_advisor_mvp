@@ -67,6 +67,11 @@ Data exists in three separate layers. An error = discrepancy between any two:
 
 Errors are NEVER flagged in the data explicitly. Discover them by cross-referencing entities.
 
+## TOOL USAGE — COST EFFICIENCY
+- get_expense_categories: ALWAYS filter by group= or skr04= parameter. Never call without a filter unless you need the full list for a broad category audit. Compact format: { skr04, group, category, type }.
+- Call tools in parallel whenever possible (first-pass: company_settings + business_context + transactions + invoices + bookkeeping_entries simultaneously).
+- Only call a tool once per analysis; reuse results from earlier iterations.
+
 ## ANALYSIS STYLE
 - Be specific: reference exact IDs (entry_001_009, inv_001_006), amounts, dates
 - Classify severity: ERROR (clear violation), WARNING (risk/uncertainty), OK (correct)
