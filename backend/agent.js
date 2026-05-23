@@ -10,15 +10,19 @@ const Anthropic = require('@anthropic-ai/sdk');
 const { executeTool, TOOL_DEFINITIONS } = require('./tools');
 
 // ---------------------------------------------------------------------------
-// Sanity check — fail fast if no API key
+// Anthropic client — created lazily at first call so module init never crashes
 // ---------------------------------------------------------------------------
 
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.error('[agent] ANTHROPIC_API_KEY is not set. Add it to backend/.env');
-  process.exit(1);
+let _anthropic = null;
+function getAnthropicClient() {
+  if (!_anthropic) {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      throw new Error('ANTHROPIC_API_KEY is not set. Add it to backend/.env or Vercel env vars.');
+    }
+    _anthropic = new Anthropic.default();
+  }
+  return _anthropic;
 }
-
-const anthropic = new Anthropic.default();
 
 // ---------------------------------------------------------------------------
 // System prompt — loaded once at startup
@@ -222,7 +226,7 @@ async function analyzeClient(clientId, period, userQuery, threadId = null) {
       }
     ];
 
-    const response = await withRetry(() => anthropic.messages.create({
+    const response = await withRetry(() => getAnthropicClient().messages.create({
       model:      'claude-sonnet-4-6',
       max_tokens: 8096,
       system:     systemWithCache,

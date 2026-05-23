@@ -11,15 +11,6 @@ const { analyzeClient }      = require('./agent');
 const { handleBookingCheck } = require('./booking_check');
 
 // ---------------------------------------------------------------------------
-// Sanity check
-// ---------------------------------------------------------------------------
-
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.error('[server] ANTHROPIC_API_KEY is not set. Add it to .env');
-  process.exit(1);
-}
-
-// ---------------------------------------------------------------------------
 // Express setup
 // ---------------------------------------------------------------------------
 
