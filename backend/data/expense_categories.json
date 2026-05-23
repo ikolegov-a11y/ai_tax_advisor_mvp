@@ -1690,5 +1690,185 @@
     "skr04": 6999,
     "skr03": 1800,
     "type": "Services"
+  },
+  {
+    "id": "8993b8ed-09d4-4fb7-8ce5-4c00d3f9783d",
+    "group_title": {
+      "de": "Wareneinkauf",
+      "en": "Purchases"
+    },
+    "category_title": {
+      "de": "Wareneinkauf (Import)",
+      "en": "Goods Purchase (Import)"
+    },
+    "category_description": {
+      "de": "Einkauf von Waren bei ausländischen Lieferanten (Drittland/EU). Für Händler und Online-Shops. Importzölle und Einfuhrumsatzsteuer werden separat verbucht.",
+      "en": "Purchase of goods from foreign suppliers (non-EU/EU). For traders and online shops. Import duties and import VAT are recorded separately."
+    },
+    "skr04": 3400,
+    "skr03": 3200,
+    "type": "Goods"
+  },
+  {
+    "id": "879dfd62-01f3-4f45-850c-e644a6102755",
+    "group_title": {
+      "de": "Personalkosten",
+      "en": "Personnel Costs"
+    },
+    "category_title": {
+      "de": "Sozialversicherungsbeiträge (KSK, gesetzlich)",
+      "en": "Social Insurance Contributions (KSK, statutory)"
+    },
+    "category_description": {
+      "de": "Gesetzliche Sozialabgaben des Unternehmers: Krankenversicherung, KSK-Beiträge (Künstlersozialkasse), Rentenversicherung. Nicht verwechseln mit freiwilligen Vorsorgeaufwendungen.",
+      "en": "Statutory social security contributions: health insurance, KSK (artists' social fund), pension contributions. Do not confuse with voluntary private insurance."
+    },
+    "skr04": 4130,
+    "skr03": 4030,
+    "type": "Services"
+  },
+  {
+    "id": "e61dc9b8-2fa0-4cb0-b396-665bbc334b8d",
+    "group_title": {
+      "de": "Reise- und Bewirtungskosten",
+      "en": "Travel & Entertainment"
+    },
+    "category_title": {
+      "de": "Bewirtungskosten",
+      "en": "Business Entertainment"
+    },
+    "category_description": {
+      "de": "Kosten für Geschäftsessen und Bewirtung von Kunden, Geschäftspartnern oder Mitarbeitern. Nur 70% steuerlich abzugsfähig gemäß §4 Abs. 5 Nr. 2 EStG. Bewirtungsbeleg mit Namen der Gäste und Geschäftszweck erforderlich.",
+      "en": "Costs for business meals and entertaining clients, partners or employees. Only 70% tax-deductible per §4 Abs. 5 Nr. 2 EStG. Entertainment receipt with guest names and business purpose required."
+    },
+    "skr04": 4650,
+    "skr03": 4650,
+    "type": "Services"
+  },
+  {
+    "id": "525ba615-7f24-4ef8-beae-4fdf7916976e",
+    "group_title": {
+      "de": "Versand und Logistik",
+      "en": "Shipping & Logistics"
+    },
+    "category_title": {
+      "de": "Frachtkosten, Verzollung",
+      "en": "Freight & Customs"
+    },
+    "category_description": {
+      "de": "Versandkosten, Frachtgebühren, Zollabwicklung und Importgebühren. Für Händler mit Warenversand oder Import aus Drittländern.",
+      "en": "Shipping costs, freight charges, customs clearance and import fees. For merchants with goods shipments or imports from non-EU countries."
+    },
+    "skr04": 4750,
+    "skr03": 4760,
+    "type": "Services"
+  },
+  {
+    "id": "1cceacd1-3487-4121-bfcb-80dc2b347139",
+    "group_title": {
+      "de": "Versand und Logistik",
+      "en": "Shipping & Logistics"
+    },
+    "category_title": {
+      "de": "Frachtkosten, Lagergebühren, Marketplace-Gebühren",
+      "en": "Freight, Storage & Marketplace Fees"
+    },
+    "category_description": {
+      "de": "Frachtkosten, Lager- und Fulfillment-Gebühren, Provisionen und Gebühren von Marktplätzen (Amazon FBA, eBay, etc.). Abzugsfähig als Betriebsausgabe.",
+      "en": "Freight costs, storage and fulfillment fees, commissions and fees from marketplaces (Amazon FBA, eBay, etc.). Deductible as business expense."
+    },
+    "skr04": 4780,
+    "skr03": 4760,
+    "type": "Services"
+  },
+  {
+    "id": "aaa9342f-3cb5-48f0-bdb1-a31fafe4c2ac",
+    "group_title": {
+      "de": "Abschreibungen",
+      "en": "Depreciation"
+    },
+    "category_title": {
+      "de": "Abschreibungen auf Wirtschaftsgüter (AfA)",
+      "en": "Depreciation on Business Assets (AfA)"
+    },
+    "category_description": {
+      "de": "Planmäßige Abschreibungen auf Anlagevermögen (Geräte, Maschinen, IT-Equipment). Buchung der jährlichen AfA-Rate gemäß amtlicher AfA-Tabelle. Nicht zu verwechseln mit einmaligem GWG-Abzug.",
+      "en": "Scheduled depreciation on fixed assets (equipment, machinery, IT). Annual depreciation rate per official AfA table. Do not confuse with one-time GWG deduction."
+    },
+    "skr04": 4831,
+    "skr03": 4830,
+    "type": "Services"
+  },
+  {
+    "id": "d3f5edea-3bb6-45b0-b4a6-1b00e114640a",
+    "group_title": {
+      "de": "Büro- und Kommunikationskosten",
+      "en": "Office & Communication"
+    },
+    "category_title": {
+      "de": "Telefon, Internet, Fax",
+      "en": "Phone, Internet & Fax"
+    },
+    "category_description": {
+      "de": "Kosten für Telefon, Mobilfunk, Internet und Fax. Bei gemischter Nutzung (privat/geschäftlich) nur den betrieblichen Anteil absetzen. Homeoffice-Regelung beachten.",
+      "en": "Costs for telephone, mobile, internet and fax. For mixed use (private/business) deduct only the business share. Consider home office rules."
+    },
+    "skr04": 4920,
+    "skr03": 4920,
+    "type": "Services"
+  },
+  {
+    "id": "2b2a037a-3c29-4cdd-9a6c-0583199ddd28",
+    "group_title": {
+      "de": "Büro- und Kommunikationskosten",
+      "en": "Office & Communication"
+    },
+    "category_title": {
+      "de": "Fachliteratur, Zeitschriften, Bibliotheksgebühren",
+      "en": "Professional Literature & Subscriptions"
+    },
+    "category_description": {
+      "de": "Fachbücher, Branchenzeitschriften, digitale Fachdatenbanken und Bibliotheksgebühren mit beruflichem Bezug. Vollständig abzugsfähig bei klarem Berufsbezug.",
+      "en": "Professional books, trade journals, digital databases and library fees with professional relevance. Fully deductible with clear professional connection."
+    },
+    "skr04": 4940,
+    "skr03": 4940,
+    "type": "Services"
+  },
+  {
+    "id": "aed55208-91fb-4d2f-b210-1c63256dfcc1",
+    "group_title": {
+      "de": "EDV und Software",
+      "en": "IT & Software"
+    },
+    "category_title": {
+      "de": "Software, Lizenzen, Cloud-Dienste, SaaS-Abonnements",
+      "en": "Software, Licenses, Cloud Services & SaaS Subscriptions"
+    },
+    "category_description": {
+      "de": "Laufende Kosten für Software-Lizenzen, SaaS-Abonnements (Adobe, GitHub, Figma, AWS, etc.) und Cloud-Dienste. Bei EU-Lieferanten in der Regel Reverse Charge §13b UStG. Einmalige Softwarekäufe ggf. als GWG oder Anlage.",
+      "en": "Ongoing costs for software licenses, SaaS subscriptions (Adobe, GitHub, Figma, AWS, etc.) and cloud services. EU suppliers typically subject to Reverse Charge §13b UStG. One-time software purchases may qualify as GWG or fixed asset."
+    },
+    "skr04": 4980,
+    "skr03": 4970,
+    "type": "Services"
+  },
+  {
+    "id": "5ab7c630-4e81-4aef-94ef-01f4a1bf55ea",
+    "group_title": {
+      "de": "Betriebs- und Arbeitsausstattung",
+      "en": "Equipment & Tools"
+    },
+    "category_title": {
+      "de": "Werkzeuge, Geräte, Berufsausstattung",
+      "en": "Tools, Equipment & Professional Gear"
+    },
+    "category_description": {
+      "de": "Anschaffung von Werkzeugen, Geräten und Berufsausstattung (z.B. Sportzubehör für Trainer, Fotoequipment <800€, IT-Peripherie). Gegenstände ≤800€ netto können als GWG sofort abgesetzt werden.",
+      "en": "Purchase of tools, devices and professional equipment (e.g. sports accessories for coaches, photo gear <800€, IT peripherals). Items ≤800€ net can be immediately expensed as GWG."
+    },
+    "skr04": 4985,
+    "skr03": 4980,
+    "type": "Goods"
   }
 ]

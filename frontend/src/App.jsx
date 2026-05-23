@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-import WidgetVariant from './variants/WidgetVariant.jsx';
-import ChatVariant from './variants/ChatVariant.jsx';
+import WidgetVariant   from './variants/WidgetVariant.jsx';
+import ChatVariant     from './variants/ChatVariant.jsx';
+import BookingVariant  from './variants/BookingVariant.jsx';
+
+const VALID_VARIANTS = ['widget', 'chat', 'booking'];
 
 function getVariant() {
   const p = new URLSearchParams(window.location.search);
-  return p.get('variant') === 'chat' ? 'chat' : 'widget';
+  const v = p.get('variant');
+  return VALID_VARIANTS.includes(v) ? v : 'widget';
 }
 
 function setVariantInUrl(v) {
@@ -40,11 +44,19 @@ export default function App() {
           >
             Chat
           </button>
+          <button
+            className={`variant-btn${variant === 'booking' ? ' active' : ''}`}
+            onClick={() => switchVariant('booking')}
+          >
+            Booking
+          </button>
         </div>
       </header>
 
       <main className="app-main">
-        {variant === 'widget' ? <WidgetVariant /> : <ChatVariant />}
+        {variant === 'widget'  && <WidgetVariant />}
+        {variant === 'chat'    && <ChatVariant />}
+        {variant === 'booking' && <BookingVariant />}
       </main>
     </div>
   );

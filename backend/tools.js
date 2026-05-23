@@ -239,12 +239,27 @@ async function recognize_invoice_document({ invoice_id, company_id }) {
     };
   }
 
-  const filePath = path.join(INVOICE_FILES_DIR, clientId, `${invoice_id}.pdf`);
+  // Resolve file path from the invoice record (supports .pdf and .html)
+  const relPath  = invoice.file_path;
+  const filePath = relPath
+    ? path.join(DATA_DIR, relPath)
+    : path.join(INVOICE_FILES_DIR, clientId, `${invoice_id}.pdf`);
+
   if (!fs.existsSync(filePath)) {
     return {
       invoice_id,
       recognized: false,
       reason: 'file_not_found_on_disk',
+      fields: null
+    };
+  }
+
+  // Only PDF files can be processed by Vision
+  if (!filePath.endsWith('.pdf')) {
+    return {
+      invoice_id,
+      recognized: false,
+      reason: 'not_pdf',
       fields: null
     };
   }

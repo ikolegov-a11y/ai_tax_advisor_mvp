@@ -563,10 +563,10 @@
     "description": "Amazon FBA-Gebühren Q1 2026",
     "account_code": "4780",
     "category": "Marketplace Fees",
-    "amount_gross": 450.00,
-    "amount_net": 450.00,
-    "vat_rate": 0.00,
-    "vat_amount": 0.00,
+    "amount_gross": 450.0,
+    "amount_net": 450.0,
+    "vat_rate": 0.0,
+    "vat_amount": 0.0,
     "tax_residency_applied": "eu",
     "reverse_charge_flag": true,
     "service_type": "services",
@@ -1202,7 +1202,6 @@
     "transaction_subtype": null,
     "counterparty_name": "Zoom Video Communications Inc"
   },
-
   {
     "client_id": "client_003",
     "id": "entry_003_008",
@@ -1249,7 +1248,6 @@
     "transaction_subtype": null,
     "counterparty_name": "Amazon EU SARL"
   },
-
   {
     "client_id": "client_004",
     "id": "entry_004_008",
@@ -1296,7 +1294,6 @@
     "transaction_subtype": null,
     "counterparty_name": "CloudPlatform B.V."
   },
-
   {
     "client_id": "client_005",
     "id": "entry_005_camera",
@@ -1398,7 +1395,7 @@
     "period": "2026-03",
     "type": "expense",
     "description": "Kfz-Reparatur Privatfahrzeug — Auto-Service Köln",
-    "amount_gross": 320.00,
+    "amount_gross": 320.0,
     "amount_net": 268.91,
     "category": "Vehicle Maintenance",
     "account_code": "6570",
@@ -1422,12 +1419,12 @@
     "period": "2026-01",
     "type": "expense",
     "description": "KSK-Beitrag Januar 2026",
-    "amount_gross": 131.00,
-    "amount_net": 131.00,
+    "amount_gross": 131.0,
+    "amount_net": 131.0,
     "category": "Social Insurance",
     "account_code": "4130",
-    "vat_rate": 0.00,
-    "vat_amount": 0.00,
+    "vat_rate": 0.0,
+    "vat_amount": 0.0,
     "tax_residency_applied": "domestic",
     "reverse_charge_flag": false,
     "service_type": null,
@@ -1446,12 +1443,12 @@
     "period": "2026-02",
     "type": "expense",
     "description": "KSK-Beitrag Februar 2026",
-    "amount_gross": 131.00,
-    "amount_net": 131.00,
+    "amount_gross": 131.0,
+    "amount_net": 131.0,
     "category": "Social Insurance",
     "account_code": "4130",
-    "vat_rate": 0.00,
-    "vat_amount": 0.00,
+    "vat_rate": 0.0,
+    "vat_amount": 0.0,
     "tax_residency_applied": "domestic",
     "reverse_charge_flag": false,
     "service_type": null,
@@ -1470,12 +1467,12 @@
     "period": "2026-03",
     "type": "expense",
     "description": "KSK-Beitrag März 2026",
-    "amount_gross": 131.00,
-    "amount_net": 131.00,
+    "amount_gross": 131.0,
+    "amount_net": 131.0,
     "category": "Social Insurance",
     "account_code": "4130",
-    "vat_rate": 0.00,
-    "vat_amount": 0.00,
+    "vat_rate": 0.0,
+    "vat_amount": 0.0,
     "tax_residency_applied": "domestic",
     "reverse_charge_flag": false,
     "service_type": null,
@@ -1487,7 +1484,6 @@
     "transaction_subtype": null,
     "counterparty_name": "Künstlersozialkasse"
   },
-
   {
     "client_id": "client_006",
     "id": "entry_006_figma",
@@ -1534,7 +1530,6 @@
     "transaction_subtype": null,
     "counterparty_name": "Klaus Weber"
   },
-
   {
     "client_id": "client_007",
     "id": "entry_007_erstattung",
@@ -1576,13 +1571,12 @@
     "service_type": "services",
     "vat_rate_if_domestic": 0.19,
     "linked_transaction_id": "txn_007_008",
-    "linked_invoice_id": null,
+    "linked_invoice_id": "inv_007_004",
     "is_private_use": true,
     "private_use_split": 0.0,
     "transaction_subtype": null,
     "counterparty_name": "Telekom Deutschland GmbH"
   },
-
   {
     "client_id": "client_004",
     "id": "entry_004_afa_jan_2026",
@@ -1655,7 +1649,6 @@
     "transaction_subtype": null,
     "counterparty_name": null
   },
-
   {
     "client_id": "client_001",
     "id": "entry_001_006",
@@ -1747,5 +1740,51 @@
     "is_private_use": false,
     "transaction_subtype": null,
     "counterparty_name": "Finanzamt München"
+  },
+  {
+    "client_id": "client_007",
+    "id": "entry_007_010",
+    "date": "2026-01-25",
+    "period": "2026-01",
+    "type": "income",
+    "description": "Yoga Privatstunden Januar — Petra Hoffmann",
+    "amount_gross": 240.0,
+    "amount_net": 240.0,
+    "category": "Revenue — Direct Sessions",
+    "account_code": "8400",
+    "vat_rate": 0.0,
+    "vat_amount": 0.0,
+    "tax_residency_applied": "domestic",
+    "reverse_charge_flag": false,
+    "service_type": "services",
+    "vat_rate_if_domestic": 0.0,
+    "linked_transaction_id": "txn_007_010",
+    "linked_invoice_id": "inv_007_010",
+    "is_private_use": false,
+    "transaction_subtype": null,
+    "counterparty_name": "Petra Hoffmann"
+  },
+  {
+    "client_id": "client_007",
+    "id": "entry_007_011",
+    "date": "2026-03-12",
+    "period": "2026-03",
+    "type": "income",
+    "description": "Yoga Einzelstunden März — Thomas Bergmann",
+    "amount_gross": 320.0,
+    "amount_net": 320.0,
+    "category": "Revenue — Direct Sessions",
+    "account_code": "8400",
+    "vat_rate": 0.0,
+    "vat_amount": 0.0,
+    "tax_residency_applied": "domestic",
+    "reverse_charge_flag": false,
+    "service_type": "services",
+    "vat_rate_if_domestic": 0.0,
+    "linked_transaction_id": "txn_007_011",
+    "linked_invoice_id": "inv_007_011",
+    "is_private_use": false,
+    "transaction_subtype": null,
+    "counterparty_name": "Thomas Bergmann"
   }
 ]

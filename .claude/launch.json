@@ -5,7 +5,7 @@
       "name": "frontend",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "rootDir": "frontend",
+      "rootDir": "ai-tax-advisor.MVP/frontend",
       "port": 5173
     }
   ]

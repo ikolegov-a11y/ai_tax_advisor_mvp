@@ -166,6 +166,27 @@ function extractJsonReport(text) {
 
 const MAX_ITERATIONS = 10;
 
+// ---------------------------------------------------------------------------
+// Retry helper — handles 429 rate-limit errors with exponential backoff
+// ---------------------------------------------------------------------------
+
+async function withRetry(fn, maxAttempts = 4, baseDelayMs = 15000) {
+  let lastError;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      const is429 = err?.status === 429 || String(err?.message).includes('rate_limit');
+      if (!is429 || attempt === maxAttempts) throw err;
+      const delay = baseDelayMs * attempt;
+      console.warn(`[agent] Rate limit hit (attempt ${attempt}/${maxAttempts}). Retrying in ${delay / 1000}s…`);
+      await new Promise(r => setTimeout(r, delay));
+      lastError = err;
+    }
+  }
+  throw lastError;
+}
+
 async function analyzeClient(clientId, period, userQuery, threadId = null) {
   if (!clientId) throw new Error('clientId is required');
 
@@ -192,13 +213,22 @@ async function analyzeClient(clientId, period, userQuery, threadId = null) {
   while (iterations < MAX_ITERATIONS) {
     iterations++;
 
-    const response = await anthropic.messages.create({
+    // System prompt with prompt caching — avoids re-sending ~25k tokens each iteration
+    const systemWithCache = [
+      {
+        type: 'text',
+        text: getSystemPrompt(),
+        cache_control: { type: 'ephemeral' }
+      }
+    ];
+
+    const response = await withRetry(() => anthropic.messages.create({
       model:      'claude-sonnet-4-6',
       max_tokens: 8096,
-      system:     getSystemPrompt(),
+      system:     systemWithCache,
       tools:      TOOL_DEFINITIONS,
       messages:   history
-    });
+    }));
 
     // Add assistant response to history
     history.push({ role: 'assistant', content: response.content });

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Rechnung 2026-001 – Michael Fischer Software</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #eceef1; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1a1a1a; }
+  .page {
+    width: 210mm; min-height: 297mm; padding: 22mm 20mm; margin: 16px auto;
+    background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    display: flex; flex-direction: column;
+  }
+  header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #1a1a1a; padding-bottom: 14px; }
+  .brand h1 { margin: 0; font-size: 20px; letter-spacing: .5px; }
+  .brand p { margin: 2px 0 0; font-size: 11px; color: #555; }
+  .doc-title { text-align: right; }
+  .doc-title h2 { margin: 0; font-size: 28px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; }
+  .doc-title p { margin: 4px 0 0; font-size: 11px; color: #555; }
+  .addresses { display: flex; justify-content: space-between; margin-top: 28px; gap: 40px; }
+  .addr-block { font-size: 11px; line-height: 1.55; }
+  .addr-block .label { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: #888; margin-bottom: 6px; }
+  .addr-block .name { font-weight: 600; font-size: 12px; }
+  .meta { margin-top: 24px; border: 1px solid #e3e3e3; border-radius: 4px; padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-size: 11px; }
+  .meta .label { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; color: #888; }
+  .meta .value { font-weight: 600; margin-top: 2px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 11px; }
+  thead th { background: #1a1a1a; color: #fff; text-align: left; padding: 10px 12px; font-weight: 500; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+  thead th.num { text-align: right; }
+  tbody td { padding: 14px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody td.desc .title { font-weight: 600; }
+  tbody td.desc .sub { color: #666; font-size: 10px; margin-top: 2px; }
+  .totals { margin-top: 18px; display: flex; justify-content: flex-end; }
+  .totals table { width: 60%; margin: 0; }
+  .totals td { padding: 6px 12px; font-size: 11px; border: none; }
+  .totals td.label { color: #555; }
+  .totals td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .totals tr.grand td { border-top: 2px solid #1a1a1a; font-size: 14px; font-weight: 700; padding-top: 10px; }
+  .note { margin-top: 22px; padding: 12px 14px; background: #f6f6f4; border-left: 3px solid #1a1a1a; font-size: 11px; }
+  footer { margin-top: auto; padding-top: 20px; border-top: 1px solid #e3e3e3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; font-size: 10px; color: #555; line-height: 1.5; }
+  footer .col strong { display: block; color: #1a1a1a; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-weight: 600; }
+  @media print { body { background: #fff; } .page { box-shadow: none; margin: 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">
+      <h1>Michael Fischer Software</h1>
+      <p>Schleißheimer Straße 312 · 80809 München</p>
+    </div>
+    <div class="doc-title">
+      <h2>Invoice</h2>
+      <p>No. 2026-001</p>
+    </div>
+  </header>
+
+  <section class="addresses">
+    <div class="addr-block">
+      <div class="label">Issued by</div>
+      <div class="name">Michael Fischer Software</div>
+      <div>Schleißheimer Straße 312</div>
+      <div>80809 München</div>
+      <div>Germany</div>
+      <div>VAT ID: DE567891234</div>
+    </div>
+    <div class="addr-block" style="text-align:right;">
+      <div class="label">Bill To</div>
+      <div class="name">Apex Digital Inc</div>
+      <div>450 Townsend Street</div>
+      <div>San Francisco, CA 94107</div>
+      <div>United States</div>
+    </div>
+  </section>
+
+  <section class="meta">
+    <div><div class="label">Invoice No.</div><div class="value">2026-001</div></div>
+    <div><div class="label">Issue Date</div><div class="value">14.01.2026</div></div>
+    <div><div class="label">Service Period</div><div class="value">January 2026</div></div>
+    <div><div class="label">Due Date</div><div class="value">28.01.2026</div></div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:6%">Pos.</th>
+        <th>Description</th>
+        <th class="num" style="width:10%">Qty</th>
+        <th style="width:10%">Unit</th>
+        <th class="num" style="width:14%">Unit Price</th>
+        <th class="num" style="width:10%">VAT</th>
+        <th class="num" style="width:14%">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="desc">
+          <div class="title">Software Development Services</div>
+          <div class="sub">Custom backend API development — January 2026</div>
+        </td>
+        <td class="num">1</td>
+        <td>Month</td>
+        <td class="num">8,500.00 €</td>
+        <td class="num">0 %</td>
+        <td class="num">8,500.00 €</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <table>
+      <tr><td class="label">Net Amount</td><td class="num">8,500.00 €</td></tr>
+      <tr><td class="label">VAT (0 %)</td><td class="num">0.00 €</td></tr>
+      <tr class="grand"><td>Invoice Total</td><td class="num">8,500.00 €</td></tr>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>VAT Note:</strong> The place of supply of these services is outside the European Union (§3a UStG). German VAT does not apply. No VAT is charged.
+  </div>
+
+  <div class="note" style="background:#fff;border-left-color:#888;color:#444;">
+    Please transfer the invoice amount of <strong>8,500.00 €</strong> by <strong>28.01.2026</strong>, quoting invoice reference <strong>2026-001</strong>.
+  </div>
+
+  <footer>
+    <div class="col">
+      <strong>Contact</strong>
+      Michael Fischer Software<br>
+      Schleißheimer Straße 312<br>
+      80809 München, Germany
+    </div>
+    <div class="col">
+      <strong>Tax Details</strong>
+      Steuernummer: 14/789/01234<br>
+      USt-IdNr.: DE567891234<br>
+      Freiberufler (§ 18 EStG)
+    </div>
+    <div class="col">
+      <strong>Bank Details</strong>
+      Michael Fischer<br>
+      IBAN: DE42 7002 0270 0012 3456 78<br>
+      BIC: HYVEDEMMXXX
+    </div>
+  </footer>
+</div>
+</body>
+</html>

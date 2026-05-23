@@ -8,7 +8,7 @@ export default function ReportView({ report, rawText }) {
   const warnings = report?.warnings ?? [];
   const oks      = report?.ok_checks ?? [];
 
-  const germanSummary = rawText?.split('```').at(-1)?.trim();
+  const aiSummary = rawText?.split('```').at(-1)?.trim();
 
   return (
     <div>
@@ -16,22 +16,22 @@ export default function ReportView({ report, rawText }) {
       <div className="summary-bar">
         {errors.length > 0 && (
           <span className="summary-chip chip-error">
-            ✗ {errors.length} {errors.length === 1 ? 'Fehler' : 'Fehler'}
+            ✗ {errors.length} {errors.length === 1 ? 'Error' : 'Errors'}
           </span>
         )}
         {warnings.length > 0 && (
           <span className="summary-chip chip-warning">
-            ⚠ {warnings.length} {warnings.length === 1 ? 'Hinweis' : 'Hinweise'}
+            ⚠ {warnings.length} {warnings.length === 1 ? 'Warning' : 'Warnings'}
           </span>
         )}
         {oks.length > 0 && (
           <span className="summary-chip chip-ok">
-            ✓ {oks.length} geprüft
+            ✓ {oks.length} checked
           </span>
         )}
       </div>
 
-      {/* Steuerreserve */}
+      {/* Tax Reserve */}
       {report?.steuerreserve && (
         <SteuerreserveCard data={report.steuerreserve} />
       )}
@@ -41,7 +41,7 @@ export default function ReportView({ report, rawText }) {
         <div className="section">
           <div className="section-header error-color">
             <span className="section-count">{errors.length}</span>
-            Fehler — sofort handeln
+            Errors — action required
           </div>
           {errors.map(f => (
             <FindingCard key={f.id} finding={f} type="error" />
@@ -54,7 +54,7 @@ export default function ReportView({ report, rawText }) {
         <div className="section">
           <div className="section-header warning-color">
             <span className="section-count">{warnings.length}</span>
-            Hinweise — prüfen empfohlen
+            Warnings — review recommended
           </div>
           {warnings.map(f => (
             <FindingCard key={f.id} finding={f} type="warning" />
@@ -67,7 +67,7 @@ export default function ReportView({ report, rawText }) {
         <div className="section">
           <div className="section-header ok-color">
             <span className="section-count">{oks.length}</span>
-            Korrekt
+            Correct
           </div>
           <div className="ok-list">
             {oks.map(f => (
@@ -84,11 +84,11 @@ export default function ReportView({ report, rawText }) {
         </div>
       )}
 
-      {/* German summary */}
-      {germanSummary && report && (
+      {/* AI summary */}
+      {aiSummary && report && (
         <div className="summary-de">
-          <span className="summary-de-label">KI-Zusammenfassung</span>
-          {germanSummary}
+          <span className="summary-de-label">AI Summary</span>
+          {aiSummary}
         </div>
       )}
     </div>

@@ -367,11 +367,18 @@ async function testTasks() {
 
 async function testRecognizeInvoice() {
   await test('recognize_invoice_document: file_not_available → recognized=false, no error', async () => {
-    // All test invoices have file_available=false except inv_001_006 which has a PDF
-    const result = await executeTool('recognize_invoice_document', { invoice_id: 'inv_001_001' });
+    // inv_006_002 has file_available=false in the data
+    const result = await executeTool('recognize_invoice_document', { invoice_id: 'inv_006_002' });
     assert(result.recognized === false, 'expected recognized=false');
     assert(result.reason === 'file_not_available', `reason=${result.reason}`);
     assert(result.fields === null, 'fields should be null when file unavailable');
+  });
+
+  await test('recognize_invoice_document: HTML file → recognized=false, reason=not_pdf', async () => {
+    // inv_001_001 has file_available=true but file is .html — not processable by Vision
+    const result = await executeTool('recognize_invoice_document', { invoice_id: 'inv_001_001' });
+    assert(result.recognized === false, 'expected recognized=false');
+    assert(result.reason === 'not_pdf', `expected not_pdf, got ${result.reason}`);
   });
 }
 

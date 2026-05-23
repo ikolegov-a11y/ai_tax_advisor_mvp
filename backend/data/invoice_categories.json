@@ -1,7 +1,79 @@
 [
   {
+    "invoice_id": "inv_001_001",
+    "recognized_line_items": [
+      "IT-Beratung und Softwareentwicklung — Januar 2026"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — IT Services",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT charged per §19 UStG."
+  },
+  {
+    "invoice_id": "inv_001_002",
+    "recognized_line_items": [
+      "IT-Beratung und Softwareentwicklung — Februar 2026"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — IT Services",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT charged per §19 UStG."
+  },
+  {
+    "invoice_id": "inv_001_003",
+    "recognized_line_items": [
+      "Apple MacBook Pro 14\" M3 Pro — Kauf"
+    ],
+    "suggested_account_code": "0650",
+    "suggested_account_name": "Betriebs- und Geschäftsausstattung (Anlagevermögen)",
+    "suggested_category": "IT Equipment — Capital Expenditure",
+    "confidence": 0.91,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Hardware purchase >800 EUR net (net ~1091.60 EUR). Likely qualifies as GWG or fixed asset — verify depreciation method."
+  },
+  {
+    "invoice_id": "inv_001_004",
+    "recognized_line_items": [
+      "IT-Beratung und Softwareentwicklung — März 2026"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — IT Services",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT charged per §19 UStG."
+  },
+  {
+    "invoice_id": "inv_001_005",
+    "recognized_line_items": [
+      "IT-Beratung und Softwareentwicklung — April 2026"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — IT Services",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT charged per §19 UStG."
+  },
+  {
     "invoice_id": "inv_001_006",
-    "recognized_line_items": ["ChatGPT Plus subscription — monthly"],
+    "recognized_line_items": [
+      "ChatGPT Plus subscription — monthly"
+    ],
     "suggested_account_code": "4980",
     "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
     "suggested_category": "Software Subscriptions",
@@ -9,59 +81,111 @@
     "vat_rate_if_domestic": 0.19,
     "reverse_charge_applicable": true,
     "service_type": "services",
-    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies."
+  },
+  {
+    "invoice_id": "inv_002_c1_2025",
+    "recognized_line_items": [
+      "Büroreinigung Q1 2025 — monatliche Pauschale"
+    ],
+    "suggested_account_code": "6330",
+    "suggested_account_name": "Reinigung",
+    "suggested_category": "Office Cleaning",
+    "confidence": 0.98,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Recurring office cleaning service. Domestic supplier, standard 19% VAT."
+  },
+  {
+    "invoice_id": "inv_002_c2_2025",
+    "recognized_line_items": [
+      "Büroreinigung Q2 2025 — monatliche Pauschale"
+    ],
+    "suggested_account_code": "6330",
+    "suggested_account_name": "Reinigung",
+    "suggested_category": "Office Cleaning",
+    "confidence": 0.98,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Recurring office cleaning service. Domestic supplier, standard 19% VAT."
+  },
+  {
+    "invoice_id": "inv_002_c3_2025",
+    "recognized_line_items": [
+      "Büroreinigung Q3 2025 — monatliche Pauschale"
+    ],
+    "suggested_account_code": "6330",
+    "suggested_account_name": "Reinigung",
+    "suggested_category": "Office Cleaning",
+    "confidence": 0.98,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Recurring office cleaning service. Domestic supplier, standard 19% VAT."
+  },
+  {
+    "invoice_id": "inv_002_c4_2025",
+    "recognized_line_items": [
+      "Büroreinigung Q4 2025 — monatliche Pauschale"
+    ],
+    "suggested_account_code": "6330",
+    "suggested_account_name": "Reinigung",
+    "suggested_category": "Office Cleaning",
+    "confidence": 0.98,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Recurring office cleaning service. Domestic supplier, standard 19% VAT."
+  },
+  {
+    "invoice_id": "inv_002_001",
+    "recognized_line_items": [
+      "Design-Projekt: Website-Relaunch — Konzept, Layout, UI-Mockups"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Dienstleistungen",
+    "suggested_category": "Revenue — Design Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Regelbesteuerer, domestic client — 19% VAT applied."
   },
   {
     "invoice_id": "inv_002_002",
-    "recognized_line_items": ["Adobe Creative Cloud — All Apps plan"],
+    "recognized_line_items": [
+      "Adobe Creative Cloud — All Apps Plan, monatliches Abo"
+    ],
     "suggested_account_code": "4980",
     "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
     "suggested_category": "Software Subscriptions",
-    "confidence": 0.98,
+    "confidence": 0.97,
     "vat_rate_if_domestic": 0.19,
     "reverse_charge_applicable": true,
     "service_type": "services",
-    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+    "notes": "Digital subscription from EU supplier (IE) — reverse charge §13b UStG applies."
   },
   {
-    "invoice_id": "inv_002_004",
-    "recognized_line_items": ["Figma Professional — monthly subscription"],
-    "suggested_account_code": "4980",
-    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
-    "suggested_category": "Software Subscriptions",
-    "confidence": 0.96,
-    "vat_rate_if_domestic": 0.19,
-    "reverse_charge_applicable": true,
-    "service_type": "services",
-    "notes": "Digital service from EU supplier (IE VAT ID) — reverse charge §13b UStG applies"
-  },
-  {
-    "invoice_id": "inv_003_002",
-    "recognized_line_items": ["Haushaltswaren Set — 500 units", "Verpackungsmaterial"],
-    "suggested_account_code": "3400",
-    "suggested_account_name": "Wareneingang",
-    "suggested_category": "Cost of Goods",
-    "confidence": 0.92,
-    "vat_rate_if_domestic": 0.19,
-    "reverse_charge_applicable": false,
-    "service_type": "goods",
-    "notes": "Import from CN — Einfuhrumsatzsteuer at customs, not reverse charge"
-  },
-  {
-    "invoice_id": "inv_004_002",
-    "recognized_line_items": ["Geschäftsessen 4 Personen", "Speisen und Getränke"],
-    "suggested_account_code": "4650",
-    "suggested_account_name": "Bewirtungskosten",
-    "suggested_category": "Business Entertainment",
+    "invoice_id": "inv_002_003",
+    "recognized_line_items": [
+      "Grafikdesign Corporate Identity — Logo, Visitenkarten, Briefpapier"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Dienstleistungen",
+    "suggested_category": "Revenue — Design Services",
     "confidence": 0.94,
     "vat_rate_if_domestic": 0.19,
     "reverse_charge_applicable": false,
     "service_type": "services",
-    "notes": "Bewirtungskosten: nur 70% einkommensteuerlich abziehbar (§4 Abs.5 Nr.2 EStG)"
+    "notes": "Outgoing invoice, Regelbesteuerer, domestic client — 19% VAT applied."
   },
   {
-    "invoice_id": "inv_006_002",
-    "recognized_line_items": ["GitHub Teams — 5 seats"],
+    "invoice_id": "inv_002_004",
+    "recognized_line_items": [
+      "Figma Professional Plan — monthly subscription"
+    ],
     "suggested_account_code": "4980",
     "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
     "suggested_category": "Software Subscriptions",
@@ -69,18 +193,455 @@
     "vat_rate_if_domestic": 0.19,
     "reverse_charge_applicable": true,
     "service_type": "services",
-    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+    "notes": "Digital subscription from EU supplier (IE) — reverse charge §13b UStG applies."
   },
   {
-    "invoice_id": "inv_007_001",
-    "recognized_line_items": ["Zoom Pro monthly subscription"],
-    "suggested_account_code": "4980",
-    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
-    "suggested_category": "Software Subscriptions",
+    "invoice_id": "inv_002_005",
+    "recognized_line_items": [
+      "Webdesign und UX-Konzept — Projekt Onlineshop Relaunch"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Dienstleistungen",
+    "suggested_category": "Revenue — Design Services",
+    "confidence": 0.94,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Regelbesteuerer, domestic client — 19% VAT applied."
+  },
+  {
+    "invoice_id": "inv_002_006",
+    "recognized_line_items": [
+      "Büroreinigung März 2026 — monatliche Pauschale"
+    ],
+    "suggested_account_code": "6330",
+    "suggested_account_name": "Reinigung",
+    "suggested_category": "Office Cleaning",
+    "confidence": 0.98,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Recurring office cleaning. Domestic supplier, standard 19% VAT."
+  },
+  {
+    "invoice_id": "inv_003_001",
+    "recognized_line_items": [
+      "Amazon Settlement — Dezember 2025 (Auszahlung Marketplace-Umsätze)"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Warenverkäufen (Marketplace)",
+    "suggested_category": "Revenue — Marketplace Sales",
+    "confidence": 0.92,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Amazon settlement statement from LU entity. Gross revenue before fees. Separate FBA fee invoice expected."
+  },
+  {
+    "invoice_id": "inv_003_002",
+    "recognized_line_items": [
+      "Wareneinkauf: Haushaltswaren-Sortiment (50 Einheiten) — Alibaba Bestellung"
+    ],
+    "suggested_account_code": "3200",
+    "suggested_account_name": "Wareneinkauf",
+    "suggested_category": "Cost of Goods — Import Purchase",
+    "confidence": 0.93,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Import from non-EU supplier (CN). No German VAT on import invoice — import VAT (Einfuhrumsatzsteuer) handled separately at customs."
+  },
+  {
+    "invoice_id": "inv_003_003",
+    "recognized_line_items": [
+      "Amazon Settlement — Januar 2026 (Auszahlung Marketplace-Umsätze)"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Warenverkäufen (Marketplace)",
+    "suggested_category": "Revenue — Marketplace Sales",
+    "confidence": 0.92,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Amazon settlement statement from LU entity. Gross revenue before fees. Separate FBA fee invoice expected."
+  },
+  {
+    "invoice_id": "inv_003_004",
+    "recognized_line_items": [
+      "DHL Express — Frachttransport Sendung FR5582139"
+    ],
+    "suggested_account_code": "4780",
+    "suggested_account_name": "Frachtkosten, Lagergebühren",
+    "suggested_category": "Shipping & Logistics",
     "confidence": 0.96,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Domestic shipping costs. Standard 19% VAT."
+  },
+  {
+    "invoice_id": "inv_003_005",
+    "recognized_line_items": [
+      "Amazon Settlement — Februar 2026 (Auszahlung Marketplace-Umsätze)"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Warenverkäufen (Marketplace)",
+    "suggested_category": "Revenue — Marketplace Sales",
+    "confidence": 0.92,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Amazon settlement statement. Gross revenue before fees."
+  },
+  {
+    "invoice_id": "inv_003_006",
+    "recognized_line_items": [
+      "Amazon FBA-Gebühren Q1 2026 — Lagerung, Fulfillment, Referral Fees"
+    ],
+    "suggested_account_code": "6300",
+    "suggested_account_name": "Fremdleistungen / Provisionen",
+    "suggested_category": "Marketplace Fees",
+    "confidence": 0.95,
     "vat_rate_if_domestic": 0.19,
     "reverse_charge_applicable": true,
     "service_type": "services",
-    "notes": "Digital service from EU supplier — reverse charge §13b UStG applies"
+    "notes": "Amazon FBA service fees from LU entity — reverse charge §13b UStG applies."
+  },
+  {
+    "invoice_id": "inv_003_007",
+    "recognized_line_items": [
+      "Wareneinkauf: Haushaltswaren-Sortiment (40 Einheiten) — Alibaba Bestellung"
+    ],
+    "suggested_account_code": "3200",
+    "suggested_account_name": "Wareneinkauf",
+    "suggested_category": "Cost of Goods — Import Purchase",
+    "confidence": 0.92,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Import from non-EU supplier (CN). Import VAT handled at customs, not on this invoice."
+  },
+  {
+    "invoice_id": "inv_003_008",
+    "recognized_line_items": [
+      "Amazon Settlement — März 2026 (Auszahlung Marketplace-Umsätze)"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Warenverkäufen (Marketplace)",
+    "suggested_category": "Revenue — Marketplace Sales",
+    "confidence": 0.91,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Amazon settlement statement. Note: gross amount includes Amazon commission — book revenue gross and FBA fees separately (Konto 6300)."
+  },
+  {
+    "invoice_id": "inv_004_001",
+    "recognized_line_items": [
+      "Unternehmensberatung — Strategie und Prozessoptimierung, Dezember 2025"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Dienstleistungen",
+    "suggested_category": "Revenue — Consulting Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Regelbesteuerer, domestic client — 19% VAT applied."
+  },
+  {
+    "invoice_id": "inv_004_002",
+    "recognized_line_items": [
+      "Geschäftsessen: Kundenbewirtung — 4 Personen, Metropol Frankfurt"
+    ],
+    "suggested_account_code": "4650",
+    "suggested_account_name": "Bewirtungskosten",
+    "suggested_category": "Client Entertainment",
+    "confidence": 0.94,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Bewirtungskosten — only 70% deductible per §4 Abs. 5 Nr. 2 EStG. Retain Bewirtungsbeleg with guest names and business purpose."
+  },
+  {
+    "invoice_id": "inv_004_003",
+    "recognized_line_items": [
+      "Unternehmensberatung — Projektmanagement, Januar 2026"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Dienstleistungen",
+    "suggested_category": "Revenue — Consulting Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Regelbesteuerer, domestic client — 19% VAT applied."
+  },
+  {
+    "invoice_id": "inv_004_004",
+    "recognized_line_items": [
+      "Kfz-Reparatur BMW 520d — Inspektion + Bremsbelag-Wechsel"
+    ],
+    "suggested_account_code": "6570",
+    "suggested_account_name": "Kfz-Reparaturen und Kfz-Wartung",
+    "suggested_category": "Vehicle Maintenance",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Vehicle repair for company car BMW 520d. Standard 19% VAT. If 1%-Regel applied, costs are deductible."
+  },
+  {
+    "invoice_id": "inv_004_005",
+    "recognized_line_items": [
+      "Unternehmensberatung — Change Management, Februar–März 2026"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse aus Dienstleistungen",
+    "suggested_category": "Revenue — Consulting Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Regelbesteuerer, domestic client — 19% VAT applied."
+  },
+  {
+    "invoice_id": "inv_004_006",
+    "recognized_line_items": [
+      "IT-Dienstleistungen: Softwareentwicklung und Integration — Progmatic Sp. z o.o."
+    ],
+    "suggested_account_code": "4985",
+    "suggested_account_name": "Fremdleistungen IT",
+    "suggested_category": "IT Outsourcing",
+    "confidence": 0.93,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "IT services from EU supplier (PL) — reverse charge §13b UStG applies. Verify supplier VAT ID for ZM eligibility."
+  },
+  {
+    "invoice_id": "inv_004_007",
+    "recognized_line_items": [
+      "Cloud Infrastructure Services — CloudPlatform B.V., monatliche Nutzung"
+    ],
+    "suggested_account_code": "4980",
+    "suggested_account_name": "Aufwendungen für Software-Lizenzen und Cloud-Dienste",
+    "suggested_category": "Cloud Infrastructure",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "Cloud service from EU supplier (NL) — reverse charge §13b UStG applies. Service type: digital services."
+  },
+  {
+    "invoice_id": "inv_005_001",
+    "recognized_line_items": [
+      "Hochzeitsreportage — Dokumentation und digitale Bildlieferung"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — Photography Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT per §19 UStG."
+  },
+  {
+    "invoice_id": "inv_005_002",
+    "recognized_line_items": [
+      "Stativ-Set: Rollei C5i Carbon + Kugelkopf — Bestellung"
+    ],
+    "suggested_account_code": "0660",
+    "suggested_account_name": "GWG — Geringwertige Wirtschaftsgüter",
+    "suggested_category": "Photography Equipment — GWG",
+    "confidence": 0.9,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Photography equipment <800 EUR net — qualifies as GWG, immediate expense deduction."
+  },
+  {
+    "invoice_id": "inv_005_003",
+    "recognized_line_items": [
+      "Produktfotografie — Katalogaufnahmen Frühjahrskollektion"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — Photography Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT per §19 UStG."
+  },
+  {
+    "invoice_id": "inv_005_004",
+    "recognized_line_items": [
+      "Portraitfotografie — Corporate Headshots, halber Tag"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — Photography Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT per §19 UStG."
+  },
+  {
+    "invoice_id": "inv_005_005",
+    "recognized_line_items": [
+      "Geschäftsessen: Kundenbesprechung — Restaurant Im Goldenen Einhorn"
+    ],
+    "suggested_account_code": "4650",
+    "suggested_account_name": "Bewirtungskosten",
+    "suggested_category": "Client Entertainment",
+    "confidence": 0.93,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Bewirtungskosten — 70% deductible per §4 Abs. 5 Nr. 2 EStG. Retain Bewirtungsbeleg."
+  },
+  {
+    "invoice_id": "inv_005_006",
+    "recognized_line_items": [
+      "Eventfotografie — Firmenfeier, ganztägig"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — Photography Services",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Outgoing invoice, Kleinunternehmer — no VAT per §19 UStG."
+  },
+  {
+    "invoice_id": "inv_005_007",
+    "recognized_line_items": [
+      "Canon EOS R5 Mark II Body + RF 24-105mm f/4L IS USM"
+    ],
+    "suggested_account_code": "0650",
+    "suggested_account_name": "Betriebs- und Geschäftsausstattung (Anlagevermögen)",
+    "suggested_category": "Photography Equipment — Capital Expenditure",
+    "confidence": 0.94,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "goods",
+    "notes": "Professional camera body + lens. Net value ~2400 EUR — exceeds GWG threshold (800 EUR). Requires asset registration and scheduled depreciation (AfA). Cannot be fully expensed in purchase year."
+  },
+  {
+    "invoice_id": "inv_005_008",
+    "recognized_line_items": [
+      "Adobe Lightroom + Photoshop — Creative Cloud Photography Plan"
+    ],
+    "suggested_account_code": "4980",
+    "suggested_account_name": "Aufwendungen für Software-Lizenzen und ähnliche Rechte",
+    "suggested_category": "Software Subscriptions",
+    "confidence": 0.97,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "Digital subscription from EU supplier (IE) — reverse charge §13b UStG applies."
+  },
+  {
+    "invoice_id": "inv_005_009",
+    "recognized_line_items": [
+      "Kfz-Reparatur — Inspektion + TÜV-Vorbereitung"
+    ],
+    "suggested_account_code": "6570",
+    "suggested_account_name": "Kfz-Reparaturen und Kfz-Wartung",
+    "suggested_category": "Vehicle Maintenance",
+    "confidence": 0.93,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Vehicle repair. Standard 19% VAT. Deductibility depends on business-use ratio of the vehicle."
+  },
+  {
+    "invoice_id": "inv_006_001",
+    "recognized_line_items": [
+      "Software Development Services — Custom backend API development, January 2026"
+    ],
+    "suggested_account_code": "8338",
+    "suggested_account_name": "Steuerfreie Umsätze §4 Nr. 1a UStG (Drittlandexporte)",
+    "suggested_category": "Revenue — Software Development (Non-EU)",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Service to US client — outside EU, not subject to German VAT per §3a UStG. Report in EÜR line 41."
+  },
+  {
+    "invoice_id": "inv_006_003",
+    "recognized_line_items": [
+      "API-Integration und Backend-Entwicklung — Projekt ERP Connect (Österreich)"
+    ],
+    "suggested_account_code": "8120",
+    "suggested_account_name": "Steuerfreie Umsätze §4 Nr. 1b UStG — innergemeinschaftliche Lieferungen",
+    "suggested_category": "Revenue — Software Development (EU B2B RC)",
+    "confidence": 0.93,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": true,
+    "service_type": "services",
+    "notes": "B2B service to EU client (AT) — reverse charge §13b UStG. Requires customer VAT ID for ZM reporting. Verify VAT ID is present on invoice."
+  },
+  {
+    "invoice_id": "inv_006_005",
+    "recognized_line_items": [
+      "Software Development Services — SaaS platform feature development, Feb–Mar 2026"
+    ],
+    "suggested_account_code": "8338",
+    "suggested_account_name": "Steuerfreie Umsätze §4 Nr. 1a UStG (Drittlandexporte)",
+    "suggested_category": "Revenue — Software Development (Non-EU)",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Service to US client — outside EU, not subject to German VAT per §3a UStG."
+  },
+  {
+    "invoice_id": "inv_006_008",
+    "recognized_line_items": [
+      "Kamera-Verleih: Sony Alpha 7 IV + Zubehör — 22 Tage Januar 2026"
+    ],
+    "suggested_account_code": "8510",
+    "suggested_account_name": "Mieterlöse",
+    "suggested_category": "Revenue — Equipment Rental",
+    "confidence": 0.92,
+    "vat_rate_if_domestic": 0.19,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Equipment rental to domestic client. 19% VAT applies. Note: rental activity differs from primary business (software development) — verify correct revenue category."
+  },
+  {
+    "invoice_id": "inv_007_010",
+    "recognized_line_items": [
+      "Yoga-Privatstunden (1:1) — 4 × 60 Minuten, Januar 2026"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — Yoga & Coaching Sessions",
+    "confidence": 0.96,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Invoice explicitly states §19 UStG exemption — no VAT charged. Verify consistency with company VAT status in settings."
+  },
+  {
+    "invoice_id": "inv_007_011",
+    "recognized_line_items": [
+      "Yoga-Einzeltraining (1:1) — 8 × 60 Minuten",
+      "Ernährungs- und Lifestyle-Coaching — 2 × 45 Minuten (Rabatt)"
+    ],
+    "suggested_account_code": "8400",
+    "suggested_account_name": "Erlöse (Kleinunternehmer §19 UStG)",
+    "suggested_category": "Revenue — Yoga & Coaching Sessions",
+    "confidence": 0.95,
+    "vat_rate_if_domestic": 0.0,
+    "reverse_charge_applicable": false,
+    "service_type": "services",
+    "notes": "Invoice explicitly states §19 UStG exemption — no VAT charged. Verify consistency with company VAT status in settings."
   }
 ]

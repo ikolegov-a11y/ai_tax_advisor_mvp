@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import ReportView from '../components/ReportView.jsx';
 
 const PERIOD_OPTIONS = [
-  { value: '',         label: 'Gesamtes Jahr' },
+  { value: '',         label: 'Full Year' },
   { value: 'Q1 2026',  label: 'Q1 2026' },
   { value: 'Q2 2026',  label: 'Q2 2026' },
   { value: 'Q3 2026',  label: 'Q3 2026' },
@@ -34,7 +34,7 @@ export default function ChatVariant() {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    fetch('/api/clients')
+    fetch(`${import.meta.env.VITE_API_BASE || ''}/api/clients`)
       .then(r => r.json())
       .then(data => {
         setClients(data);
@@ -55,13 +55,13 @@ export default function ChatVariant() {
     setStarted(true);
     setLoading(true);
 
-    const periodLabel = period || 'das gesamte Jahr';
-    addMessage('assistant', `Ich prüfe Ihre Buchhaltung für ${periodLabel}… Das dauert etwa 2 Minuten.`);
+    const periodLabel = period || 'the full year';
+    addMessage('assistant', `I'm reviewing your books for ${periodLabel}… This takes about 2 minutes.`);
 
-    const userQuery = `Bitte analysiere alle Buchungen${period ? ` für ${period}` : ''} proaktiv. Starte mit dem kritischsten Problem und erkläre es verständlich. Identifiziere alle Fehler, Risiken und Warnungen und berechne die Steuerreserve.`;
+    const userQuery = `Please analyze all bookings${period ? ` for ${period}` : ''} proactively. Start with the most critical issue and explain it clearly. Identify all errors, risks and warnings and calculate the tax reserve.`;
 
     try {
-      const res = await fetch('/api/analyze', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE || ''}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ clientId, period: period || undefined, userQuery })
@@ -71,14 +71,14 @@ export default function ChatVariant() {
       setThreadId(data.threadId);
 
       if (!res.ok) {
-        addMessage('assistant', `❌ Fehler: ${data.message || 'Analyse fehlgeschlagen.'}`);
+        addMessage('assistant', `❌ Error: ${data.message || 'Analysis failed.'}`);
         return;
       }
 
       setMessages(prev => prev.slice(0, -1)); // remove "checking…" message
       addMessage('assistant', null, data.report, data.raw_text);
     } catch {
-      addMessage('assistant', '❌ Verbindungsfehler. Ist der Backend-Server gestartet?');
+      addMessage('assistant', '❌ Connection error. Is the backend server running?');
     } finally {
       setLoading(false);
     }
@@ -93,7 +93,7 @@ export default function ChatVariant() {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/analyze', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE || ''}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ clientId, period: period || undefined, userQuery: text, threadId })
@@ -101,7 +101,7 @@ export default function ChatVariant() {
       const data = await res.json();
 
       if (!res.ok) {
-        addMessage('assistant', `❌ ${data.message || 'Fehler'}`);
+        addMessage('assistant', `❌ ${data.message || 'Error'}`);
         return;
       }
 
@@ -109,10 +109,10 @@ export default function ChatVariant() {
       if (data.report) {
         addMessage('assistant', null, data.report, data.raw_text);
       } else {
-        addMessage('assistant', data.raw_text || 'Keine Antwort erhalten.');
+        addMessage('assistant', data.raw_text || 'No response received.');
       }
     } catch {
-      addMessage('assistant', '❌ Verbindungsfehler.');
+      addMessage('assistant', '❌ Connection error.');
     } finally {
       setLoading(false);
     }
@@ -130,7 +130,7 @@ export default function ChatVariant() {
       {/* Setup bar */}
       <div className="chat-setup-bar">
         <div className="form-group">
-          <label className="form-label">Mandant</label>
+          <label className="form-label">Client</label>
           <select
             className="form-select"
             value={clientId}
@@ -144,7 +144,7 @@ export default function ChatVariant() {
         </div>
 
         <div className="form-group">
-          <label className="form-label">Zeitraum</label>
+          <label className="form-label">Period</label>
           <select
             className="form-select"
             value={period}
@@ -164,7 +164,7 @@ export default function ChatVariant() {
             disabled={!clientId || loading}
             style={{ flexShrink: 0 }}
           >
-            🔍 Analyse starten
+            🔍 Start Analysis
           </button>
         ) : (
           <button
@@ -172,7 +172,7 @@ export default function ChatVariant() {
             style={{ flexShrink: 0, background: '#f4f5f9', border: '1px solid var(--color-border)' }}
             onClick={() => { setMessages([]); setThreadId(null); setStarted(false); }}
           >
-            🔄 Neu starten
+            🔄 Start Over
           </button>
         )}
       </div>
@@ -183,10 +183,10 @@ export default function ChatVariant() {
           {messages.length === 0 && !loading && (
             <div className="empty-state" style={{ flex: 1 }}>
               <div className="empty-icon">💬</div>
-              <div className="empty-title">KI Tax Advisor</div>
+              <div className="empty-title">AI Tax Advisor</div>
               <div className="empty-subtitle">
-                Wählen Sie einen Mandanten und klicken Sie auf „Analyse starten".
-                Die KI prüft proaktiv Ihre Bücher und erklärt die wichtigsten Probleme.
+                Select a client and click "Start Analysis".
+                The AI will proactively review your books and explain the key issues.
               </div>
             </div>
           )}
@@ -194,7 +194,7 @@ export default function ChatVariant() {
           {messages.map(msg => (
             <div key={msg.id} className={`chat-message ${msg.role}`}>
               <div className="chat-avatar">
-                {msg.role === 'user' ? 'Du' : '🤖'}
+                {msg.role === 'user' ? 'You' : '🤖'}
               </div>
               {msg.report ? (
                 <div className="chat-bubble chat-bubble-report" style={{ flex: 1 }}>
@@ -214,7 +214,7 @@ export default function ChatVariant() {
           <textarea
             className="chat-input"
             rows={1}
-            placeholder={started ? 'Frage stellen… (z. B. "Was genau ist bei Eintrag entry_001_009 falsch?")' : 'Starten Sie zuerst die Analyse…'}
+            placeholder={started ? 'Ask a question… (e.g. "What exactly is wrong with entry entry_001_009?")' : 'Start the analysis first…'}
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -225,7 +225,7 @@ export default function ChatVariant() {
             onClick={sendMessage}
             disabled={loading || !started || !input.trim()}
           >
-            Senden
+            Send
           </button>
         </div>
       </div>

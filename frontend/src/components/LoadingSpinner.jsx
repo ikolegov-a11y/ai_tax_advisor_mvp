@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
 const STEPS = [
-  'Lade Kontoauszüge und Rechnungen…',
-  'Prüfe Buchungen gegen Belege…',
-  'Analysiere USt-Deklarationen…',
-  'Berechne Steuerreserve…',
-  'Erstelle Abschlussbericht…',
+  'Loading bank statements and invoices…',
+  'Checking entries against documents…',
+  'Analyzing VAT declarations…',
+  'Calculating tax reserve…',
+  'Generating final report…',
 ];
 
 export default function LoadingSpinner() {
@@ -34,8 +34,8 @@ export default function LoadingSpinner() {
     <div className="loading-state">
       <div className="loading-spinner" />
       <div>
-        <div className="loading-title">KI analysiert Ihre Buchhaltung…</div>
-        <div className="loading-subtitle">Dauert etwa 2 Minuten — bitte warten</div>
+        <div className="loading-title">AI is analyzing your books…</div>
+        <div className="loading-subtitle">Takes about 2 minutes — please wait</div>
       </div>
 
       <div className="progress-bar-wrap">

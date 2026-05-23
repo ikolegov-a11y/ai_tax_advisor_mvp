@@ -7,7 +7,8 @@ const cors    = require('cors');
 const fs      = require('fs');
 const path    = require('path');
 
-const { analyzeClient } = require('./agent');
+const { analyzeClient }      = require('./agent');
+const { handleBookingCheck } = require('./booking_check');
 
 // ---------------------------------------------------------------------------
 // Sanity check
@@ -126,12 +127,24 @@ app.post('/api/analyze', async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// POST /api/booking-check
+// Body: { client_id, invoice_id?, transaction_id?, entry_id? }
+// ---------------------------------------------------------------------------
+
+app.post('/api/booking-check', async (req, res) => {
+  await handleBookingCheck(req, res);
+});
+
+// ---------------------------------------------------------------------------
 // Start
 // ---------------------------------------------------------------------------
 
-app.listen(PORT, () => {
-  console.log(`[server] Running on http://localhost:${PORT}`);
-  console.log(`[server] Endpoints: GET /api/clients  POST /api/analyze`);
-});
+// Only start listening when run directly (not when imported by Vercel serverless)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`[server] Running on http://localhost:${PORT}`);
+    console.log(`[server] Endpoints: GET /api/clients  POST /api/analyze`);
+  });
+}
 
 module.exports = app;

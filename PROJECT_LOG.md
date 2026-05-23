@@ -61,12 +61,29 @@
 
 | # | Задача | Статус | Заметка |
 |---|---|---|---|
-| 2.1 | `backend/tools.js` — 9 функций | ⬜ Не начат | + get_bookkeeping_entries, get_reports, get_tasks, recognize_invoice_document |
-| 2.2 | Фильтрация по периоду (date range) | ⬜ Не начат | |
-| 2.3 | `backend/test_tools.js` — скрипт проверки | ⬜ Не начат | |
-| 2.4 | Тест: все 7 клиентов читаются корректно | ⬜ Не начат | |
-| 2.5 | Обновить client_XXX.json: добавить bookkeeping_entries, tasks, reports | ⬜ Не начат | Также добавить file_path в invoices |
-| 2.6 | Сгенерировать PDF-инвойсы для invoice_files/ | ⬜ Не начат | Мин. 2–3 файла на клиента, часть с намеренными расхождениями |
+| 2.1 | `backend/tools.js` — 14 функций | ✅ Готово | get_transactions, get_invoices, get_company_settings, get_business_context, get_assets, get_bookkeeping_entries, get_reports_eur/ustva/zm/gewst, get_tasks, recognize_invoice_document, categorize_invoice, get_expense_categories |
+| 2.2 | Фильтрация по периоду (date range) | ✅ Готово | parsePeriod: Q1/Q1-Q2/Full Year/YYYY-MM/explicit range |
+| 2.3 | `backend/test_tools.js` — скрипт проверки | ✅ Готово | 44 теста; добавлены recognize (not_pdf path) и cross-entity тест-кейсы |
+| 2.4 | Тест: все 7 клиентов читаются корректно | ✅ Готово | get_tasks: all 7 clients ✅; отдельные тесты по client_001–006 |
+| 2.5 | Данные разбиты на отдельные JSON-файлы | ✅ Готово | transactions/invoices/bookkeeping_entries/reports/tasks — все в data/ |
+| 2.6 | PDF-инвойс для Vision: inv_001_006.pdf | ✅ Готово | Один реальный PDF; остальные .html — tools.js возвращает reason=not_pdf |
+
+---
+
+## Этап 2.5 — Сервис: Buchungsprüfung (Booking Quality Gate)
+
+> **Цель:** Синхронная проверка качества проводки в момент создания — без агентного цикла.  
+> **Архитектура:** 10 детерминированных функций → LLM вызывается единожды только при наличии findings.  
+> **Что создаётся:** `backend/checks.js`, `backend/booking_check.js`, `frontend/src/variants/BookingVariant.jsx`  
+> **Как тестировать:** `node backend/test_booking_check.js` → 6 зелёных тестов; браузер `?variant=booking`
+
+| # | Задача | Статус | Заметка |
+|---|---|---|---|
+| 2.5.1 | `backend/checks.js` — 10 детерминированных функций проверки | ✅ Готово | Zero deps от tools.js/agent.js |
+| 2.5.2 | `backend/booking_check.js` — обработчик эндпоинта | ✅ Готово | LLM только при наличии findings; ≤2000ms clean-path |
+| 2.5.3 | Зарегистрировать POST /api/booking-check в server.js | ✅ Готово | /api/analyze не изменён |
+| 2.5.4 | `frontend/src/variants/BookingVariant.jsx` + обновить App.jsx | ✅ Готово | ?variant=booking; 3 шага; 2–3 тест-кейса на клиента; Jetzt korrigieren / Zur Kenntnis genommen |
+| 2.5.5 | `backend/test_booking_check.js` — 6 сценариев | ✅ Готово | `node backend/test_booking_check.js` → 6/6 ✅ |
 
 ---
 
@@ -78,13 +95,13 @@
 
 | # | Задача | Статус | Заметка |
 |---|---|---|---|
-| 3.1 | `.env` файл с `ANTHROPIC_API_KEY` | ⬜ Не начат | Сначала получить ключ на console.anthropic.com |
-| 3.2 | `backend/agent.js` — подключение Claude API | ⬜ Не начат | Модель: claude-sonnet-4-6 |
-| 3.3 | System prompt: Tax Rules Reference + Finanzamt methodology | ⬜ Не начат | Вложить оба KB-документа |
-| 3.4 | Tool_use loop: Claude → tool call → result → Claude | ⬜ Не начат | |
-| 3.5 | Thread_id: хранение истории в памяти (Map) | ⬜ Не начат | |
-| 3.6 | `backend/test_agent.js` — вызов агента напрямую | ⬜ Не начат | |
-| 3.7 | Тест: агент находит ≥1 реальную ошибку у client_001 | ⬜ Не начат | Ожидаем: ошибка A-05 (Kleinunternehmer + НДС) |
+| 3.1 | `.env` файл с `ANTHROPIC_API_KEY` | ✅ Готово | `.env` в корне проекта; agent.js использует override:true |
+| 3.2 | `backend/agent.js` — подключение Claude API | ✅ Готово | claude-sonnet-4-6; prompt caching на system prompt |
+| 3.3 | System prompt: Tax Rules Reference + Finanzamt methodology | ✅ Готово | Tax_Checks_Catalog.md + Finanzamt_Methodology_Reference.md вложены; cache_control: ephemeral |
+| 3.4 | Tool_use loop: Claude → tool call → result → Claude | ✅ Готово | MAX_ITERATIONS=10; parallel tool execution; retry с backoff при 429 |
+| 3.5 | Thread_id: хранение истории в памяти (Map) | ✅ Готово | crypto.randomUUID(); conversationHistory Map |
+| 3.6 | `backend/test_agent.js` — вызов агента напрямую | ✅ Готово | 3 сценария: client_001 RC error, client_002 Home Office, multi-turn |
+| 3.7 | Тест: агент находит реальные ошибки | ✅ Готово | client_001: [A-06/B-ZM-02] RC ✅; client_002: [B-04] Home Office ✅; multi-turn 8/8 ✅ |
 
 ---
 
@@ -96,11 +113,11 @@
 
 | # | Задача | Статус | Заметка |
 |---|---|---|---|
-| 4.1 | `backend/server.js` — Express + CORS, порт 3001 | ⬜ Не начат | |
-| 4.2 | `GET /api/clients` — список клиентов | ⬜ Не начат | Возвращает id + display_name |
-| 4.3 | `POST /api/analyze` — вызов агента | ⬜ Не начат | body: { clientId, period, userQuery, threadId? } |
-| 4.4 | Тест через curl: корректный JSON-ответ | ⬜ Не начат | |
-| 4.5 | Обработка ошибок (нет API key, клиент не найден) | ⬜ Не начат | |
+| 4.1 | `backend/server.js` — Express + CORS, порт 3001 | ✅ Готово | CORS для localhost:5173/3000; 300s timeout |
+| 4.2 | `GET /api/clients` — список клиентов | ✅ Готово | Все 7 клиентов, id + display_name |
+| 4.3 | `POST /api/analyze` — вызов агента | ✅ Готово | Возвращает threadId + report (errors/warnings/ok_checks/steuerreserve) |
+| 4.4 | Тест через curl: корректный JSON-ответ | ✅ Готово | client_001 Q1 2026: 3 errors, 5 warnings, 11 ok, steuerreserve €1058/мес |
+| 4.5 | Обработка ошибок (нет API key, клиент не найден) | ✅ Готово | 400 missing_fields, 404 client_not_found, 500 agent_error, 504 timeout |
 
 ---
 
@@ -108,18 +125,18 @@
 
 > **Цель:** Визуализировать отчёт агента для пользователя.  
 > **Что создаётся:** `frontend/` (Vite + React)  
-> **Как тестировать:** открыть `http://localhost:3000` в браузере
+> **Как тестировать:** открыть `http://localhost:5173` в браузере
 
 | # | Задача | Статус | Заметка |
 |---|---|---|---|
-| 5.1 | Vite + React проект в `frontend/` | ⬜ Не начат | |
-| 5.2 | Client dropdown (данные из `GET /api/clients`) | ⬜ Не начат | |
-| 5.3 | Period selector (Q1 2026, Q2 2026, ...) | ⬜ Не начат | |
-| 5.4 | Query input: «Что хотите проверить?» | ⬜ Не начат | |
-| 5.5 | Submit → POST /api/analyze → loading state | ⬜ Не начат | |
-| 5.6 | Отчёт: 🔴 Errors / ⚠️ Warnings / ✅ OK / 💰 Steuerreserve | ⬜ Не начат | |
-| 5.7 | Thread_id в React state (контекст разговора) | ⬜ Не начат | |
-| 5.8 | Тест: полный цикл в браузере, все 7 клиентов | ⬜ Не начат | |
+| 5.1 | Vite + React проект в `frontend/` | ✅ Готово | Vite 5, React 18; порт 5173; 3 варианта + 6 компонентов |
+| 5.2 | Client dropdown (данные из `GET /api/clients`) | ✅ Готово | WidgetVariant + ChatVariant; клиенты грузятся при монтировании |
+| 5.3 | Period selector (Q1 2026, Q2 2026, ...) | ✅ Готово | 9 опций: Q1–Q4 2026, Q1–Q4 2025, «Gesamtes Jahr» |
+| 5.4 | Query input: «Что хотите проверить?» | ✅ Готово | Пользовательский query строится автоматически в handleAnalyze |
+| 5.5 | Submit → POST /api/analyze → loading state | ✅ Готово | LoadingSpinner + спиннер «Analyse läuft»; таймаут 300 сек |
+| 5.6 | Отчёт: 🔴 Errors / ⚠️ Warnings / ✅ OK / 💰 Steuerreserve | ✅ Готово | ReportView + FindingCard + SteuerreserveCard; немецкое резюме |
+| 5.7 | Thread_id в React state (контекст разговора) | ✅ Готово | threadId сохраняется, передаётся в следующий запрос |
+| 5.8 | Тест: полный цикл в браузере, все 7 клиентов | ✅ Готово | Proxy fix: VITE_API_BASE=http://localhost:3001 (обход Vite proxy); UI подтверждён скриншотом; Booking variant протестирован |
 
 ---
 
@@ -147,8 +164,8 @@
 |---|---|---|---|
 | 6.1 | Прогон всех 7 клиентов по тест-кейсам из TEST_CASES.md | ⬜ Не начат | Зависит от Этапа 5.5 |
 | 6.2 | Замер false positive rate — нет лишних ошибок | ⬜ Не начат | |
-| 6.3 | Время ответа < 60 секунд | ⬜ Не начат | |
-| 6.4 | Деплой на Vercel — получить публичный URL | ⬜ Не начат | |
+| 6.3 | Время ответа < 60 секунд | ⬜ Не начат | Vercel Hobby limit = 60s; агент обычно 30–60s без rate limit |
+| 6.4 | Деплой на Vercel — получить публичный URL | ✅ Готово | **https://ai-tax-advisor-mvp.vercel.app** · ANTHROPIC_API_KEY в env · /api/clients ✅ · /api/booking-check ✅ |
 | 6.5 | Загрузка данных 10 реальных клиентов (с согласия) | ⬜ Не начат | Заменить test JSON на реальные |
 | 6.6 | Проверка гипотез H1–H8 (пользовательские сессии) | ⬜ Не начат | 10 сессий по 45–60 мин |
 | 6.7 | Синтез результатов → решение о передаче в разработку | ⬜ Не начат | |
@@ -321,3 +338,7 @@ Create React + Vite app on port 3000:
 | Май 2026 | Создан Finanzamt_Methodology_Reference.md |
 | Май 2026 | Упрощение MVP: один UX-вариант, без стриминга, без аутентификации |
 | Май 2026 | **Ревизия документации v0.2:** добавлены 4 новых инструмента агента (get_bookkeeping_entries, get_reports, get_tasks, recognize_invoice_document); хранилище PDF-инвойсов; блок B разбит на 4 подблока по типу отчёта; принцип проактивных проверок; KB разбита на 7 файлов; удалены 8 проверок, дублирующих Finom |
+| Май 2026 | **Этап 4 завершён:** server.js — GET /api/clients ✅, POST /api/analyze ✅, валидация и ошибки ✅. Реальный отчёт: 3 errors, 5 warnings, 11 ok, steuerreserve €1058/мес. |
+| Май 2026 | **Этап 3 завершён:** agent.js — tool-use loop, 8/8 тестов ✅. Добавлены: prompt caching (cache_control: ephemeral), retry backoff при 429 (Tier 1 лимит). Агент находит RC-ошибку (client_001) и Home Office contradiction (client_002). |
+| Май 2026 | **Этап 2 завершён:** tools.js — 14 функций, 44/44 тестов ✅. Исправлен recognize_invoice_document: использует file_path из записи инвойса, добавлен not_pdf path для .html-файлов. |
+| Май 2026 | **Этап 2.5 завершён:** Buchungsprüfung — синхронная проверка при создании проводки. `checks.js` (10 правил, zero deps), `booking_check.js` (endpoint + LLM), `BookingVariant.jsx` (?variant=booking, 3 шага, 16 тест-кейсов по 7 клиентам), `test_booking_check.js` (6/6 ✅). POST /api/booking-check добавлен в server.js. |

@@ -3,15 +3,15 @@ import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ReportView from '../components/ReportView.jsx';
 
 const PERIOD_OPTIONS = [
-  { value: '',         label: 'Gesamtes Jahr' },
-  { value: 'Q1 2026',  label: 'Q1 2026 (Jan–Mär)' },
+  { value: '',         label: 'Full Year' },
+  { value: 'Q1 2026',  label: 'Q1 2026 (Jan–Mar)' },
   { value: 'Q2 2026',  label: 'Q2 2026 (Apr–Jun)' },
   { value: 'Q3 2026',  label: 'Q3 2026 (Jul–Sep)' },
-  { value: 'Q4 2026',  label: 'Q4 2026 (Okt–Dez)' },
-  { value: 'Q1 2025',  label: 'Q1 2025 (Jan–Mär)' },
+  { value: 'Q4 2026',  label: 'Q4 2026 (Oct–Dec)' },
+  { value: 'Q1 2025',  label: 'Q1 2025 (Jan–Mar)' },
   { value: 'Q2 2025',  label: 'Q2 2025 (Apr–Jun)' },
   { value: 'Q3 2025',  label: 'Q3 2025 (Jul–Sep)' },
-  { value: 'Q4 2025',  label: 'Q4 2025 (Okt–Dez)' },
+  { value: 'Q4 2025',  label: 'Q4 2025 (Oct–Dec)' },
 ];
 
 export default function WidgetVariant() {
@@ -25,13 +25,13 @@ export default function WidgetVariant() {
   const [threadId, setThreadId] = useState(null);
 
   useEffect(() => {
-    fetch('/api/clients')
+    fetch(`${import.meta.env.VITE_API_BASE || ''}/api/clients`)
       .then(r => r.json())
       .then(data => {
         setClients(data);
         if (data.length > 0) setClientId(data[0].id);
       })
-      .catch(() => setError('Clients konnten nicht geladen werden.'));
+      .catch(() => setError('Could not load clients.'));
   }, []);
 
   async function handleAnalyze() {
@@ -41,10 +41,10 @@ export default function WidgetVariant() {
     setRawText('');
     setError('');
 
-    const userQuery = `Bitte analysiere alle Buchungen${period ? ` für ${period}` : ''} und identifiziere alle Fehler, Risiken und Warnungen. Prüfe alle verfügbaren Blöcke (A, B, C, E) und berechne die Steuerreserve.`;
+    const userQuery = `Please analyze all bookings${period ? ` for ${period}` : ''} and identify all errors, risks and warnings. Check all available blocks (A, B, C, E) and calculate the tax reserve.`;
 
     try {
-      const res = await fetch('/api/analyze', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE || ''}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ clientId, period: period || undefined, userQuery, threadId })
@@ -52,7 +52,7 @@ export default function WidgetVariant() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || 'Analyse fehlgeschlagen.');
+        setError(data.message || 'Analysis failed.');
         return;
       }
 
@@ -60,7 +60,7 @@ export default function WidgetVariant() {
       setReport(data.report);
       setRawText(data.raw_text ?? '');
     } catch {
-      setError('Verbindungsfehler. Ist der Server gestartet?');
+      setError('Connection error. Is the server running?');
     } finally {
       setLoading(false);
     }
@@ -74,12 +74,12 @@ export default function WidgetVariant() {
       <div className="widget-sidebar">
         <div className="card">
           <div>
-            <div className="widget-title">Buchführungsprüfung</div>
-            <div className="widget-subtitle">KI analysiert Ihre Buchhaltung auf Fehler und Risiken</div>
+            <div className="widget-title">Accounting Review</div>
+            <div className="widget-subtitle">AI analyzes your books for errors and risks</div>
           </div>
 
           <div className="form-group">
-            <label className="form-label">Mandant</label>
+            <label className="form-label">Client</label>
             <select
               className="form-select"
               value={clientId}
@@ -93,7 +93,7 @@ export default function WidgetVariant() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Zeitraum</label>
+            <label className="form-label">Period</label>
             <select
               className="form-select"
               value={period}
@@ -111,7 +111,7 @@ export default function WidgetVariant() {
             onClick={handleAnalyze}
             disabled={loading || !clientId}
           >
-            {loading ? '⏳ Wird analysiert…' : '🔍 Bücher prüfen'}
+            {loading ? '⏳ Analyzing…' : '🔍 Check Books'}
           </button>
 
           {report && !loading && (
@@ -120,7 +120,7 @@ export default function WidgetVariant() {
               style={{ background: '#f4f5f9', border: '1px solid var(--color-border)', color: 'var(--color-text)' }}
               onClick={handleAnalyze}
             >
-              🔄 Erneut prüfen
+              🔄 Run Again
             </button>
           )}
         </div>
@@ -148,9 +148,9 @@ export default function WidgetVariant() {
           {!loading && !report && !error && (
             <div className="empty-state">
               <div className="empty-icon">📊</div>
-              <div className="empty-title">Bereit zur Analyse</div>
+              <div className="empty-title">Ready to Analyze</div>
               <div className="empty-subtitle">
-                Wählen Sie einen Mandanten und einen Zeitraum, dann klicken Sie auf „Bücher prüfen".
+                Select a client and a period, then click "Check Books".
               </div>
             </div>
           )}
