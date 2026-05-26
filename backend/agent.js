@@ -160,13 +160,22 @@ async function runTool(name, input) {
 // ---------------------------------------------------------------------------
 
 function extractJsonReport(text) {
-  const match = text.match(/```json\s*([\s\S]*?)```/);
-  if (!match) return null;
-  try {
-    return JSON.parse(match[1].trim());
-  } catch {
-    return null;
+  // Find the LAST ```json block (agent sometimes writes preamble code blocks first)
+  const matches = [...text.matchAll(/```json\s*([\s\S]*?)```/g)];
+  if (!matches.length) return null;
+  // Try each match from last to first — final block is the structured report
+  for (let i = matches.length - 1; i >= 0; i--) {
+    try {
+      const parsed = JSON.parse(matches[i][1].trim());
+      // Validate it looks like a report (has at least one expected key)
+      if (parsed.errors !== undefined || parsed.warnings !== undefined || parsed.ok_checks !== undefined) {
+        return parsed;
+      }
+    } catch (err) {
+      console.warn(`[agent] extractJsonReport: parse failed on block ${i}:`, err.message.slice(0, 80));
+    }
   }
+  return null;
 }
 
 // ---------------------------------------------------------------------------
