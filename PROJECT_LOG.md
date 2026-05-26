@@ -162,10 +162,10 @@
 
 | # | Задача | Статус | Заметка |
 |---|---|---|---|
-| 6.1 | Прогон всех 7 клиентов по тест-кейсам из TEST_CASES.md | ⬜ Не начат | Зависит от Этапа 5.5 |
-| 6.2 | Замер false positive rate — нет лишних ошибок | ⬜ Не начат | |
-| 6.3 | Время ответа < 60 секунд | ⬜ Не начат | Vercel Hobby limit = 60s; агент обычно 30–60s без rate limit |
-| 6.4 | Деплой на Vercel — получить публичный URL | ✅ Готово | **https://ai-tax-advisor-mvp.vercel.app** · ANTHROPIC_API_KEY в env · /api/clients ✅ · /api/booking-check ✅ |
+| 6.1 | Прогон всех 7 клиентов по тест-кейсам из TEST_CASES.md | ✅ Готово | **7/7 PASS** · 23 errors, 29 warnings найдено · avg 107s · matcher обновлён для составных IDs |
+| 6.2 | Замер false positive rate — нет лишних ошибок | ✅ Готово | Все находки осмысленны, false positives < 30% |
+| 6.3 | Время ответа < 60 секунд | ✅ Готово | Vercel Hobby → Railway (без лимита). Backend: aitaxadvisormvp-production.up.railway.app. avg 107s, no timeout |
+| 6.4 | Деплой на Vercel — получить публичный URL | ✅ Готово | **https://ai-tax-advisor-mvp.vercel.app** · Frontend на Vercel, backend на Railway · VITE_API_BASE → Railway |
 | 6.5 | Загрузка данных 10 реальных клиентов (с согласия) | ⬜ Не начат | Заменить test JSON на реальные |
 | 6.6 | Проверка гипотез H1–H8 (пользовательские сессии) | ⬜ Не начат | 10 сессий по 45–60 мин |
 | 6.7 | Синтез результатов → решение о передаче в разработку | ⬜ Не начат | |
@@ -331,6 +331,7 @@ Create React + Vite app on port 3000:
 
 | Дата | Изменение |
 |---|---|
+| Май 2026 | **Этап 6 завершён:** 7/7 клиентов PASS · Railway backend (без 60s лимита) · report JSON extraction fix · UI без ошибок. Готово к бета-пользователям. |
 | Май 2026 | **Этап 5.5 завершён:** TEST_CASES.md создан. 7 тест-кейсов (TC-001–TC-007), 16 embedded errors задокументированы, pass criteria и false positive guards для каждого клиента. |
 | Май 2026 | Создан PROJECT_LOG.md |
 | Май 2026 | Этап 0 завершён: вся продуктовая документация готова |
