@@ -176,20 +176,24 @@
 
 | Тема | Решение |
 |---|---|
-| UX вариант | Только один: user-initiated widget (без проактивного чата) |
+| UX вариант | Три варианта: ?variant=widget (default), ?variant=chat, ?variant=booking |
 | Стриминг | Нет — ждём полного ответа (проще для MVP) |
 | Модель агента | claude-sonnet-4-6 (через Anthropic API) |
+| Prompt caching | cache_control: ephemeral на system prompt (~25k токенов) |
 | Идентификация клиента | Dropdown на фронтенде + параметр clientId |
 | Контекст разговора | Thread_id → history Map на бэкенде |
-| База знаний | Разбита на 7 специализированных файлов в knowledge_base/ |
-| Проверка инвойсов | recognize_invoice_document: Claude Vision на PDF + специализированный промпт |
+| Деплой: фронтенд | Vercel (статика) — https://ai-tax-advisor-mvp.vercel.app |
+| Деплой: бэкенд | Railway (Express) — https://aitaxadvisormvp-production.up.railway.app |
+| Причина Railway | Vercel Hobby лимит 60s; агент работает 83–151s. Railway без timeout |
+| API ключ в продакшне | Railway Service → Variables → ANTHROPIC_API_KEY |
+| VITE_API_BASE | frontend/.env.production коммитится с Railway URL |
+| Buchungsprüfung | POST /api/booking-check — 10 детерминированных правил + LLM при findings |
+| База знаний | Разбита на специализированные файлы в knowledge_base/ |
+| Проверка инвойсов | recognize_invoice_document: Claude Vision на PDF |
 | Хранилище инвойсов | backend/data/invoice_files/{client_id}/{invoice_id}.pdf |
-| Проводки | get_bookkeeping_entries: основной слой для проактивных проверок |
 | Аутентификация | Нет (MVP для внутреннего теста) |
-| Node.js | Устанавливается по запросу Claude Code при первом `npm install` |
-| Каталог проверок | 23 правила (было 25); удалены 8 дублирующих Finom-функциональность |
+| Каталог проверок | 39 правил (Blocks A, B-Core, B-EÜR, B-UStVA, B-ZM, C, E) |
 | Структура блока B | Разбита на 4 подблока по типу затрагиваемого отчёта |
-| Проактивный анализ | Агент запускает pre-UStVA/pre-EÜR/pre-ZM проверки до дедлайна отчёта |
 
 ---
 
@@ -197,13 +201,13 @@
 
 | Вопрос | Приоритет | Статус |
 |---|---|---|
-| Получить Anthropic API key | Высокий | ⬜ |
-| Установить Node.js (нужен для запуска) | Высокий | ⬜ |
-| Как долго хранить thread_id историю? (сейчас: до перезапуска сервера) | Средний | ⬜ |
-| Как структурировать пользовательские сессии Phase 0? | Средний | ⬜ |
-| Создать 6 новых KB-файлов в knowledge_base/ | Средний | ⬜ |
-| Сгенерировать PDF-инвойсы для invoice_files/ (2–3 на клиента) | Средний | ⬜ |
-| Добавить bookkeeping_entries + tasks + reports в client_001–007.json | Высокий | ⬜ |
+| Получить Anthropic API key | Высокий | ✅ Решено — backend/.env + Railway env vars |
+| Установить Node.js (нужен для запуска) | Высокий | ✅ Решено |
+| Как долго хранить thread_id историю? (сейчас: до перезапуска сервера) | Средний | ⬜ Для MVP достаточно; продакшн → Redis/PostgreSQL |
+| Как структурировать пользовательские сессии Phase 0? | Средний | 🔵 В работе — Этап 6.6 |
+| Создать 6 новых KB-файлов в knowledge_base/ | Средний | ⬜ Можно добавить при необходимости |
+| Сгенерировать PDF-инвойсы для invoice_files/ (2–3 на клиента) | Средний | ⬜ Один PDF уже есть (inv_001_006.pdf) |
+| Добавить bookkeeping_entries + tasks + reports в client_001–007.json | Высокий | ✅ Решено — все данные в отдельных JSON-таблицах |
 | Создать TEST_CASES.md (после первых выходов агента) | Высокий | ✅ |
 | Уточнить: проактивные проверки в MVP всегда запускаются с фронта — не автоматически | Решено | ✅ |
 
@@ -331,6 +335,7 @@ Create React + Vite app on port 3000:
 
 | Дата | Изменение |
 |---|---|
+| Май 2026 | **Документация обновлена (v0.3):** CLAUDE.md — добавлены три UX-варианта, booking-check эндпоинт, Railway деплой, команды тестирования. ARCHITECTURE.md — Railway URL, 14 tools (исправлено с 9), новый раздел 6b (booking-check flow), .env правила обновлены. PROJECT_LOG.md — открытые вопросы по API key и Node.js закрыты, таблица решений обновлена. |
 | Май 2026 | **Этап 6.6 начат:** пользовательские сессии H1–H8. Этап 6.5 пропущен — тестовые клиенты репрезентативны, реальные данные не нужны на этом этапе. |
 | Май 2026 | **Этап 6.1–6.4 завершён:** 7/7 клиентов PASS · Railway backend (без 60s лимита) · report JSON extraction fix · UI без ошибок. Готово к бета-пользователям. |
 | Май 2026 | **Этап 5.5 завершён:** TEST_CASES.md создан. 7 тест-кейсов (TC-001–TC-007), 16 embedded errors задокументированы, pass criteria и false positive guards для каждого клиента. |

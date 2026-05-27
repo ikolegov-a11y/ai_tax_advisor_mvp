@@ -1,8 +1,8 @@
 # AI Tax Advisor MVP — Architecture
 
-**Версия:** 0.1  
+**Версия:** 0.2  
 **Дата:** Май 2026  
-**Статус:** Утверждается перед началом разработки
+**Статус:** Актуально (обновлено после Phase 6 — деплой и валидация завершены)
 
 ---
 
@@ -21,7 +21,8 @@
                            │ { clientId, period, userQuery, threadId? }
                            ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  EXPRESS SERVER  backend/server.js  (port 3001)                 │
+│  EXPRESS SERVER  backend/server.js  (Railway, no timeout)        │
+│  https://aitaxadvisormvp-production.up.railway.app               │
 │                                                                 │
 │  - Validates request body                                       │
 │  - Calls analyzeClient(clientId, period, userQuery, threadId)   │
@@ -41,13 +42,13 @@
                            │ tool calls
                            ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  TOOLS  backend/tools.js                                        │
+│  TOOLS  backend/tools.js  (14 tools)                            │
 │                                                                 │
 │  get_transactions        get_invoices        get_company_settings │
-│  get_assets              get_client_kb       get_bookkeeping_entries│
+│  get_business_context    get_assets          get_bookkeeping_entries│
 │  get_reports_eur         get_reports_ustva   get_reports_zm       │
 │  get_reports_gewst       get_tasks           recognize_invoice_doc│
-│  categorize_invoice                                               │
+│  categorize_invoice      get_expense_categories                   │
 └──────┬──────────┬──────────────────────────────────┬─────────────┘
        │          │                                  │
        ▼          ▼                                  ▼
@@ -91,7 +92,7 @@ agent.js получает вызов analyzeClient(clientId, period, userQuery, 
 │        model: "claude-sonnet-4-6",
 │        system: <system prompt>,
 │        messages: history,
-│        tools: [/* 9 tool definitions */],
+│        tools: [/* 14 tool definitions */],
 │        max_tokens: 8096
 │      }
 │
@@ -180,7 +181,7 @@ function analyzeClient(clientId, period, userQuery, threadId) {
 ## 4. Переменные окружения (.env)
 
 ```bash
-# backend/.env  (или корневой .env)
+# backend/.env  (локально, НЕ коммитить в git)
 
 # Обязательно — без этого агент не запустится
 ANTHROPIC_API_KEY=sk-ant-api03-...
@@ -189,11 +190,17 @@ ANTHROPIC_API_KEY=sk-ant-api03-...
 PORT=3001
 ```
 
+```bash
+# frontend/.env.production  (коммитится в git — содержит только URL, не секреты)
+VITE_API_BASE=https://aitaxadvisormvp-production.up.railway.app
+```
+
 **Правила:**
-- `.env` добавлен в `.gitignore` — никогда не коммитить
-- При деплое на Vercel: задать `ANTHROPIC_API_KEY` в Environment Variables
+- `backend/.env` добавлен в `.gitignore` — никогда не коммитить
+- В Railway: задать `ANTHROPIC_API_KEY` в Service → Variables
+- `frontend/.env.production` содержит Railway URL — коммитится, секретов нет
 - Читается в `server.js` через `require('dotenv').config()`
-- Проверять при старте: если ключ не задан → `process.exit(1)` с понятным сообщением
+- Проверять при старте: если ключ не задан → агент бросает Error с понятным сообщением
 
 ---
 
@@ -202,7 +209,12 @@ PORT=3001
 ### Запрос
 
 ```
+# Локально:
 POST http://localhost:3001/api/analyze
+
+# Production:
+POST https://aitaxadvisormvp-production.up.railway.app/api/analyze
+
 Content-Type: application/json
 ```
 
@@ -293,6 +305,7 @@ Content-Type: application/json
 
 ```
 GET http://localhost:3001/api/clients
+# или в production: GET https://aitaxadvisormvp-production.up.railway.app/api/clients
 ```
 
 **Ответ (200):**
@@ -305,6 +318,52 @@ GET http://localhost:3001/api/clients
 ```
 
 **Логика:** сканировать `backend/data/client_*.json`, читать `client_id` и `display_name`.
+
+---
+
+## 6b. POST /api/booking-check — синхронная проверка проводки
+
+Второй эндпоинт — для **BookingVariant** (`?variant=booking`). Работает синхронно, без агентного цикла.
+
+```
+POST http://localhost:3001/api/booking-check
+Content-Type: application/json
+```
+
+```json
+{
+  "clientId": "client_001",
+  "entryId": "entry_001_009"
+}
+```
+
+### Архитектура
+
+```
+POST /api/booking-check
+    │
+    ▼
+booking_check.js — handler
+    │
+    ├─ [1] Загрузить запись из bookkeeping_entries, related invoice, transaction
+    ├─ [2] Запустить 10 детерминированных функций из checks.js (zero deps)
+    │       checkVatRateConsistency()
+    │       checkReverseChargeFlag()
+    │       checkServiceType()
+    │       checkAccountCode()
+    │       checkTransactionSubtype()
+    │       checkPrivateUseSplit()
+    │       checkSupplierCountryVat()
+    │       checkGwgThreshold()
+    │       checkMissingAsset()
+    │       checkRefundDocument()
+    ├─ [3] Если findings.length === 0 → вернуть { status: "ok" } (≤ 200ms)
+    └─ [4] Если findings.length > 0 → вызвать Claude (один вызов, не loop)
+            → LLM формулирует plain-language объяснение
+            → вернуть { status: "issues", findings[], explanation }
+```
+
+**Стоимость:** чистый путь (нет ошибок) ~2ms. При ошибках — один LLM-вызов ~1–3s.
 
 ---
 
@@ -363,12 +422,16 @@ const results = await Promise.all(
 // server.js
 const cors = require('cors');
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://ai-tax-advisor-mvp.vercel.app'  // production frontend
+  ],
   methods: ['GET', 'POST']
 }));
 ```
 
-При деплое на Vercel origin добавляется через env-переменную `FRONTEND_URL`.
+Дополнительные origin можно добавить через env-переменную `FRONTEND_URL` (Railway Settings → Variables).
 
 ---
 

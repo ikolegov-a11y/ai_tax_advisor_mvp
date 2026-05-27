@@ -22,7 +22,8 @@ and whether users trust and act on the findings.
 - **Frontend:** React (Vite)
 - **AI:** Anthropic API (Claude sonnet-4-6) with tool use
 - **Mock data:** Separate JSON files per entity type (simulates production DB tables)
-- **Deployment:** Vercel
+- **Deployment:** Vercel (frontend, static) + Railway (backend Express, no timeout limit)
+- **Production URLs:** Frontend: https://ai-tax-advisor-mvp.vercel.app · Backend: https://aitaxadvisormvp-production.up.railway.app
 
 ---
 
@@ -304,12 +305,36 @@ Then render as readable report.
 
 ---
 
+## Three UX variants
+
+Switch via URL query parameter:
+
+| Variant | URL | Description |
+|---|---|---|
+| **Widget** (default) | `?variant=widget` | User-initiated analysis. Dropdown → "Check my books" → structured report (Errors / Warnings / OK / Steuerreserve) |
+| **Chat** | `?variant=chat` | Conversational interface for multi-turn dialog with the agent |
+| **Booking check** | `?variant=booking` | Synchronous quality gate for a single bookkeeping entry. Uses `POST /api/booking-check` (no agent loop — deterministic checks + optional LLM narration) |
+
+---
+
+## Backend endpoints
+
+| Endpoint | Handler | Description |
+|---|---|---|
+| `GET /api/clients` | `server.js` | List all clients (id + display_name) |
+| `POST /api/analyze` | `agent.js` | Full AI analysis — tool_use loop, returns JSON report |
+| `POST /api/booking-check` | `backend/booking_check.js` | Synchronous booking quality gate. 10 deterministic rules in `backend/checks.js`. LLM called only when findings exist (≤ 2s clean path) |
+
+---
+
 ## Development notes
 
 - Keep mock data realistic — messy real-world data, not clean synthetic data
-- Anthropic API key: set in `backend/.env` as `ANTHROPIC_API_KEY=sk-ant-...`
-- DO NOT commit `.env` to git
+- Anthropic API key: set in `backend/.env` as `ANTHROPIC_API_KEY=sk-ant-...` AND in Railway environment variables
+- DO NOT commit `backend/.env` to git; `frontend/.env.production` (Railway URL, no secrets) IS committed
 - Target model: claude-sonnet-4-6
+- System prompt is cached (`cache_control: ephemeral`) to avoid re-sending ~25k tokens each iteration
+- Rate limit (429) handled with exponential backoff: 15s base, 4 attempts max
 
 ## Key commands
 
@@ -318,4 +343,8 @@ npm install          # Install dependencies
 npm run server       # Start backend (port 3001)
 npm run client       # Start frontend (port 5173)
 npm run dev          # Start both
+npm run test:tools   # Run tools unit tests (44 tests)
+npm run test:agent   # Run agent test (client_001 Q1 2026)
+node backend/test_all_clients.js  # Run all 7 clients — saves test_results.json
+node backend/test_booking_check.js  # Test booking check (6 scenarios)
 ```

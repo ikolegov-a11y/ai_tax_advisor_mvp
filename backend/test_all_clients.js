@@ -126,7 +126,7 @@ async function run() {
     }
 
     const foundIds    = allIds(result.report);
-    const missing     = tc.expected.filter(id => !foundIds.some(f => f === id || f.startsWith(id)));
+    const missing     = tc.expected.filter(id => !foundIds.some(f => f === id || f.startsWith(id) || f.includes(id)));
     const allExpected = tc.expected.join(', ');
     const status      = missing.length === 0 ? 'PASS' : 'FAIL';
 

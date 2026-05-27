@@ -252,9 +252,11 @@ get_transactions  get_invoices  get_company   get_assets
 }
 ```
 
-### 4.2 `get_client_knowledge_base(company_id)` ⚠️ Нужно разработать
+### 4.2 `get_business_context(company_id)` ✅
 
-Возвращает данные из Client Knowledge Base клиента. Подробный формат — в разделе 5.
+> Примечание: реализован как `get_business_context` (не `get_client_knowledge_base`). Читает `backend/data/business_context.json`. Возвращает бизнес-профиль клиента: RC, OSS, маркетплейс, авто, home office и другие флаги, критичные для корректного анализа.
+
+Подробный формат — в разделе 5.
 
 ---
 
@@ -631,7 +633,7 @@ backend/data/
 
 ## 13. Дополнительные инструменты агента
 
-### 13.1 `recognize_invoice_document(invoice_id)` ⭐ NEW
+### 13.1 `recognize_invoice_document(invoice_id)` ✅
 
 **Описание:** Читает файл инвойса (PDF или изображение), применяет Claude Vision с специализированным промптом распознавания и возвращает структурированные данные.
 
@@ -696,7 +698,7 @@ Return JSON only, no explanation.
 
 ---
 
-### 13.2 `get_bookkeeping_entries(period, company_id)` ⭐ NEW
+### 13.2 `get_bookkeeping_entries(period, company_id)` ✅
 
 **Описание:** Возвращает бухгалтерские проводки (Buchungssätze) за период.
 
@@ -773,7 +775,11 @@ Return JSON only, no explanation.
 
 ---
 
-### 13.3 `get_reports(company_id, period?)` ⭐ NEW
+### 13.3 `get_reports_eur / get_reports_ustva / get_reports_zm / get_reports_gewst` ✅
+
+> Примечание: вместо единого `get_reports` реализованы 4 отдельных инструмента — по одному на тип отчёта. Каждый читает свой JSON-файл (reports_eur.json, reports_ustva.json, reports_zm.json, reports_gewst.json).
+
+### 13.3a `get_reports(company_id, period?)` — устаревшее описание (для справки)
 
 **Описание:** Возвращает данные о созданных налоговых отчётах и их статусах. Используется для проверок C-04 (период UStVA) и для контекста при анализе: агент видит, что уже подано, что в черновике, что просрочено.
 
@@ -823,7 +829,7 @@ Return JSON only, no explanation.
 
 ---
 
-### 13.4 `get_tasks(company_id)` ⭐ NEW
+### 13.4 `get_tasks(company_id)` ✅
 
 **Описание:** Возвращает список задач пользователя, связанных с налоговым учётом. Агент использует задачи для контекста: если задача "Подать UStVA Q1" уже просрочена — это важный сигнал при анализе.
 
@@ -945,15 +951,20 @@ knowledge_base/
 
 | Инструмент | Версия | Назначение | Данные |
 |---|---|---|---|
-| `get_transactions` | existing | Банковские движения за период | `backend/data/transactions.json` |
-| `get_invoices` | existing | Входящие и исходящие инвойсы | `backend/data/invoices.json` |
-| `get_company_settings` | existing | Настройки компании + бизнес-контекст | `backend/data/company_settings.json` + `business_context.json` |
-| `get_assets` | existing | Активы и амортизация | `backend/data/assets.json` |
-| `get_client_knowledge_base` | existing | Личный профиль + бизнес-контекст | `backend/data/business_context.json` |
-| `get_bookkeeping_entries` | **NEW** | Бухгалтерские проводки за период | `backend/data/bookkeeping_entries.json` |
-| `get_reports` | **NEW** | Налоговые отчёты и их статусы | `backend/data/reports.json` |
-| `get_tasks` | **NEW** | Задачи пользователя и их статусы | `backend/data/tasks.json` |
-| `recognize_invoice_document` | **NEW** | Распознавание файла инвойса (OCR/Vision) | PDF/image из `invoice_files/` |
+| `get_transactions` | ✅ | Банковские движения за период | `backend/data/transactions.json` |
+| `get_invoices` | ✅ | Входящие и исходящие инвойсы | `backend/data/invoices.json` |
+| `get_company_settings` | ✅ | Настройки компании | `backend/data/company_settings.json` |
+| `get_business_context` | ✅ | Бизнес-профиль (RC, OSS, авто, home office) | `backend/data/business_context.json` |
+| `get_assets` | ✅ | Активы и амортизация | `backend/data/assets.json` |
+| `get_bookkeeping_entries` | ✅ | Бухгалтерские проводки за период | `backend/data/bookkeeping_entries.json` |
+| `get_reports_eur` | ✅ | Годовой EÜR-отчёт | `backend/data/reports_eur.json` |
+| `get_reports_ustva` | ✅ | Отчёт UStVA по периоду | `backend/data/reports_ustva.json` |
+| `get_reports_zm` | ✅ | Сводный отчёт ZM | `backend/data/reports_zm.json` |
+| `get_reports_gewst` | ✅ | Отчёт по Gewerbesteuer | `backend/data/reports_gewst.json` |
+| `get_tasks` | ✅ | Задачи пользователя и их статусы | `backend/data/tasks.json` |
+| `recognize_invoice_document` | ✅ | Распознавание файла инвойса (OCR/Vision) | PDF из `invoice_files/` |
+| `categorize_invoice` | ✅ | Предложить SKR-04 счёт и VAT-режим | `backend/data/invoice_categories.json` |
+| `get_expense_categories` | ✅ | Каталог категорий расходов (94 записи) | `backend/data/expense_categories.json` |
 
 ---
 
@@ -972,7 +983,10 @@ backend/data/
 ├── invoices.json               ← [{client_id, id, type, amount_gross, vat_rate, supplier_country, ...}]
 ├── bookkeeping_entries.json    ← [{client_id, id, type, amount_gross, vat_rate, tax_residency_applied, ...}]
 ├── assets.json                 ← [{client_id, id, name, amortization_period_years, ...}]
-├── reports.json                ← [{client_id, id, type: UStVA|EÜR|ZM, status, ...}]
+├── reports_eur.json            ← [{client_id, id, year, home_office, ...}]
+├── reports_ustva.json          ← [{client_id, id, period, net_vat_payable, ...}]
+├── reports_zm.json             ← [{client_id, id, period, eu_customers, ...}]
+├── reports_gewst.json          ← [{client_id, id, year, gewst_payable, ...}]
 ├── tasks.json                  ← [{client_id, id, type, status, due_date, ...}]
 └── invoice_files/
     └── client_001/
