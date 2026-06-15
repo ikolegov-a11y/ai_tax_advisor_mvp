@@ -26,14 +26,8 @@ export default function SteuerreserveCard({ data }) {
           <span className="reserve-item-value">{fmt(data.estimated_annual_tax)}</span>
         </div>
         <div className="reserve-item">
-          <span className="reserve-item-label">Already reserved</span>
-          <span className="reserve-item-value">{fmt(data.already_reserved)}</span>
-        </div>
-        <div className="reserve-item">
-          <span className="reserve-item-label">Shortfall</span>
-          <span className="reserve-item-value">
-            {fmt(Math.max(0, (data.estimated_annual_tax || 0) - (data.already_reserved || 0)))}
-          </span>
+          <span className="reserve-item-label">Recommended monthly saving</span>
+          <span className="reserve-item-value">{fmt(data.recommended_monthly_saving)}</span>
         </div>
       </div>
 
