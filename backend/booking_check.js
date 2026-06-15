@@ -4,6 +4,7 @@ const fs   = require('fs');
 const path = require('path');
 
 const { runBuchungspruefung } = require('./checks');
+const { executeTool }         = require('./tools');
 
 const DATA_DIR = path.join(__dirname, 'data');
 
@@ -94,8 +95,22 @@ async function handleBookingCheck(req, res) {
     return res.status(404).json({ error: 'client_not_found', message: `No settings found for "${client_id}"` });
   }
 
+  // Wire invoice document recognition (A-09) — only when a real PDF is attached.
+  let recognized_data = null;
+  if (invoice && invoice.file_available) {
+    try {
+      const ocr = await executeTool('recognize_invoice_document', {
+        invoice_id: invoice.id,
+        company_id: client_id,
+      });
+      recognized_data = ocr?.recognized ? ocr.fields : null;
+    } catch (err) {
+      console.warn('[booking-check] OCR failed, skipping A-09:', err.message);
+    }
+  }
+
   // Run deterministic checks
-  const context  = { company, business_context: business, invoice, transaction, entry, recognized_data: null };
+  const context  = { company, business_context: business, invoice, transaction, entry, recognized_data };
   const findings = runBuchungspruefung(context);
 
   const elapsed = Date.now() - started;

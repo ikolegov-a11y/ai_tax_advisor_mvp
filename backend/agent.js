@@ -2,12 +2,11 @@
 
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env'), override: true });
 
-const fs        = require('fs');
-const path      = require('path');
 const crypto    = require('crypto');
 const Anthropic = require('@anthropic-ai/sdk');
 
-const { executeTool, TOOL_DEFINITIONS } = require('./tools');
+const { loadClientData, runAllChecks, CHECK_META } = require('./orchestrator');
+const { calculateSteuerreserve } = require('./steuerreserve');
 
 // ---------------------------------------------------------------------------
 // Anthropic client — created lazily at first call so module init never crashes
@@ -17,172 +16,12 @@ let _anthropic = null;
 function getAnthropicClient() {
   if (!_anthropic) {
     if (!process.env.ANTHROPIC_API_KEY) {
-      throw new Error('ANTHROPIC_API_KEY is not set. Add it to backend/.env or Vercel env vars.');
+      throw new Error('ANTHROPIC_API_KEY is not set. Add it to the project-root .env or Railway env vars.');
     }
     _anthropic = new Anthropic.default();
   }
   return _anthropic;
 }
-
-// ---------------------------------------------------------------------------
-// System prompt — loaded once at startup
-// ---------------------------------------------------------------------------
-
-function loadSystemPrompt() {
-  const root    = path.join(__dirname, '..');
-  const catalog = fs.readFileSync(path.join(root, 'Tax_Checks_Catalog.md'), 'utf8');
-  const finamt  = fs.readFileSync(
-    path.join(root, 'knowledge_base', 'Finanzamt_Methodology_Reference.md'), 'utf8'
-  );
-
-  return `You are an AI Tax Advisor assistant in Finom, a German accounting app for Einzelunternehmer (sole proprietors).
-
-Your job is to analyze a client's accounting data for a requested period and identify errors, contradictions, and risks using the available tools.
-
-## LEGAL FRAMEWORK
-- German tax law: EStG, UStG, GewStG (2025–2026)
-- Target clients: Einzelunternehmer — Freiberufler and Gewerbetreibender within EÜR limits
-- Accounting method: Einnahmenüberschussrechnung (EÜR), cash basis (Zufluss-Abfluss-Prinzip)
-- VAT regimes: Regelbesteuerer (standard 19%/7%) or Kleinunternehmer (§19 UStG, no VAT)
-
-## MANDATORY FIRST STEPS
-Before running any checks, always call these tools in parallel:
-1. get_company_settings — to know VAT status, legal form, report frequency
-2. get_business_context — CRITICAL: determines which checks apply
-   - reverse_charge_applicable: 0% VAT on outgoing EU B2B invoices is CORRECT, not an error
-   - oss_vat_registered: affects EU B2C VAT obligations
-   - has_company_car: triggers 1%-Regel checks
-   - works_from_home: affects home office deduction checks
-
-If business_context is missing → warn: "For more accurate analysis, please fill in your Business Profile in Settings."
-
-## THREE-ENTITY DATA MODEL
-Data exists in three separate layers. An error = discrepancy between any two:
-
-  TRANSACTION (bank statement) ↔ INVOICE (document data) ↔ BOOKKEEPING ENTRY (accounting record)
-
-- Transactions: bank fields only (date, amount, counterparty, type: incoming/outgoing)
-- Invoices: document fields (VAT rate, supplier/customer country, line items)
-- Bookkeeping entries: accounting fields (account_code SKR-04, reverse_charge_flag, vat_rate_if_domestic, service_type)
-
-Errors are NEVER flagged in the data explicitly. Discover them by cross-referencing entities.
-
-## TOOL USAGE — COST EFFICIENCY
-- get_expense_categories: ALWAYS filter by group= or skr04= parameter. Never call without a filter unless you need the full list for a broad category audit. Compact format: { skr04, group, category, type }.
-- Call tools in parallel whenever possible (first-pass: company_settings + business_context + transactions + invoices + bookkeeping_entries simultaneously).
-- Only call a tool once per analysis; reuse results from earlier iterations.
-
-## ANALYSIS STYLE
-- Be specific: reference exact IDs (entry_001_009, inv_001_006), amounts, dates
-- Classify severity: ERROR (clear violation), WARNING (risk/uncertainty), OK (correct)
-- For each issue: what's wrong → why it matters → what to do
-- No legal jargon without plain-language explanation
-- If data is insufficient to conclude — say so, don't guess
-- Always consider business_context before flagging an issue
-
-## IMPORTANT LIMITATIONS
-- You are NOT a licensed Steuerberater (tax advisor)
-- Your findings are informational only
-- For complex situations, recommend consulting a specialist
-
-## TAX CHECKS CATALOG
-${catalog}
-
-## FINANZAMT AUDIT METHODOLOGY REFERENCE
-${finamt}
-
-## OUTPUT FORMAT
-After completing your analysis, return your findings in this exact format:
-
-First, a JSON code block:
-\`\`\`json
-{
-  "errors": [
-    {
-      "id": "A-02",
-      "title": "Short title of the issue",
-      "description": "Specific description referencing exact IDs, amounts, dates",
-      "affected_items": ["entry_001_009", "inv_001_006"],
-      "recommendation": "What the user should do to fix this"
-    }
-  ],
-  "warnings": [...],
-  "ok_checks": [
-    {
-      "id": "C-01",
-      "title": "Check name",
-      "description": "What was verified and found correct"
-    }
-  ],
-  "steuerreserve": {
-    "estimated_annual_income": 0,
-    "estimated_annual_tax": 0,
-    "already_reserved": 0,
-    "recommended_monthly_saving": 0,
-    "kleinunternehmer_threshold_warning": false,
-    "notes": "Brief explanation of the estimate"
-  }
-}
-\`\`\`
-
-Then provide a brief human-readable summary in German (2–4 sentences) highlighting the most critical finding.`;
-}
-
-let SYSTEM_PROMPT = null;
-
-function getSystemPrompt() {
-  if (!SYSTEM_PROMPT) SYSTEM_PROMPT = loadSystemPrompt();
-  return SYSTEM_PROMPT;
-}
-
-// ---------------------------------------------------------------------------
-// Conversation history — in-memory, keyed by threadId
-// Resets on server restart (acceptable for Phase 0)
-// ---------------------------------------------------------------------------
-
-const conversationHistory = new Map();
-
-// ---------------------------------------------------------------------------
-// Tool executor — maps Claude's tool_use calls to tools.js
-// ---------------------------------------------------------------------------
-
-async function runTool(name, input) {
-  try {
-    const result = await executeTool(name, input);
-    return { ok: true, result };
-  } catch (err) {
-    return { ok: false, error: err.message };
-  }
-}
-
-// ---------------------------------------------------------------------------
-// JSON extractor — pulls the report JSON from Claude's text response
-// ---------------------------------------------------------------------------
-
-function extractJsonReport(text) {
-  // Find the LAST ```json block (agent sometimes writes preamble code blocks first)
-  const matches = [...text.matchAll(/```json\s*([\s\S]*?)```/g)];
-  if (!matches.length) return null;
-  // Try each match from last to first — final block is the structured report
-  for (let i = matches.length - 1; i >= 0; i--) {
-    try {
-      const parsed = JSON.parse(matches[i][1].trim());
-      // Validate it looks like a report (has at least one expected key)
-      if (parsed.errors !== undefined || parsed.warnings !== undefined || parsed.ok_checks !== undefined) {
-        return parsed;
-      }
-    } catch (err) {
-      console.warn(`[agent] extractJsonReport: parse failed on block ${i}:`, err.message.slice(0, 80));
-    }
-  }
-  return null;
-}
-
-// ---------------------------------------------------------------------------
-// Main agent function
-// ---------------------------------------------------------------------------
-
-const MAX_ITERATIONS = 10;
 
 // ---------------------------------------------------------------------------
 // Retry helper — handles 429 rate-limit errors with exponential backoff
@@ -205,100 +44,192 @@ async function withRetry(fn, maxAttempts = 4, baseDelayMs = 15000) {
   throw lastError;
 }
 
+// ---------------------------------------------------------------------------
+// Conversation store — keyed by threadId. Holds the deterministic analysis so
+// chat follow-up questions are answered OVER the fixed findings (the LLM never
+// re-decides what is wrong).
+// Resets on server restart (acceptable for Phase 0).
+// ---------------------------------------------------------------------------
+
+const conversationStore = new Map(); // threadId -> { data, findings, report, messages: [] }
+
+// ---------------------------------------------------------------------------
+// Robust JSON extraction from an LLM text response
+// ---------------------------------------------------------------------------
+
+function extractJson(text) {
+  if (!text) return null;
+  const fenced = [...text.matchAll(/```(?:json)?\s*([\s\S]*?)```/g)];
+  const candidates = fenced.length ? fenced.map(m => m[1]) : [text];
+  for (let i = candidates.length - 1; i >= 0; i--) {
+    try {
+      return JSON.parse(candidates[i].trim());
+    } catch { /* try next */ }
+  }
+  // last resort: first {...} span
+  const span = text.match(/\{[\s\S]*\}/);
+  if (span) { try { return JSON.parse(span[0]); } catch { /* ignore */ } }
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// LLM phrasing — turns deterministic findings into German title/description/
+// recommendation text. The LLM is given the COMPUTED findings; it only writes
+// the human-readable wording, never decides severity or what is affected.
+// ---------------------------------------------------------------------------
+
+const PHRASING_SYSTEM = `Du bist ein Buchungsprüfer in Finom, einem deutschen Buchhaltungsprogramm für Einzelunternehmer (EÜR, §EStG/UStG/GewStG).
+Eine automatische, deterministische Prüfung hat bereits ENTSCHIEDEN, welche Befunde vorliegen. Deine Aufgabe ist NUR, jeden Befund verständlich auf Deutsch zu formulieren.
+Du darfst NICHT entscheiden, ob etwas ein Fehler ist, und keine neuen Befunde erfinden. Verwende ausschließlich die gelieferten Daten (IDs, Beträge, Regelreferenz).
+
+Für jeden Befund liefere:
+- title: kurze Überschrift (max. 8 Wörter)
+- description: was konkret nicht stimmt — mit exakten IDs/Beträgen/Sätzen aus computed
+- recommendation: konkrete Handlungsempfehlung in 1–2 Sätzen
+
+Gib AUSSCHLIESSLICH gültiges JSON zurück, keine Markdown-Codeblöcke:
+{ "items": [ { "ref": <number>, "title": "...", "description": "...", "recommendation": "..." } ], "summary": "2–4 Sätze auf Deutsch zum kritischsten Befund" }
+Behalte jede "ref"-Nummer exakt bei. Liefere genau so viele items wie Befunde geliefert wurden.`;
+
+async function phraseFindings(findings, data) {
+  const company = data.company ?? {};
+  const ctxLine = `Mandant: ${data.clientId} | Rechtsform: ${company.legal_form ?? '–'} | USt-Status: ${company.vat_status ?? '–'} | Zeitraum: ${data.period ?? 'alle'}`;
+
+  const numbered = findings.map((f, i) => ({
+    ref:            i,
+    check_id:       f.check_id,
+    severity:       f.severity,
+    rule_reference: f.rule_reference,
+    affected:       f.affected,
+    computed:       f.computed,
+  }));
+
+  const userMessage = `${ctxLine}\n\nBefunde (deterministisch berechnet, JSON):\n${JSON.stringify(numbered, null, 2)}`;
+
+  const response = await withRetry(() => getAnthropicClient().messages.create({
+    model:      'claude-sonnet-4-6',
+    max_tokens: 4096,
+    system:     PHRASING_SYSTEM,
+    messages:   [{ role: 'user', content: userMessage }],
+  }));
+
+  const text   = response.content.find(b => b.type === 'text')?.text ?? '';
+  const parsed = extractJson(text) ?? {};
+  const byRef  = new Map((parsed.items ?? []).map(it => [Number(it.ref), it]));
+
+  return { byRef, summary: parsed.summary ?? '' };
+}
+
+// ---------------------------------------------------------------------------
+// Assemble the final report in the shape the frontend + tests expect:
+//   { errors[], warnings[], ok_checks[], steuerreserve }
+//   each finding item: { id, title, description, affected_items[], recommendation, severity }
+// id === check_id so test_all_clients.js can match expected IDs.
+// ---------------------------------------------------------------------------
+
+function toReportItem(finding, ref, byRef) {
+  const phrased  = byRef?.get(ref) ?? {};
+  const fallback = CHECK_META[finding.check_id]?.title ?? finding.check_id;
+  return {
+    id:             finding.check_id,
+    severity:       finding.severity,
+    title:          phrased.title       || fallback,
+    description:    phrased.description  || `${finding.rule_reference ?? ''} — ${JSON.stringify(finding.computed ?? {})}`.trim(),
+    affected_items: finding.affected ?? [],
+    recommendation: phrased.recommendation || '',
+    rule_reference: finding.rule_reference,
+  };
+}
+
+function assembleReport(findings, byRef, okCheckIds, steuerreserve) {
+  const errors   = [];
+  const warnings = [];
+
+  findings.forEach((f, ref) => {
+    const item = toReportItem(f, ref, byRef);
+    if (f.severity === 'ERROR') errors.push(item);
+    else warnings.push(item); // WARNING + INFO both surface under warnings (tagged via severity)
+  });
+
+  const ok_checks = (okCheckIds ?? []).map(id => ({
+    id,
+    title: CHECK_META[id]?.title ?? id,
+  }));
+
+  return { errors, warnings, ok_checks, steuerreserve: steuerreserve ?? null };
+}
+
+// ---------------------------------------------------------------------------
+// Chat follow-up — answers a user question over the ALREADY-computed findings.
+// ---------------------------------------------------------------------------
+
+const FOLLOWUP_SYSTEM = `Du bist ein AI-Steuerassistent in Finom für Einzelunternehmer.
+Eine deterministische Prüfung der Buchhaltung wurde bereits durchgeführt; die Befunde stehen fest.
+Beantworte die Rückfrage des Nutzers AUSSCHLIESSLICH auf Basis der bereitgestellten Befunde und Daten.
+Erfinde keine neuen Fehler und ändere keine Schweregrade. Antworte auf Deutsch, präzise, mit konkreten IDs/Beträgen.`;
+
+async function answerFollowup(store, userQuery) {
+  const findingsJson = JSON.stringify(store.findings ?? [], null, 2);
+  const messages = [
+    { role: 'user', content: `Vorliegende Befunde (JSON):\n${findingsJson}\n\nRückfrage des Nutzers:\n${userQuery}` },
+  ];
+  const response = await withRetry(() => getAnthropicClient().messages.create({
+    model:      'claude-sonnet-4-6',
+    max_tokens: 1500,
+    system:     FOLLOWUP_SYSTEM,
+    messages,
+  }));
+  return response.content.find(b => b.type === 'text')?.text ?? '';
+}
+
+// ---------------------------------------------------------------------------
+// Main entry point — deterministic analysis, LLM only phrases.
+// ---------------------------------------------------------------------------
+
 async function analyzeClient(clientId, period, userQuery, threadId = null) {
   if (!clientId) throw new Error('clientId is required');
 
-  // Init or retrieve thread
-  if (!threadId) {
-    threadId = crypto.randomUUID();
-    conversationHistory.set(threadId, []);
-  }
-
-  const history = conversationHistory.get(threadId) ?? [];
-
-  // Build user message
-  const message = userQuery
-    ? `Client: ${clientId}${period ? `, Period: ${period}` : ''}\n\n${userQuery}`
-    : `Please analyze the accounting data for client ${clientId}${period ? ` for period ${period}` : ''} and identify all errors, warnings, and risks.`;
-
-  history.push({ role: 'user', content: message });
-
-  let iterations = 0;
-  let finalText  = null;
-  let finalReport = null;
-
-  // Tool_use loop
-  while (iterations < MAX_ITERATIONS) {
-    iterations++;
-
-    // System prompt with prompt caching — avoids re-sending ~25k tokens each iteration
-    const systemWithCache = [
-      {
-        type: 'text',
-        text: getSystemPrompt(),
-        cache_control: { type: 'ephemeral' }
-      }
-    ];
-
-    const response = await withRetry(() => getAnthropicClient().messages.create({
-      model:      'claude-sonnet-4-6',
-      max_tokens: 8096,
-      system:     systemWithCache,
-      tools:      TOOL_DEFINITIONS,
-      messages:   history
-    }));
-
-    // Add assistant response to history
-    history.push({ role: 'assistant', content: response.content });
-
-    if (response.stop_reason === 'end_turn') {
-      // Extract final text
-      const textBlock = response.content.find(b => b.type === 'text');
-      finalText = textBlock?.text ?? '';
-      finalReport = extractJsonReport(finalText);
-      break;
+  // Chat follow-up: a thread already analyzed → answer over fixed findings.
+  if (threadId && conversationStore.has(threadId)) {
+    const store = conversationStore.get(threadId);
+    if (store.report) {
+      const answer = await answerFollowup(store, userQuery ?? '');
+      return { threadId, report: store.report, raw_text: answer, iterations: 0 };
     }
+  }
 
-    if (response.stop_reason === 'tool_use') {
-      const toolCalls = response.content.filter(b => b.type === 'tool_use');
-      console.log(`[agent] iter ${iterations}: calling ${toolCalls.map(c => c.name).join(', ')}`);
+  if (!threadId) threadId = crypto.randomUUID();
 
-      // Execute all tool calls in parallel
-      const results = await Promise.all(
-        toolCalls.map(call => runTool(call.name, call.input))
-      );
+  // 1–3. Deterministic findings
+  const data = await loadClientData(clientId, period);
+  const { findings, okCheckIds } = runAllChecks(data);
 
-      // Build tool_results message
-      const toolResults = toolCalls.map((call, i) => ({
-        type:        'tool_result',
-        tool_use_id: call.id,
-        content:     results[i].ok
-          ? JSON.stringify(results[i].result)
-          : `ERROR: ${results[i].error}`
-      }));
+  // 4. Steuerreserve — deterministic calculation (no LLM math)
+  let steuerreserve = null;
+  try {
+    steuerreserve = calculateSteuerreserve(data);
+  } catch (err) {
+    console.error('[agent] steuerreserve calculation failed:', err.message);
+  }
 
-      history.push({ role: 'user', content: toolResults });
-      continue;
+  // 5. LLM phrasing (skipped when there are no findings)
+  let byRef = null, summary = 'Keine Fehler oder Auffälligkeiten in den geprüften Buchungen gefunden.';
+  if (findings.length > 0) {
+    try {
+      const phrased = await phraseFindings(findings, data);
+      byRef   = phrased.byRef;
+      summary = phrased.summary || summary;
+    } catch (err) {
+      console.error('[agent] phrasing failed, using deterministic fallback:', err.message);
     }
-
-    // Unexpected stop reason — break to avoid infinite loop
-    console.warn(`[agent] Unexpected stop_reason: ${response.stop_reason}`);
-    break;
   }
 
-  if (iterations >= MAX_ITERATIONS && !finalReport) {
-    throw new Error('agent_loop_limit_exceeded');
-  }
+  // 6. Assemble
+  const report = assembleReport(findings, byRef, okCheckIds, steuerreserve);
 
-  // Save updated history
-  conversationHistory.set(threadId, history);
+  conversationStore.set(threadId, { data, findings, report });
 
-  return {
-    threadId,
-    report:      finalReport,
-    raw_text:    finalText,
-    iterations
-  };
+  return { threadId, report, raw_text: summary, iterations: 0 };
 }
 
 module.exports = { analyzeClient };
